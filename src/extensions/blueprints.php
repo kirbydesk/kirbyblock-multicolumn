@@ -113,12 +113,9 @@
 		'name' => 'kirbyblock-text.name',
 		'icon' => 'text',
 		'fields' => [
-			'alignment'	=> [
-				'type' => 'pwalign',
-				'default' => 'left'
-			],
 			'text' => [
-				'extends' => 'pagewizard/fields/text-writer'
+				'type' => 'pweditor',
+				'writerModes' => ['writer'],
 			]
 		]
 	],

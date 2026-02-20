@@ -24,101 +24,18 @@
 				>
 
 				<div class="pwColumns" :class="content.distribution">
-					<!-- Left Column -->
-					<div class="pwColumn left" :data-horizontal="content.leftpositionhorizontal" :data-vertical="content.leftpositionvertical">
-						<div v-if="leftBlocks.length">
-							<div v-for="(block, i) in leftBlocks" :key="i">
-{{block.ishidden}}
-								<!-- Writer -->
-								<pwWriter	v-if="block.type === 'multicolumntext'" :debug="block" :value="block.content.text" :align="block.content.alignment" :class="{ 'ishidden': block.content.isHidden }" />
-
-								<!-- Quote -->
-								<pwQuote v-if="block.type === 'multicolumnquote'" :quote="block.content.quote" :author="block.content.author" />
-
-								<!-- Media -->
-								<div v-if="block.type === 'multicolumnmedia'">
-
-									<!-- Image -->
-									<pwImage v-if="block.content.mediatype === 'image'"
-										:src="block.content?.image?.[0]?.url || ''"
-										:srcset="block.content?.image?.[0]?.image?.srcset || ''"
-										:size="block.content.mediasize"
-										:alignment="block.content.mediaalignment"
-										:image="block.content?.image?.[0] || null"
-									/>
-
-									<!-- Slideshow (First image) -->
-									<pwImage v-if="block.content.mediatype === 'slideshow'"
-										:src="block.content?.images?.[0]?.url || ''"
-										:srcset="block.content?.images?.[0]?.images?.srcset || ''"
-										:count="Array.isArray(block.content.images) ? block.content.images.length : 0"
-										:size="block.content.mediasize"
-										:alignment="block.content.mediaalignment"
-										:image="content?.images?.[0] || null"
-									/>
-
-									<!-- Video -->
-									<pwVideo v-if="block.content.mediatype === 'video'"
-										:url="block.content.videourl"
-										:source="block.content.videosource"
-										:size="block.content.mediasize"
-										:alignment="block.content.mediaalignment"
-										:video="block.content?.video?.[0] || null"
-									/>
-
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Right Column -->
-					<div class="pwColumn right" :data-horizontal="content.rightpositionhorizontal" :data-vertical="content.rightpositionvertical">
-
-						<div v-if="rightBlocks.length">
-							<div v-for="(block, i) in rightBlocks" :key="i">
-
-								<!-- Writer -->
-								<pwWriter	v-if="block.type === 'multicolumntext'" :value="block.content.text" :align="block.content.alignment" />
-
-								<!-- Quote -->
-								<pwQuote v-if="block.type === 'multicolumnquote'" :quote="block.content.quote" :author="block.content.author" />
-
-								<!-- Media -->
-								<div v-if="block.type === 'multicolumnmedia'">
-
-									<!-- Image -->
-									<pwImage v-if="block.content.mediatype === 'image'"
-										:src="block.content?.image?.[0]?.url || ''"
-										:srcset="block.content?.image?.[0]?.image?.srcset || ''"
-										:size="block.content.mediasize"
-										:alignment="block.content.mediaalignment"
-										:image="block.content?.image?.[0] || null"
-									/>
-
-									<!-- Slideshow (First image) -->
-									<pwImage v-if="block.content.mediatype === 'slideshow'"
-										:src="block.content?.images?.[0]?.url || ''"
-										:srcset="block.content?.images?.[0]?.images?.srcset || ''"
-										:count="Array.isArray(block.content.images) ? block.content.images.length : 0"
-										:size="block.content.mediasize"
-										:alignment="block.content.mediaalignment"
-										:image="content?.images?.[0] || null"
-									/>
-
-									<!-- Video -->
-									<pwVideo v-if="block.content.mediatype === 'video'"
-										:url="block.content.videourl"
-										:source="block.content.videosource"
-										:size="block.content.mediasize"
-										:alignment="block.content.mediaalignment"
-										:video="block.content?.video?.[0] || null"
-									/>
-
-								</div>
-
-							</div>
-						</div>
-					</div>
+					<pwColumn
+						side="left"
+						:blocks="leftBlocks"
+						:horizontal="content.leftpositionhorizontal"
+						:vertical="content.leftpositionvertical"
+					/>
+					<pwColumn
+						side="right"
+						:blocks="rightBlocks"
+						:horizontal="content.rightpositionhorizontal"
+						:vertical="content.rightpositionvertical"
+					/>
 				</div>
 
 			</div>
@@ -130,18 +47,12 @@
 import pwBlockinfo from '@/../../kirby-pagewizard/src/components/blockinfo.vue';
 import pwGridStyle from '@/../../kirby-pagewizard/src/mixins/gridStyle.js';
 import pwColorStyle from '@/../../kirby-pagewizard/src/mixins/colorStyle.js';
-import pwWriter from '@/../../kirby-pagewizard/src/components/writer.vue';
-import pwQuote from '@/../../kirby-pagewizard/src/components/quote.vue';
-import pwImage from '@/../../kirby-pagewizard/src/components/image.vue';
-import pwVideo from '@/../../kirby-pagewizard/src/components/video.vue';
+import pwColumn from '@/components/column.vue';
 
 export default {
 	components: {
 		pwBlockinfo,
-		pwWriter,
-		pwQuote,
-		pwImage,
-		pwVideo
+		pwColumn
 	},
 	mixins: [pwGridStyle, pwColorStyle],
 	data() {
@@ -156,8 +67,6 @@ export default {
 		rightBlocks() {
 			return this.content.blocksright || [];
 		}
-	},
-	methods: {
 	},
 	async created() {
 		try {

@@ -1,0 +1,75 @@
+<template>
+	<div class="pwColumn" :class="side" :data-horizontal="horizontal" :data-vertical="vertical">
+		<div v-if="blocks.length">
+			<div v-for="(block, i) in blocks" :key="i">
+
+				<!-- Writer -->
+				<pwWriter v-if="block.type === 'multicolumntext'" v-bind="parseEditorValue(block.content.text)" :class="{ 'ishidden': block.content.isHidden }" />
+
+				<!-- Quote -->
+				<pwQuote v-if="block.type === 'multicolumnquote'" :quote="block.content.quote" :author="block.content.author" />
+
+				<!-- Media -->
+				<div v-if="block.type === 'multicolumnmedia'">
+
+					<!-- Image -->
+					<pwImage v-if="block.content.mediatype === 'image'"
+						:src="block.content?.image?.[0]?.url || ''"
+						:srcset="block.content?.image?.[0]?.image?.srcset || ''"
+						:size="block.content.mediasize"
+						:alignment="block.content.mediaalignment"
+						:image="block.content?.image?.[0] || null"
+					/>
+
+					<!-- Slideshow (First image) -->
+					<pwImage v-if="block.content.mediatype === 'slideshow'"
+						:src="block.content?.images?.[0]?.url || ''"
+						:srcset="block.content?.images?.[0]?.images?.srcset || ''"
+						:count="Array.isArray(block.content.images) ? block.content.images.length : 0"
+						:size="block.content.mediasize"
+						:alignment="block.content.mediaalignment"
+						:image="block.content?.images?.[0] || null"
+					/>
+
+					<!-- Video -->
+					<pwVideo v-if="block.content.mediatype === 'video'"
+						:url="block.content.videourl"
+						:source="block.content.videosource"
+						:size="block.content.mediasize"
+						:alignment="block.content.mediaalignment"
+						:video="block.content?.video?.[0] || null"
+					/>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+import pwWriter from '@/../../kirby-pagewizard/src/components/writer.vue';
+import pwQuote from '@/../../kirby-pagewizard/src/components/quote.vue';
+import pwImage from '@/../../kirby-pagewizard/src/components/image.vue';
+import pwVideo from '@/../../kirby-pagewizard/src/components/video.vue';
+
+export default {
+	components: { pwWriter, pwQuote, pwImage, pwVideo },
+	props: {
+		blocks:     { type: Array,  default: () => [] },
+		side:       { type: String, default: 'left' },
+		horizontal: { type: String, default: null },
+		vertical:   { type: String, default: null },
+	},
+	methods: {
+		parseEditorValue(raw) {
+			if (!raw) return { value: '', align: 'left' };
+			try {
+				const d = JSON.parse(raw);
+				return { value: d.writer || d.textarea || d.markdown || '', align: d.align || 'left' };
+			} catch(e) {
+				return { value: raw, align: 'left' };
+			}
+		}
+	}
+}
+</script>
