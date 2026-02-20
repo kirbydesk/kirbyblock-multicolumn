@@ -1,0 +1,25 @@
+{
+	"name": "kirbydesk/kirbyblock-multicolumn",
+	"description": "Multicolumn Block for Kirby CMS",
+	"type": "kirby-plugin",
+	"keywords": [
+		"kirby",
+		"kirby-plugin"
+	],
+	"license": "proprietary",
+	"homepage": "https://github.com/kirbydesk/kirbyblock-multicolumn",
+	"authors": [
+		{
+      "name": "Christian Fickinger",
+      "email": "hello@kirbydesk.com",
+      "homepage": "https://kirbydesk.com"
+    }
+	],
+	"extra": {
+		"installer-name": "kirbyblock-multicolumn"
+	},
+	"require": {
+		"getkirby/composer-installer": "^1.2",
+		"kirbydesk/kirby-pagewizard": "dev-main"
+	}
+}
