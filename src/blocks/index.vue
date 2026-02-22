@@ -107,6 +107,7 @@ export default {
 		}
 
 		.pwColumn {
+			width: 100%;
 			&.left {
 				border-right: 1px dashed color-mix(in srgb, var(--pw-color-text) 40%, transparent);
 				padding-right: 1.5rem;
