@@ -1,6 +1,5 @@
 {
-  "heading": true,
-  "tagline": true,
-  "buttons": true,
-  "tab-grid": true
+  "tab-grid": true,
+  "editor": ["writer"],
+  "column-blocks": ["multicolumntext", "multicolumnquote", "multicolumnmedia"]
 }

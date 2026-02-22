@@ -26,24 +26,16 @@
 					'class' => 'patch',
 				],
 				'blocksLeft' => [
-					'type' => 'blocks',
-					'label' => 'pw.field.blocks',
-					'width' => '1/2',
-					'fieldsets' => [
-						'multicolumntext',
-						'multicolumnquote',
-						'multicolumnmedia'
-					]
+					'type'      => 'blocks',
+					'label'     => 'pw.field.blocks',
+					'width'     => '1/2',
+					'fieldsets' => $settings['column-blocks'] ?? ['multicolumntext', 'multicolumnquote', 'multicolumnmedia']
 				],
 				'blocksRight' => [
-					'type' => 'blocks',
-					'label' => 'pw.field.blocks',
-					'width' => '1/2',
-					'fieldsets' => [
-						'multicolumntext',
-						'multicolumnquote',
-						'multicolumnmedia'
-					]
+					'type'      => 'blocks',
+					'label'     => 'pw.field.blocks',
+					'width'     => '1/2',
+					'fieldsets' => $settings['column-blocks'] ?? ['multicolumntext', 'multicolumnquote', 'multicolumnmedia']
 				]
 			]
 		];
@@ -109,16 +101,20 @@
 		Sub-Blocks (only available within Multicolumn block)
 	============================================================================ */
 
-	'blocks/multicolumntext' => [
-		'name' => 'kirbyblock-text.name',
-		'icon' => 'text',
-		'fields' => [
-			'text' => [
-				'type' => 'pweditor',
-				'writerModes' => ['writer'],
-			]
-		]
-	],
+	'blocks/multicolumntext' => function () {
+		$config   = pwConfig::load('pwmulticolumn');
+		$settings = $config['settings'];
+		$defaults = $config['defaults'];
+		$editor   = $config['editor'];
+
+		$field = pwEditor::contentField($defaults, $editor, $settings);
+
+		return [
+			'name'   => 'kirbyblock-text.name',
+			'icon'   => 'text',
+			'fields' => ['text' => $field]
+		];
+	},
 
 	'blocks/multicolumnquote' => [
 		'name' => 'kirbyblock-quote.name',
