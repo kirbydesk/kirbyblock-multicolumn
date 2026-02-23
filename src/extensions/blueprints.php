@@ -103,7 +103,8 @@ return [
 			'extends' => 'pagewizard/headlines/distribution'
 		],
 		'distribution' => [
-			'extends' => 'pagewizard/fields/distribution'
+			'extends' => 'pagewizard/fields/distribution',
+			'default' => $defaults['distribution']
 		],
 		'headlineLeft' => [
 			'type'  => 'headline',
@@ -113,12 +114,12 @@ return [
 		'leftPositionHorizontal' => [
 			'extends' => 'pagewizard/fields/position-horizontal',
 			'help'    => 'pw.field.position-horizontal.column.help',
-			'default' => 'left'
+			'default' => $defaults['horizontal-left-position']
 		],
 		'leftPositionVertical' => [
 			'extends' => 'pagewizard/fields/position-vertical',
 			'help'    => 'pw.field.position-vertical.column.help',
-			'default' => 'top'
+			'default' => $defaults['vertical-left-position']
 		],
 		'headlineRight' => [
 			'type'  => 'headline',
@@ -128,12 +129,12 @@ return [
 		'rightPositionHorizontal' => [
 			'extends' => 'pagewizard/fields/position-horizontal',
 			'help'    => 'pw.field.position-horizontal.column.help',
-			'default' => 'left'
+			'default' => $defaults['horizontal-right-position']
 		],
 		'rightPositionVertical' => [
 			'extends' => 'pagewizard/fields/position-vertical',
 			'help'    => 'pw.field.position-vertical.column.help',
-			'default' => 'top'
+			'default' => $defaults['vertical-right-position']
 		]
 	]);
 

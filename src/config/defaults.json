@@ -9,7 +9,22 @@
     "align-author-right": "center",
     "align-media-right": "center"
   },
-  "block": {
+  "layout": {
+    "padding-top": true,
+    "padding-right": true,
+    "padding-bottom": true,
+    "padding-left": true,
+    "distribution": "dist-3-3",
+    "horizontal-left-position": "left",
+    "vertical-left-position": "top",
+    "horizontal-right-position": "left",
+    "vertical-right-position": "top"
+  },
+  "style": {
+    "style": "default",
+    "background-size": "content"
+  },
+  "grid": {
     "grid-size-sm": 12,
     "grid-size-md": 12,
     "grid-size-lg": 12,
@@ -17,14 +32,10 @@
     "grid-offset-sm": 1,
     "grid-offset-md": 1,
     "grid-offset-lg": 1,
-    "grid-offset-xl": 1,
+    "grid-offset-xl": 1
+  },
+  "settings": {
     "margin-top": false,
-    "margin-bottom": true,
-    "padding-top": true,
-    "padding-right": true,
-    "padding-bottom": true,
-    "padding-left": true,
-    "style": "default",
-    "background-size": "content"
+    "margin-bottom": true
   }
 }
