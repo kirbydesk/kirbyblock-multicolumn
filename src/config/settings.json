@@ -1,5 +1,9 @@
 {
-  "tab-grid": true,
-  "editor": ["writer"],
-  "column-blocks": ["multicolumntext", "multicolumnquote", "multicolumnmedia"]
+  "fields": {
+    "text": ["writer"],
+    "column-blocks": ["multicolumntext", "multicolumnquote", "multicolumnmedia"]
+  },
+  "tabs": {
+    "grid": true
+  }
 }

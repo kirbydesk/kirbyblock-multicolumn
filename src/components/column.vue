@@ -4,20 +4,25 @@
 			<div v-for="(block, i) in blocks" :key="i">
 
 				<!-- Writer -->
-				<pwWriter v-if="block.type === 'multicolumntext'" v-bind="parseEditorValue(block.content.text)" :class="{ 'ishidden': block.content.isHidden }" />
+				<pwWriter v-if="blockType(block) === 'multicolumntext'" v-bind="parseEditorValue(block.content.text)" :class="{ 'ishidden': block.content.isHidden }" />
 
 				<!-- Quote -->
-				<pwQuote v-if="block.type === 'multicolumnquote'" :quote="block.content.quote" :author="block.content.author" />
+				<pwQuote v-if="blockType(block) === 'multicolumnquote'"
+					:quote="block.content.quote"
+					:author="block.content.author"
+					:alignQuoteDefault="fieldDefaults['align-quote-' + side] || 'left'"
+					:alignAuthorDefault="fieldDefaults['align-author-' + side] || 'left'"
+				/>
 
 				<!-- Media -->
-				<div v-if="block.type === 'multicolumnmedia'">
+				<div v-if="blockType(block) === 'multicolumnmedia'">
 
 					<!-- Image -->
 					<pwImage v-if="block.content.mediatype === 'image'"
 						:src="block.content?.image?.[0]?.url || ''"
 						:srcset="block.content?.image?.[0]?.image?.srcset || ''"
 						:size="block.content.mediasize"
-						:alignment="block.content.mediaalignment"
+						:alignment="block.content.mediaalignment || fieldDefaults['align-media-' + side]"
 						:image="block.content?.image?.[0] || null"
 					/>
 
@@ -27,7 +32,7 @@
 						:srcset="block.content?.images?.[0]?.images?.srcset || ''"
 						:count="Array.isArray(block.content.images) ? block.content.images.length : 0"
 						:size="block.content.mediasize"
-						:alignment="block.content.mediaalignment"
+						:alignment="block.content.mediaalignment || fieldDefaults['align-media-' + side]"
 						:image="block.content?.images?.[0] || null"
 					/>
 
@@ -36,7 +41,7 @@
 						:url="block.content.videourl"
 						:source="block.content.videosource"
 						:size="block.content.mediasize"
-						:alignment="block.content.mediaalignment"
+						:alignment="block.content.mediaalignment || fieldDefaults['align-media-' + side]"
 						:video="block.content?.video?.[0] || null"
 					/>
 
@@ -55,19 +60,24 @@ import pwVideo from '@/../../kirby-pagewizard/src/components/video.vue';
 export default {
 	components: { pwWriter, pwQuote, pwImage, pwVideo },
 	props: {
-		blocks:     { type: Array,  default: () => [] },
-		side:       { type: String, default: 'left' },
-		horizontal: { type: String, default: null },
-		vertical:   { type: String, default: null },
+		blocks:       { type: Array,  default: () => [] },
+		side:         { type: String, default: 'left' },
+		horizontal:   { type: String, default: null },
+		vertical:     { type: String, default: null },
+		fieldDefaults: { type: Object, default: () => ({}) },
 	},
 	methods: {
+		blockType(block) {
+			return block.type.replace(/left$|right$/, '');
+		},
 		parseEditorValue(raw) {
-			if (!raw) return { value: '', align: 'left' };
+			const alignDefault = this.fieldDefaults['align-text-' + this.side] || 'left';
+			if (!raw) return { value: '', align: alignDefault };
 			try {
 				const d = JSON.parse(raw);
-				return { value: d.writer || d.textarea || d.markdown || '', align: d.align || 'left' };
+				return { value: d.writer || d.textarea || d.markdown || '', align: d.align || alignDefault };
 			} catch(e) {
-				return { value: raw, align: 'left' };
+				return { value: raw, align: alignDefault };
 			}
 		}
 	}

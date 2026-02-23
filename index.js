@@ -129,29 +129,34 @@
   const _sfc_main$4 = {
     props: {
       quote: String,
-      author: String
+      author: String,
+      alignQuoteDefault: { type: String, default: "left" },
+      alignAuthorDefault: { type: String, default: "left" },
+      alignQuote: { type: String, default: null },
+      alignAuthor: { type: String, default: null }
     },
     computed: {
       parsedQuoteData() {
         const val = this.quote;
-        if (!val) return { text: "", align: "left", html: false };
+        if (!val) return { text: "", align: this.alignQuoteDefault, html: false };
         try {
           const d = typeof val === "string" ? JSON.parse(val) : val;
           if (d.mode !== void 0) {
-            return { text: d.writer || d.textarea || d.markdown || "", align: d.align || "left", html: d.mode === "writer" };
+            return { text: d.writer || d.textarea || d.markdown || "", align: d.align || this.alignQuoteDefault, html: d.mode === "writer" };
           }
-          return { text: d.text || "", align: d.align || "left", html: false };
+          return { text: d.text || "", align: d.align || this.alignQuoteDefault, html: false };
         } catch (e) {
-          return { text: val, align: "left", html: false };
+          return { text: val, align: this.alignQuoteDefault, html: false };
         }
       },
       parsedAuthorData() {
         const val = this.author;
-        if (!val) return { text: "" };
+        if (!val) return { text: "", align: this.alignAuthorDefault };
         try {
-          return typeof val === "string" ? JSON.parse(val) : val;
+          const d = typeof val === "string" ? JSON.parse(val) : val;
+          return { text: d.text || "", align: d.align || this.alignAuthorDefault };
         } catch (e) {
-          return { text: val };
+          return { text: val, align: this.alignAuthorDefault };
         }
       },
       quoteText() {
@@ -163,11 +168,13 @@
         return text;
       },
       quoteAlign() {
-        const { align = "left" } = this.parsedQuoteData;
+        if (this.alignQuote) return this.alignQuote;
+        const { align = this.alignQuoteDefault } = this.parsedQuoteData;
         return align;
       },
       authorAlign() {
-        const { align = "left" } = this.parsedAuthorData;
+        if (this.alignAuthor) return this.alignAuthor;
+        const { align = this.alignAuthorDefault } = this.parsedAuthorData;
         return align;
       }
     },
@@ -345,16 +352,21 @@
       blocks: { type: Array, default: () => [] },
       side: { type: String, default: "left" },
       horizontal: { type: String, default: null },
-      vertical: { type: String, default: null }
+      vertical: { type: String, default: null },
+      fieldDefaults: { type: Object, default: () => ({}) }
     },
     methods: {
+      blockType(block) {
+        return block.type.replace(/left$|right$/, "");
+      },
       parseEditorValue(raw) {
-        if (!raw) return { value: "", align: "left" };
+        const alignDefault = this.fieldDefaults["align-text-" + this.side] || "left";
+        if (!raw) return { value: "", align: alignDefault };
         try {
           const d = JSON.parse(raw);
-          return { value: d.writer || d.textarea || d.markdown || "", align: d.align || "left" };
+          return { value: d.writer || d.textarea || d.markdown || "", align: d.align || alignDefault };
         } catch (e) {
-          return { value: raw, align: "left" };
+          return { value: raw, align: alignDefault };
         }
       }
     }
@@ -363,7 +375,7 @@
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "pwColumn", class: _vm.side, attrs: { "data-horizontal": _vm.horizontal, "data-vertical": _vm.vertical } }, [_vm.blocks.length ? _c("div", _vm._l(_vm.blocks, function(block, i) {
       var _a, _b, _c2, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t;
-      return _c("div", { key: i }, [block.type === "multicolumntext" ? _c("pwWriter", _vm._b({ class: { "ishidden": block.content.isHidden } }, "pwWriter", _vm.parseEditorValue(block.content.text), false)) : _vm._e(), block.type === "multicolumnquote" ? _c("pwQuote", { attrs: { "quote": block.content.quote, "author": block.content.author } }) : _vm._e(), block.type === "multicolumnmedia" ? _c("div", [block.content.mediatype === "image" ? _c("pwImage", { attrs: { "src": ((_c2 = (_b = (_a = block.content) == null ? void 0 : _a.image) == null ? void 0 : _b[0]) == null ? void 0 : _c2.url) || "", "srcset": ((_g = (_f = (_e = (_d = block.content) == null ? void 0 : _d.image) == null ? void 0 : _e[0]) == null ? void 0 : _f.image) == null ? void 0 : _g.srcset) || "", "size": block.content.mediasize, "alignment": block.content.mediaalignment, "image": ((_i = (_h = block.content) == null ? void 0 : _h.image) == null ? void 0 : _i[0]) || null } }) : _vm._e(), block.content.mediatype === "slideshow" ? _c("pwImage", { attrs: { "src": ((_l = (_k = (_j = block.content) == null ? void 0 : _j.images) == null ? void 0 : _k[0]) == null ? void 0 : _l.url) || "", "srcset": ((_p = (_o = (_n = (_m = block.content) == null ? void 0 : _m.images) == null ? void 0 : _n[0]) == null ? void 0 : _o.images) == null ? void 0 : _p.srcset) || "", "count": Array.isArray(block.content.images) ? block.content.images.length : 0, "size": block.content.mediasize, "alignment": block.content.mediaalignment, "image": ((_r = (_q = block.content) == null ? void 0 : _q.images) == null ? void 0 : _r[0]) || null } }) : _vm._e(), block.content.mediatype === "video" ? _c("pwVideo", { attrs: { "url": block.content.videourl, "source": block.content.videosource, "size": block.content.mediasize, "alignment": block.content.mediaalignment, "video": ((_t = (_s = block.content) == null ? void 0 : _s.video) == null ? void 0 : _t[0]) || null } }) : _vm._e()], 1) : _vm._e()], 1);
+      return _c("div", { key: i }, [_vm.blockType(block) === "multicolumntext" ? _c("pwWriter", _vm._b({ class: { "ishidden": block.content.isHidden } }, "pwWriter", _vm.parseEditorValue(block.content.text), false)) : _vm._e(), _vm.blockType(block) === "multicolumnquote" ? _c("pwQuote", { attrs: { "quote": block.content.quote, "author": block.content.author, "alignQuoteDefault": _vm.fieldDefaults["align-quote-" + _vm.side] || "left", "alignAuthorDefault": _vm.fieldDefaults["align-author-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumnmedia" ? _c("div", [block.content.mediatype === "image" ? _c("pwImage", { attrs: { "src": ((_c2 = (_b = (_a = block.content) == null ? void 0 : _a.image) == null ? void 0 : _b[0]) == null ? void 0 : _c2.url) || "", "srcset": ((_g = (_f = (_e = (_d = block.content) == null ? void 0 : _d.image) == null ? void 0 : _e[0]) == null ? void 0 : _f.image) == null ? void 0 : _g.srcset) || "", "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "image": ((_i = (_h = block.content) == null ? void 0 : _h.image) == null ? void 0 : _i[0]) || null } }) : _vm._e(), block.content.mediatype === "slideshow" ? _c("pwImage", { attrs: { "src": ((_l = (_k = (_j = block.content) == null ? void 0 : _j.images) == null ? void 0 : _k[0]) == null ? void 0 : _l.url) || "", "srcset": ((_p = (_o = (_n = (_m = block.content) == null ? void 0 : _m.images) == null ? void 0 : _n[0]) == null ? void 0 : _o.images) == null ? void 0 : _p.srcset) || "", "count": Array.isArray(block.content.images) ? block.content.images.length : 0, "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "image": ((_r = (_q = block.content) == null ? void 0 : _q.images) == null ? void 0 : _r[0]) || null } }) : _vm._e(), block.content.mediatype === "video" ? _c("pwVideo", { attrs: { "url": block.content.videourl, "source": block.content.videosource, "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "video": ((_t = (_s = block.content) == null ? void 0 : _s.video) == null ? void 0 : _t[0]) || null } }) : _vm._e()], 1) : _vm._e()], 1);
     }), 0) : _vm._e()]);
   };
   var _sfc_staticRenderFns$1 = [];
@@ -386,7 +398,8 @@
     mixins: [pwGridStyle, pwColorStyle],
     data() {
       return {
-        settings: {}
+        settings: {},
+        fieldDefaults: null
       };
     },
     computed: {
@@ -401,14 +414,16 @@
       try {
         const response = await this.$api.get("pagewizard/settings/pwmulticolumn");
         this.settings = response.settings;
+        this.fieldDefaults = response.fields || {};
       } catch (e) {
         this.settings = {};
+        this.fieldDefaults = {};
       }
     }
   };
   var _sfc_render = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwPreview", style: _vm.colorVars, attrs: { "data-kirbyblock": "multicolumn", "data-margintop": _vm.content.margintop === true ? "true" : null, "data-marginbottom": _vm.content.marginbottom === true ? "true" : null }, on: { "dblclick": _vm.open } }, [_c("pwBlockinfo", { attrs: { "value": _vm.$t("kirbyblock-multicolumn.name"), "icon": "layout-columns" } }), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_c("div", { staticClass: "pwColumns", class: _vm.content.distribution }, [_c("pwColumn", { attrs: { "side": "left", "blocks": _vm.leftBlocks, "horizontal": _vm.content.leftpositionhorizontal, "vertical": _vm.content.leftpositionvertical } }), _c("pwColumn", { attrs: { "side": "right", "blocks": _vm.rightBlocks, "horizontal": _vm.content.rightpositionhorizontal, "vertical": _vm.content.rightpositionvertical } })], 1)])])], 1);
+    return _c("div", { staticClass: "pwPreview", style: _vm.colorVars, attrs: { "data-kirbyblock": "multicolumn", "data-margintop": _vm.content.margintop === true ? "true" : null, "data-marginbottom": _vm.content.marginbottom === true ? "true" : null }, on: { "dblclick": _vm.open } }, [_c("pwBlockinfo", { attrs: { "value": _vm.$t("kirbyblock-multicolumn.name"), "icon": "layout-columns" } }), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_vm.fieldDefaults !== null ? _c("div", { staticClass: "pwColumns", class: _vm.content.distribution }, [_c("pwColumn", { attrs: { "side": "left", "blocks": _vm.leftBlocks, "horizontal": _vm.content.leftpositionhorizontal, "vertical": _vm.content.leftpositionvertical, "fieldDefaults": _vm.fieldDefaults } }), _c("pwColumn", { attrs: { "side": "right", "blocks": _vm.rightBlocks, "horizontal": _vm.content.rightpositionhorizontal, "vertical": _vm.content.rightpositionvertical, "fieldDefaults": _vm.fieldDefaults } })], 1) : _vm._e()])])], 1);
   };
   var _sfc_staticRenderFns = [];
   _sfc_render._withStripped = true;

@@ -23,18 +23,20 @@
 				:data-paddingleft="content.paddingleft === true ? 'true' : null"
 				>
 
-				<div class="pwColumns" :class="content.distribution">
+				<div v-if="fieldDefaults !== null" class="pwColumns" :class="content.distribution">
 					<pwColumn
 						side="left"
 						:blocks="leftBlocks"
 						:horizontal="content.leftpositionhorizontal"
 						:vertical="content.leftpositionvertical"
+						:fieldDefaults="fieldDefaults"
 					/>
 					<pwColumn
 						side="right"
 						:blocks="rightBlocks"
 						:horizontal="content.rightpositionhorizontal"
 						:vertical="content.rightpositionvertical"
+						:fieldDefaults="fieldDefaults"
 					/>
 				</div>
 
@@ -57,7 +59,8 @@ export default {
 	mixins: [pwGridStyle, pwColorStyle],
 	data() {
 		return {
-			settings: {}
+			settings: {},
+			fieldDefaults: null
 		}
 	},
 	computed: {
@@ -72,8 +75,10 @@ export default {
 		try {
 			const response = await this.$api.get('pagewizard/settings/pwmulticolumn');
 			this.settings = response.settings;
+			this.fieldDefaults = response.fields || {};
 		} catch (e) {
 			this.settings = {};
+			this.fieldDefaults = {};
 		}
 	}
 }
@@ -139,9 +144,12 @@ export default {
 	}
 }
 .k-block {
-	&.k-block-type-multicolumntext,
-	&.k-block-type-multicolumnquote,
-	&.k-block-type-multicolumnmedia {
+	&.k-block-type-multicolumntextleft,
+	&.k-block-type-multicolumnquoteleft,
+	&.k-block-type-multicolumnmedialeft,
+	&.k-block-type-multicolumntextright,
+	&.k-block-type-multicolumnquoteright,
+	&.k-block-type-multicolumnmediaright {
 		padding: 10px;
 	}
 }

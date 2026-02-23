@@ -261,9 +261,12 @@ div.video[data-v-301ff5b5] {
 }
 }
 .k-block {
-&.k-block-type-multicolumntext,
-	&.k-block-type-multicolumnquote,
-	&.k-block-type-multicolumnmedia {
+&.k-block-type-multicolumntextleft,
+	&.k-block-type-multicolumnquoteleft,
+	&.k-block-type-multicolumnmedialeft,
+	&.k-block-type-multicolumntextright,
+	&.k-block-type-multicolumnquoteright,
+	&.k-block-type-multicolumnmediaright {
 		padding: 10px;
 }
 }

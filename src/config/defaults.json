@@ -1,18 +1,30 @@
 {
-  "grid-size-sm": 12,
-  "grid-size-md": 12,
-  "grid-size-lg": 12,
-  "grid-size-xl": 12,
-  "grid-offset-sm": 1,
-  "grid-offset-md": 1,
-  "grid-offset-lg": 1,
-  "grid-offset-xl": 1,
-  "margin-top": false,
-  "margin-bottom": true,
- 	"padding-top": true,
-  "padding-right": true,
-  "padding-bottom": true,
-	"padding-left": true,
-  "style": "default",
-  "background-size": "content"
+  "fields": {
+    "align-text-left": "right",
+    "align-quote-left": "right",
+    "align-author-left": "right",
+    "align-media-left": "right",
+    "align-text-right": "center",
+    "align-quote-right": "center",
+    "align-author-right": "center",
+    "align-media-right": "center"
+  },
+  "block": {
+    "grid-size-sm": 12,
+    "grid-size-md": 12,
+    "grid-size-lg": 12,
+    "grid-size-xl": 12,
+    "grid-offset-sm": 1,
+    "grid-offset-md": 1,
+    "grid-offset-lg": 1,
+    "grid-offset-xl": 1,
+    "margin-top": false,
+    "margin-bottom": true,
+    "padding-top": true,
+    "padding-right": true,
+    "padding-bottom": true,
+    "padding-left": true,
+    "style": "default",
+    "background-size": "content"
+  }
 }

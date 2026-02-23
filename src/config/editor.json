@@ -1,9 +1,9 @@
 {
-  "default-mode": "writer",
-  "marks": ["bold", "italic", "underline", "strike", "link"],
-  "nodes": ["heading"],
-  "headings": [2, 3, 4],
-  "toolbar": {
-    "inline": false
+  "text": {
+    "default-mode": "writer",
+    "marks": ["bold", "italic", "underline", "strike", "link"],
+    "nodes": ["heading"],
+    "headings": [2, 3, 4],
+    "toolbar": { "inline": false }
   }
 }
