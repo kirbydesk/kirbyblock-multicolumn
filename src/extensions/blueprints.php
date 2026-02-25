@@ -9,6 +9,7 @@ function pwMulticolumnMediaFields(string $alignMedia): array {
 		'mediaAlignment' => [
 			'type'          => 'pwalign',
 			'align'         => $alignMedia,
+			'default'       => $alignMedia,
 			'alwaysVisible' => true,
 		],
 		'mediaType' => [
@@ -58,7 +59,7 @@ return [
 	$defaults    = $config['defaults'];
 
 	/* -------------- Column block types (auto-append left/right) --------------*/
-	$baseBlocks  = $settings['column-blocks'] ?? ['multicolumntext', 'multicolumnquote', 'multicolumnmedia'];
+	$baseBlocks  = $settings['column-blocks'];
 	$blocksLeft  = array_map(fn($b) => $b . 'left',  $baseBlocks);
 	$blocksRight = array_map(fn($b) => $b . 'right', $baseBlocks);
 
@@ -82,6 +83,16 @@ return [
 				'width' => '1/2',
 				'class' => 'patch',
 			],
+			'leftPositionVertical' => [
+				'extends' => 'pagewizard/fields/position-vertical',
+				'help'    => 'pw.field.position-vertical.column.help',
+				'default' => $defaults['vertical-left-position']
+			],
+			'rightPositionVertical' => [
+				'extends' => 'pagewizard/fields/position-vertical',
+				'help'    => 'pw.field.position-vertical.column.help',
+				'default' => $defaults['vertical-right-position']
+			],
 			'blocksLeft' => [
 				'type'      => 'blocks',
 				'label'     => 'pw.field.blocks',
@@ -100,42 +111,32 @@ return [
 	/* -------------- Layout Tab --------------*/
 	$tabs['layout'] = pwLayout::options('pwmulticolumn', $defaults, [
 		'headlineDistribution' => [
-			'extends' => 'pagewizard/headlines/distribution'
-		],
-		'distribution' => [
-			'extends' => 'pagewizard/fields/distribution',
-			'default' => $defaults['distribution']
-		],
-		'headlineLeft' => [
-			'type'  => 'headline',
-			'label' => 'pw.headline.multicolumn.left',
-			'help'  => 'pw.headline.multicolumn.left.positioning.help',
-		],
-		'leftPositionHorizontal' => [
-			'extends' => 'pagewizard/fields/position-horizontal',
-			'help'    => 'pw.field.position-horizontal.column.help',
-			'default' => $defaults['horizontal-left-position']
-		],
-		'leftPositionVertical' => [
-			'extends' => 'pagewizard/fields/position-vertical',
-			'help'    => 'pw.field.position-vertical.column.help',
-			'default' => $defaults['vertical-left-position']
-		],
-		'headlineRight' => [
-			'type'  => 'headline',
-			'label' => 'pw.headline.multicolumn.right',
-			'help'  => 'pw.headline.multicolumn.right.positioning.help',
-		],
-		'rightPositionHorizontal' => [
-			'extends' => 'pagewizard/fields/position-horizontal',
-			'help'    => 'pw.field.position-horizontal.column.help',
-			'default' => $defaults['horizontal-right-position']
-		],
-		'rightPositionVertical' => [
-			'extends' => 'pagewizard/fields/position-vertical',
-			'help'    => 'pw.field.position-vertical.column.help',
-			'default' => $defaults['vertical-right-position']
-		]
+				'extends' => 'pagewizard/headlines/distribution'
+			],
+			'distributionSm' => [
+				'extends'  => 'pagewizard/fields/distribution',
+				'default'  => $defaults['distribution-sm'],
+				'label'    => 'pw.field.columns.sm',
+				'help'     => 'pw.field.columns.sm.help',
+			],
+			'distributionMd' => [
+				'extends'  => 'pagewizard/fields/distribution',
+				'default'  => $defaults['distribution-md'],
+				'label'    => 'pw.field.columns.md',
+				'help'     => 'pw.field.columns.md.help',
+			],
+			'distributionLg' => [
+				'extends'  => 'pagewizard/fields/distribution',
+				'default'  => $defaults['distribution-lg'],
+				'label'    => 'pw.field.columns.lg',
+				'help'     => 'pw.field.columns.lg.help',
+			],
+			'distributionXl' => [
+				'extends'  => 'pagewizard/fields/distribution',
+				'default'  => $defaults['distribution-xl'],
+				'label'    => 'pw.field.columns.xl',
+				'help'     => 'pw.field.columns.xl.help',
+			]
 	]);
 
 	/* -------------- Style Tab --------------*/
@@ -158,6 +159,18 @@ return [
 /* ============================================================================
 	Sub-Blocks — Left Column
 ============================================================================ */
+
+'blocks/multicolumnheadlineleft' => function () {
+	$config = pwConfig::load('pwmulticolumn');
+	$fields = $config['fields'];
+	return [
+		'name'   => 'kirbyblock-multicolumn.sub.headline',
+		'icon'   => 'title',
+		'fields' => [
+			'heading' => ['extends' => 'pagewizard/fields/heading', 'align' => $fields['align-headline-left']],
+		]
+	];
+},
 
 'blocks/multicolumntextleft' => function () {
 	$config       = pwConfig::load('pwmulticolumn');
@@ -197,6 +210,18 @@ return [
 	Sub-Blocks — Right Column
 ============================================================================ */
 
+'blocks/multicolumnheadlineright' => function () {
+	$config = pwConfig::load('pwmulticolumn');
+	$fields = $config['fields'];
+	return [
+		'name'   => 'kirbyblock-multicolumn.sub.headline',
+		'icon'   => 'title',
+		'fields' => [
+			'heading' => ['extends' => 'pagewizard/fields/heading', 'align' => $fields['align-headline-right']],
+		]
+	];
+},
+
 'blocks/multicolumntextright' => function () {
 	$config       = pwConfig::load('pwmulticolumn');
 	$settings     = $config['settings'];
@@ -229,6 +254,6 @@ return [
 		'icon'   => 'images',
 		'fields' => pwMulticolumnMediaFields($fields['align-media-right'] ?? 'left')
 	];
-},
+}
 
 ];

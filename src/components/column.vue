@@ -1,7 +1,13 @@
 <template>
-	<div class="pwColumn" :class="side" :data-horizontal="horizontal" :data-vertical="vertical">
+	<div class="pwColumn" :class="side" :data-vertical="vertical">
 		<div v-if="blocks.length">
 			<div v-for="(block, i) in blocks" :key="i">
+
+				<!-- Headline -->
+				<pwHeading v-if="blockType(block) === 'multicolumnheadline'"
+					:content="block.content"
+					:alignDefault="fieldDefaults['align-headline-' + side] || 'left'"
+				/>
 
 				<!-- Writer -->
 				<pwWriter v-if="blockType(block) === 'multicolumntext'" v-bind="parseEditorValue(block.content.text)" :class="{ 'ishidden': block.content.isHidden }" />
@@ -52,17 +58,17 @@
 </template>
 
 <script>
-import pwWriter from '@/../../kirby-pagewizard/src/components/writer.vue';
-import pwQuote from '@/../../kirby-pagewizard/src/components/quote.vue';
-import pwImage from '@/../../kirby-pagewizard/src/components/image.vue';
-import pwVideo from '@/../../kirby-pagewizard/src/components/video.vue';
+import pwWriter  from '@/../../kirby-pagewizard/src/components/writer.vue';
+import pwQuote   from '@/../../kirby-pagewizard/src/components/quote.vue';
+import pwImage   from '@/../../kirby-pagewizard/src/components/image.vue';
+import pwVideo   from '@/../../kirby-pagewizard/src/components/video.vue';
+import pwHeading from '@/../../kirby-pagewizard/src/components/heading.vue';
 
 export default {
-	components: { pwWriter, pwQuote, pwImage, pwVideo },
+	components: { pwWriter, pwQuote, pwImage, pwVideo, pwHeading },
 	props: {
 		blocks:       { type: Array,  default: () => [] },
 		side:         { type: String, default: 'left' },
-		horizontal:   { type: String, default: null },
 		vertical:     { type: String, default: null },
 		fieldDefaults: { type: Object, default: () => ({}) },
 	},

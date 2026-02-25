@@ -1,7 +1,7 @@
 {
   "fields": {
     "text": ["writer"],
-    "column-blocks": ["multicolumntext", "multicolumnquote", "multicolumnmedia"]
+    "column-blocks": ["multicolumnheadline","multicolumntext", "multicolumnquote", "multicolumnmedia"]
   },
   "tabs": {
     "grid": true

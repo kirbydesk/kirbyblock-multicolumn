@@ -1,28 +1,31 @@
 {
   "fields": {
-    "align-text-left": "right",
-    "align-quote-left": "right",
-    "align-author-left": "right",
-    "align-media-left": "right",
-    "align-text-right": "center",
-    "align-quote-right": "center",
-    "align-author-right": "center",
-    "align-media-right": "center"
+    "align-headline-left": "center",
+    "align-text-left": "center",
+    "align-quote-left": "center",
+    "align-author-left": "center",
+    "align-media-left": "center",
+    "align-headline-right": "right",
+    "align-text-right": "right",
+    "align-quote-right": "right",
+    "align-author-right": "right",
+    "align-media-right": "right"
   },
   "layout": {
     "padding-top": true,
     "padding-right": true,
     "padding-bottom": true,
     "padding-left": true,
-    "distribution": "dist-3-3",
-    "horizontal-left-position": "left",
+    "distribution-sm": "dist-3-3",
+    "distribution-md": "dist-3-3",
+    "distribution-lg": "dist-3-3",
+    "distribution-xl": "dist-3-3",
     "vertical-left-position": "top",
-    "horizontal-right-position": "left",
     "vertical-right-position": "top"
   },
   "style": {
     "style": "default",
-    "background-size": "content"
+    "block-size": "content"
   },
   "grid": {
     "grid-size-sm": 12,
