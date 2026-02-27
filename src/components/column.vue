@@ -10,7 +10,7 @@
 				/>
 
 				<!-- Writer -->
-				<pwWriter v-if="blockType(block) === 'multicolumntext'" v-bind="parseEditorValue(block.content.text)" :class="{ 'ishidden': block.content.isHidden }" />
+				<pwWriter v-if="blockType(block) === 'multicolumntext'" v-bind="parseEditorValue(block.content.editor)" :class="{ 'ishidden': block.content.isHidden }" />
 
 				<!-- Quote -->
 				<pwQuote v-if="blockType(block) === 'multicolumnquote'"

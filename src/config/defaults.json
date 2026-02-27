@@ -1,22 +1,22 @@
 {
   "fields": {
-    "align-headline-left": "center",
-    "align-text-left": "center",
-    "align-quote-left": "center",
-    "align-author-left": "center",
-    "align-media-left": "center",
-    "align-headline-right": "right",
-    "align-text-right": "right",
-    "align-quote-right": "right",
-    "align-author-right": "right",
-    "align-media-right": "right"
+    "align-headline-left": "left",
+    "align-text-left": "left",
+    "align-quote-left": "left",
+    "align-author-left": "left",
+    "align-media-left": "left",
+    "align-headline-right": "left",
+    "align-text-right": "left",
+    "align-quote-right": "left",
+    "align-author-right": "left",
+    "align-media-right": "left"
   },
   "layout": {
     "padding-top": true,
     "padding-right": true,
     "padding-bottom": true,
     "padding-left": true,
-    "distribution-sm": "dist-3-3",
+    "distribution-sm": "",
     "distribution-md": "dist-3-3",
     "distribution-lg": "dist-3-3",
     "distribution-xl": "dist-3-3",
@@ -24,8 +24,7 @@
     "vertical-right-position": "top"
   },
   "style": {
-    "style": "default",
-    "block-size": "content"
+    "style": "default"
   },
   "grid": {
     "grid-size-sm": 12,
@@ -38,6 +37,7 @@
     "grid-offset-xl": 1
   },
   "settings": {
+		"block-size": "content",
     "margin-top": false,
     "margin-bottom": true
   }

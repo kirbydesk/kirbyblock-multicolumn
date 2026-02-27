@@ -12,7 +12,7 @@ export default {
 	mixins: [subBlockSide],
 	computed: {
 		parsedContent() {
-			const raw = this.content.text;
+			const raw = this.content.editor;
 			const alignDefault = this.subFieldDefaults?.['align-text-' + this.subSide] || 'left';
 			if (!raw) return { value: '', align: alignDefault };
 			try {

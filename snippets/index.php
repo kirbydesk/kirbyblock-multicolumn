@@ -4,9 +4,13 @@
 $config   = pwConfig::load('pwmulticolumn');
 $settings = $config['settings'];
 
-// Custom Background
+// Custom CSS
 if ($block->content()->style()->value() === 'custom'):
-	echo '<style>section[data-block-id="b'.$block->id().'"] { color: '.$block->content()->textcolor()->value().'; background-color: '.$block->content()->backgroundcolor()->value().' }</style>';
+	snippet('customcss', [
+		'blockid' => 'b'.$block->id(),
+		'textcolor' => $block->content()->textcolor()->value(),
+		'backgroundcolor' => $block->content()->backgroundcolor()->value()
+	]);
 endif;
 
 // Section
@@ -37,24 +41,35 @@ echo ' data-grid-offset-lg="'.$block->gridoffsetlg()->value().'"';
 echo ' data-grid-offset-xl="'.$block->gridoffsetxl()->value().'"';
 echo '>'."\n";
 
-// Tagline
-if (!empty($settings['tagline'])):
-	snippet('tagline', ['content' => $block]);
-endif;
+// Columns Grid
+echo '<div data-layout="columns" data-dist-sm="'.$block->distributionsm()->value().'" data-dist-md="'.$block->distributionmd()->value().'" data-dist-lg="'.$block->distributionlg()->value().'" data-dist-xl="'.$block->distributionxl()->value().'">'."\n";
 
-// Heading
-if (!empty($settings['heading'])):
-	snippet('heading', ['content' => $block]);
-endif;
+	// Left column
+	$items = $block->blocksleft()->toBlocks();
+	if ($items->count() > 0):
+		echo '<div data-layout="column" data-position="'.$block->leftpositionvertical()->value().'">'."\n";
+		foreach ($items as $item):
+			if ($item->type() === 'multicolumnheadlineleft'): snippet('heading', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumntextleft'): snippet('editor', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumnquoteleft'): snippet('quote', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumnmedialeft'): snippet('media', ['content' => $item]); endif;
+		endforeach;
+		echo '</div>'."\n";
+	endif;
 
-// Text
-snippet('text', ['content' => $block]);
+	// Right column
+	$items = $block->blocksright()->toBlocks();
+	if ($items->count() > 0):
+		echo '<div data-layout="column" data-position="'.$block->rightpositionvertical()->value().'">'."\n";
+		foreach ($items as $item):
+			if ($item->type() === 'multicolumnheadlineright'): snippet('heading', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumntextright'): snippet('editor', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumnquoteright'): snippet('quote', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumnmediaright'): snippet('media', ['content' => $item]); endif;
+		endforeach;
+		echo '</div>'."\n";
+	endif;
 
-// Buttons
-if (!empty($settings['buttons'])):
-	snippet('buttons', ['content' => $block]);
-endif;
-
-
+echo '</div>'."\n"; // End Columns Grid
 echo '</div></div>'."\n"; // End Grid
 echo '</section>'."\n";

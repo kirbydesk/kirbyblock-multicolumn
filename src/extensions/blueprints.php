@@ -109,7 +109,7 @@ return [
 	];
 
 	/* -------------- Layout Tab --------------*/
-	$tabs['layout'] = pwLayout::options('pwmulticolumn', $defaults, [
+	pwConfig::addTab($tabs, 'layout', $tabSettings['layout'] ?? true, pwLayout::options('pwmulticolumn', $defaults, [
 		'headlineDistribution' => [
 				'extends' => 'pagewizard/headlines/distribution'
 			],
@@ -137,16 +137,16 @@ return [
 				'label'    => 'pw.field.columns.xl',
 				'help'     => 'pw.field.columns.xl.help',
 			]
-	]);
+	]));
 
 	/* -------------- Style Tab --------------*/
-	$tabs['style'] = pwStyle::options('pwmulticolumn', $defaults);
+	pwConfig::addTab($tabs, 'style', $tabSettings['style'] ?? true, pwStyle::options('pwmulticolumn', $defaults));
 
-	/* -------------- Common Tabs (grid, spacing, theme) --------------*/
-	pwConfig::buildTabs('pwmulticolumn', $defaults, $tabSettings, $tabs);
+	/* -------------- Grid Tab --------------*/
+	pwConfig::addTab($tabs, 'grid', $tabSettings['grid'] ?? false, pwGrid::layout('pwmulticolumn', $defaults));
 
 	/* -------------- Settings Tab --------------*/
-	$tabs['settings'] = pwSettings::options('pwmulticolumn', $defaults);
+	pwConfig::addTab($tabs, 'settings', $tabSettings['settings'] ?? true, pwSettings::options('pwmulticolumn', $defaults));
 
 	/* -------------- Blueprint --------------*/
 	return [
@@ -180,7 +180,7 @@ return [
 	$editor       = $config['editor'];
 	$textSettings = ['editor' => $settings['text'] ?? ['writer']];
 	$field = pwEditor::contentField($defaults, $editor['text'] ?? [], $textSettings, ['align-editor' => $fields['align-text-left'] ?? 'left']);
-	return ['name' => 'kirbyblock-text.name', 'icon' => 'text', 'fields' => ['text' => $field]];
+	return ['name' => 'kirbyblock-text.name', 'icon' => 'text', 'fields' => ['editor' => $field]];
 },
 
 'blocks/multicolumnquoteleft' => function () {
@@ -190,7 +190,7 @@ return [
 		'name'   => 'kirbyblock-quote.name',
 		'icon'   => 'quote',
 		'fields' => [
-			'quote'  => ['extends' => 'pagewizard/fields/text-quote', 'align' => $fields['align-quote-left']  ?? 'left'],
+			'quote'  => ['extends' => 'pagewizard/fields/quote', 'align' => $fields['align-quote-left']  ?? 'left'],
 			'author' => ['extends' => 'pagewizard/fields/author',     'align' => $fields['align-author-left'] ?? 'left'],
 		]
 	];
@@ -230,7 +230,7 @@ return [
 	$editor       = $config['editor'];
 	$textSettings = ['editor' => $settings['text'] ?? ['writer']];
 	$field = pwEditor::contentField($defaults, $editor['text'] ?? [], $textSettings, ['align-editor' => $fields['align-text-right'] ?? 'left']);
-	return ['name' => 'kirbyblock-text.name', 'icon' => 'text', 'fields' => ['text' => $field]];
+	return ['name' => 'kirbyblock-text.name', 'icon' => 'text', 'fields' => ['editor' => $field]];
 },
 
 'blocks/multicolumnquoteright' => function () {
@@ -240,7 +240,7 @@ return [
 		'name'   => 'kirbyblock-quote.name',
 		'icon'   => 'quote',
 		'fields' => [
-			'quote'  => ['extends' => 'pagewizard/fields/text-quote', 'align' => $fields['align-quote-right']  ?? 'left'],
+			'quote'  => ['extends' => 'pagewizard/fields/quote', 'align' => $fields['align-quote-right']  ?? 'left'],
 			'author' => ['extends' => 'pagewizard/fields/author',     'align' => $fields['align-author-right'] ?? 'left'],
 		]
 	];

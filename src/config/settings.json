@@ -4,6 +4,9 @@
     "column-blocks": ["multicolumnheadline","multicolumntext", "multicolumnquote", "multicolumnmedia"]
   },
   "tabs": {
-    "grid": true
+    "layout": true,
+    "style": true,
+    "grid": true,
+    "settings": true
   }
 }
