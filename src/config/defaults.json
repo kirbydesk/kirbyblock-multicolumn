@@ -1,5 +1,5 @@
 {
-  "fields": {
+  "content": {
     "align-headline-left": "left",
     "align-text-left": "left",
     "align-quote-left": "left",
@@ -21,10 +21,14 @@
     "distribution-lg": "dist-3-3",
     "distribution-xl": "dist-3-3",
     "vertical-left-position": "top",
-    "vertical-right-position": "top"
+    "vertical-right-position": "top",
+    "radius-top-left": false,
+    "radius-top-right": false,
+    "radius-bottom-left": false,
+    "radius-bottom-right": false
   },
   "style": {
-    "style": "default"
+    "theme": "default"
   },
   "grid": {
     "grid-size-sm": 12,
@@ -37,7 +41,7 @@
     "grid-offset-xl": 1
   },
   "settings": {
-		"block-size": "content",
+    "block-size": "content",
     "margin-top": false,
     "margin-bottom": true
   }

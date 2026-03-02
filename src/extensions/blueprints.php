@@ -54,7 +54,7 @@ return [
 
 	/* -------------- Config --------------*/
 	$config      = pwConfig::load('pwmulticolumn');
-	$settings    = $config['settings'];
+	$settings    = $config['content'];
 	$tabSettings = $config['tabs'];
 	$defaults    = $config['defaults'];
 
@@ -137,16 +137,16 @@ return [
 				'label'    => 'pw.field.columns.xl',
 				'help'     => 'pw.field.columns.xl.help',
 			]
-	]));
+	], $config['layout'] ?? []));
 
 	/* -------------- Style Tab --------------*/
-	pwConfig::addTab($tabs, 'style', $tabSettings['style'] ?? true, pwStyle::options('pwmulticolumn', $defaults));
+	pwConfig::addTab($tabs, 'style', $tabSettings['style'] ?? true, pwStyle::options('pwmulticolumn', $defaults, [], $config['style'] ?? []));
 
 	/* -------------- Grid Tab --------------*/
 	pwConfig::addTab($tabs, 'grid', $tabSettings['grid'] ?? false, pwGrid::layout('pwmulticolumn', $defaults));
 
 	/* -------------- Settings Tab --------------*/
-	pwConfig::addTab($tabs, 'settings', $tabSettings['settings'] ?? true, pwSettings::options('pwmulticolumn', $defaults));
+	pwConfig::addTab($tabs, 'settings', $tabSettings['settings'] ?? true, pwSettings::options('pwmulticolumn', $defaults, [], $config['settings'] ?? []));
 
 	/* -------------- Blueprint --------------*/
 	return [
@@ -174,7 +174,7 @@ return [
 
 'blocks/multicolumntextleft' => function () {
 	$config       = pwConfig::load('pwmulticolumn');
-	$settings     = $config['settings'];
+	$settings     = $config['content'];
 	$defaults     = $config['defaults'];
 	$fields       = $config['fields'];
 	$editor       = $config['editor'];
@@ -224,7 +224,7 @@ return [
 
 'blocks/multicolumntextright' => function () {
 	$config       = pwConfig::load('pwmulticolumn');
-	$settings     = $config['settings'];
+	$settings     = $config['content'];
 	$defaults     = $config['defaults'];
 	$fields       = $config['fields'];
 	$editor       = $config['editor'];

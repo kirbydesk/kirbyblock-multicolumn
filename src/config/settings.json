@@ -1,7 +1,28 @@
 {
   "fields": {
-    "text": ["writer"],
-    "column-blocks": ["multicolumnheadline","multicolumntext", "multicolumnquote", "multicolumnmedia"]
+    "content": {
+      "text": [
+        "writer"
+      ],
+      "column-blocks": [
+        "multicolumnheadline",
+        "multicolumntext",
+        "multicolumnquote",
+        "multicolumnmedia"
+      ]
+    },
+    "layout": {
+      "padding": true,
+      "radius": true
+    },
+    "style": {
+      "theme": true
+    },
+    "settings": {
+      "fragment": true,
+      "block-size": true,
+      "margin": true
+    }
   },
   "tabs": {
     "layout": true,
