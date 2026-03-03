@@ -1,13 +1,13 @@
 <template>
 	<div class="pwPreview" @dblclick="open">
-		<pwImage v-if="content.mediatype === 'image'"
+		<pwImage v-if="content.mediatype === 'image' && content?.image?.[0]?.url"
 			:src="content?.image?.[0]?.url || ''"
 			:srcset="content?.image?.[0]?.image?.srcset || ''"
 			:size="content.mediasize"
 			:alignment="content.mediaalignment || mediaAlignDefault"
 			:image="content?.image?.[0] || null"
 		/>
-		<pwImage v-else-if="content.mediatype === 'slideshow'"
+		<pwImage v-else-if="content.mediatype === 'slideshow' && content?.images?.[0]?.url"
 			:src="content?.images?.[0]?.url || ''"
 			:srcset="content?.images?.[0]?.image?.srcset || ''"
 			:count="Array.isArray(content.images) ? content.images.length : 0"
@@ -15,14 +15,14 @@
 			:alignment="content.mediaalignment || mediaAlignDefault"
 			:image="content?.images?.[0] || null"
 		/>
-		<pwVideo v-else-if="content.mediatype === 'video'"
+		<pwVideo v-else-if="content.mediatype === 'video' && (content.videourl || content?.video?.[0])"
 			:url="content.videourl"
 			:source="content.videosource"
 			:size="content.mediasize"
 			:alignment="content.mediaalignment || mediaAlignDefault"
 			:video="content?.video?.[0] || null"
 		/>
-		<div class="placeholder" v-else>…</div>
+		<div class="placeholder" v-else>{{ $t('pw.field.media-upload.help') }}</div>
 	</div>
 </template>
 
@@ -40,7 +40,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped>
-.placeholder { opacity: 0.4; padding: var(--spacing-2); }
-</style>

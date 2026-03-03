@@ -15,9 +15,3 @@ export default {
 	mixins: [subBlockSide]
 }
 </script>
-
-<style scoped>
-div.pwHeading {
-	margin: 0 !important;
-}
-</style>

@@ -88,6 +88,15 @@ export default {
 </script>
 
 <style>
+[data-kirbyblock="multicolumn"] .pwColumns .pwColumn {
+	&.right {
+		margin-top: 1rem;
+	}
+
+	& > div > div + div {
+  	margin-top: var(--spacing-2); /* All direct children except the first (lobotomized owl) */
+	}
+}
 @media (min-width: 640px) {
 	[data-kirbyblock="multicolumn"] .pwColumns {
 		&[data-dist-sm] {
@@ -99,6 +108,10 @@ export default {
 		&[data-dist-sm="dist-3-3"] { grid-template-columns: 3fr 3fr; }
 		&[data-dist-sm="dist-4-2"] { grid-template-columns: 4fr 2fr; }
 		&[data-dist-sm="dist-5-1"] { grid-template-columns: 5fr 1fr; }
+
+		.pwColumn.right {
+			margin-top: 0;
+		}
 	}
 }
 @media (min-width: 768px) {
