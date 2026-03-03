@@ -167,7 +167,7 @@ return [
 		'name'   => 'kirbyblock-multicolumn.sub.headline',
 		'icon'   => 'title',
 		'fields' => [
-			'heading' => ['extends' => 'pagewizard/fields/heading', 'align' => $fields['align-headline-left']],
+			'heading' => ['extends' => 'pagewizard/fields/heading', 'align' => $fields['align-headline-left'], 'size' => 'normal'],
 		]
 	];
 },
@@ -180,6 +180,7 @@ return [
 	$editor       = $config['editor'];
 	$textSettings = ['editor' => $settings['text'] ?? ['writer']];
 	$field = pwEditor::contentField($defaults, $editor['text'] ?? [], $textSettings, ['align-editor' => $fields['align-text-left'] ?? 'left']);
+	$field['size'] = 'normal';
 	return ['name' => 'kirbyblock-text.name', 'icon' => 'text', 'fields' => ['editor' => $field]];
 },
 
@@ -190,7 +191,7 @@ return [
 		'name'   => 'kirbyblock-quote.name',
 		'icon'   => 'quote',
 		'fields' => [
-			'quote'  => ['extends' => 'pagewizard/fields/quote', 'align' => $fields['align-quote-left']  ?? 'left'],
+			'quote'  => ['extends' => 'pagewizard/fields/quote', 'align' => $fields['align-quote-left']  ?? 'left', 'size' => 'normal'],
 			'author' => ['extends' => 'pagewizard/fields/author',     'align' => $fields['align-author-left'] ?? 'left'],
 		]
 	];
@@ -217,7 +218,7 @@ return [
 		'name'   => 'kirbyblock-multicolumn.sub.headline',
 		'icon'   => 'title',
 		'fields' => [
-			'heading' => ['extends' => 'pagewizard/fields/heading', 'align' => $fields['align-headline-right']],
+			'heading' => ['extends' => 'pagewizard/fields/heading', 'align' => $fields['align-headline-right'], 'size' => 'normal'],
 		]
 	];
 },
@@ -230,6 +231,7 @@ return [
 	$editor       = $config['editor'];
 	$textSettings = ['editor' => $settings['text'] ?? ['writer']];
 	$field = pwEditor::contentField($defaults, $editor['text'] ?? [], $textSettings, ['align-editor' => $fields['align-text-right'] ?? 'left']);
+	$field['size'] = 'normal';
 	return ['name' => 'kirbyblock-text.name', 'icon' => 'text', 'fields' => ['editor' => $field]];
 },
 
@@ -240,7 +242,7 @@ return [
 		'name'   => 'kirbyblock-quote.name',
 		'icon'   => 'quote',
 		'fields' => [
-			'quote'  => ['extends' => 'pagewizard/fields/quote', 'align' => $fields['align-quote-right']  ?? 'left'],
+			'quote'  => ['extends' => 'pagewizard/fields/quote', 'align' => $fields['align-quote-right']  ?? 'left', 'size' => 'normal'],
 			'author' => ['extends' => 'pagewizard/fields/author',     'align' => $fields['align-author-right'] ?? 'left'],
 		]
 	];

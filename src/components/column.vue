@@ -78,12 +78,12 @@ export default {
 		},
 		parseEditorValue(raw) {
 			const alignDefault = this.fieldDefaults['align-text-' + this.side] || 'left';
-			if (!raw) return { value: '', align: alignDefault };
+			if (!raw) return { value: '', align: alignDefault, size: null };
 			try {
 				const d = JSON.parse(raw);
-				return { value: d.writer || d.textarea || d.markdown || '', align: d.align || alignDefault };
+				return { value: d.writer || d.textarea || d.markdown || '', align: d.align || alignDefault, size: d.size || null };
 			} catch(e) {
-				return { value: raw, align: alignDefault };
+				return { value: raw, align: alignDefault, size: null };
 			}
 		}
 	}
