@@ -1,15 +1,33 @@
 {
-  "fields": {
+  "tabs": {
+  	"layout": true,
+    "style": true,
+    "grid": true,
+    "settings": true
+  },
+	"fields": {
     "content": {
-      "text": [
-        "writer"
-      ],
-      "column-blocks": [
-        "multicolumnheadline",
-        "multicolumntext",
-        "multicolumnquote",
-        "multicolumnmedia"
-      ]
+      "column-blocks": [ "multicolumnheadline", "multicolumntext", "multicolumnquote", "multicolumnmedia" ],
+      "headline": {
+        "align": [ "left", "center", "right" ],
+        "level": [ "h1", "h2", "h3", "h4" ],
+        "sizes": [ "xs", "sm", "md", "lg", "xl", "2xl", "3xl" ]
+      },
+      "text": {
+        "mode": [ "textarea", "writer" ],
+        "align": [ "left", "center", "right" ],
+        "sizes": [ "normal", "large" ]
+      },
+      "quote": {
+        "align": [ "left", "center", "right" ],
+        "sizes": [ "xs", "sm", "md", "lg", "xl", "2xl", "3xl" ]
+      },
+      "author": {
+        "align": [ "left", "center", "right" ]
+      },
+      "media": {
+        "align": [ "left", "center", "right" ]
+      }
     },
     "layout": {
       "padding": true,
@@ -23,11 +41,5 @@
       "block-size": true,
       "margin": true
     }
-  },
-  "tabs": {
-    "layout": true,
-    "style": true,
-    "grid": true,
-    "settings": true
   }
 }

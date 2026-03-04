@@ -1,7 +1,7 @@
 <?php
 
 /* Helper: media block fields, only mediaAlignment align differs */
-function pwMulticolumnMediaFields(string $alignMedia): array {
+function pwMulticolumnMediaFields(?string $alignMedia, ?array $alignOptions = null): array {
 	return [
 		'mediaSize' => [
 			'extends' => 'pagewizard/fields/media-size'
@@ -10,6 +10,7 @@ function pwMulticolumnMediaFields(string $alignMedia): array {
 			'type'          => 'pwalign',
 			'align'         => $alignMedia,
 			'default'       => $alignMedia,
+			'alignOptions'  => $alignOptions,
 			'alwaysVisible' => true,
 		],
 		'mediaType' => [
@@ -53,10 +54,12 @@ return [
 'blocks/pwmulticolumn' => function () {
 
 	/* -------------- Config --------------*/
-	$config      = pwConfig::load('pwmulticolumn');
-	$settings    = $config['content'];
-	$tabSettings = $config['tabs'];
-	$defaults    = $config['defaults'];
+	$config       = pwConfig::load('pwmulticolumn');
+	$settings     = $config['content'];
+	$tabSettings  = $config['tabs'];
+	$defaults     = $config['defaults'];
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
 
 	/* -------------- Column block types (auto-append left/right) --------------*/
 	$baseBlocks  = $settings['column-blocks'];
@@ -161,13 +164,22 @@ return [
 ============================================================================ */
 
 'blocks/multicolumnheadlineleft' => function () {
-	$config = pwConfig::load('pwmulticolumn');
-	$fields = $config['fields'];
+	$config       = pwConfig::load('pwmulticolumn');
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
 	return [
 		'name'   => 'kirbyblock-multicolumn.sub.headline',
 		'icon'   => 'title',
 		'fields' => [
-			'heading' => ['extends' => 'pagewizard/fields/heading', 'align' => $fields['align-headline-left'], 'size' => 'normal'],
+			'heading' => [
+				'extends'      => 'pagewizard/fields/heading',
+				'align'        => $fields['align-headline-left'],
+				'level'        => $fields['level-headline-left'] ?? null,
+				'size'         => $fields['size-headline-left'] ?? null,
+				'sizeOptions'  => $fieldOptions['headline']['sizes'] ?? null,
+				'alignOptions' => $fieldOptions['headline']['align'] ?? null,
+				'levelOptions' => $fieldOptions['headline']['level'] ?? null,
+			],
 		]
 	];
 },
@@ -178,32 +190,45 @@ return [
 	$defaults     = $config['defaults'];
 	$fields       = $config['fields'];
 	$editor       = $config['editor'];
+	$fieldOptions = $config['field-options'];
 	$textSettings = ['editor' => $settings['text'] ?? ['writer']];
-	$field = pwEditor::contentField($defaults, $editor['text'] ?? [], $textSettings, ['align-editor' => $fields['align-text-left'] ?? 'left']);
-	$field['size'] = 'normal';
+	$field = pwEditor::contentField($editor['text'] ?? [], $textSettings);
+	$field['align']        = $fields['align-text-left'] ?? null;
+	$field['size']         = $fields['size-text-left'] ?? null;
+	$field['alignOptions'] = $fieldOptions['text']['align'] ?? null;
+	$field['sizeOptions']  = $fieldOptions['text']['sizes'] ?? null;
+	$field['defaultMode'] = $fields['mode-text-left'] ?? null;
 	return ['name' => 'kirbyblock-text.name', 'icon' => 'text', 'fields' => ['editor' => $field]];
 },
 
 'blocks/multicolumnquoteleft' => function () {
-	$config = pwConfig::load('pwmulticolumn');
-	$fields = $config['fields'];
+	$config       = pwConfig::load('pwmulticolumn');
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
 	return [
 		'name'   => 'kirbyblock-quote.name',
 		'icon'   => 'quote',
 		'fields' => [
-			'quote'  => ['extends' => 'pagewizard/fields/quote', 'align' => $fields['align-quote-left']  ?? 'left', 'size' => 'normal'],
-			'author' => ['extends' => 'pagewizard/fields/author',     'align' => $fields['align-author-left'] ?? 'left'],
+			'quote'  => [
+				'extends'      => 'pagewizard/fields/quote',
+				'align'        => $fields['align-quote-left'] ?? null,
+				'size'         => $fields['size-quote-left'] ?? null,
+				'sizeOptions'  => $fieldOptions['quote']['sizes'] ?? null,
+				'alignOptions' => $fieldOptions['quote']['align'] ?? null,
+			],
+			'author' => ['extends' => 'pagewizard/fields/author', 'align' => $fields['align-author-left'] ?? null],
 		]
 	];
 },
 
 'blocks/multicolumnmedialeft' => function () {
-	$config = pwConfig::load('pwmulticolumn');
-	$fields = $config['fields'];
+	$config       = pwConfig::load('pwmulticolumn');
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
 	return [
 		'name'   => 'kirbyblock-media.name',
 		'icon'   => 'images',
-		'fields' => pwMulticolumnMediaFields($fields['align-media-left'] ?? 'left')
+		'fields' => pwMulticolumnMediaFields($fields['align-media-left'] ?? null, $fieldOptions['media']['align'] ?? null)
 	];
 },
 
@@ -212,13 +237,22 @@ return [
 ============================================================================ */
 
 'blocks/multicolumnheadlineright' => function () {
-	$config = pwConfig::load('pwmulticolumn');
-	$fields = $config['fields'];
+	$config       = pwConfig::load('pwmulticolumn');
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
 	return [
 		'name'   => 'kirbyblock-multicolumn.sub.headline',
 		'icon'   => 'title',
 		'fields' => [
-			'heading' => ['extends' => 'pagewizard/fields/heading', 'align' => $fields['align-headline-right'], 'size' => 'normal'],
+			'heading' => [
+				'extends'      => 'pagewizard/fields/heading',
+				'align'        => $fields['align-headline-right'],
+				'level'        => $fields['level-headline-right'] ?? null,
+				'size'         => $fields['size-headline-right'] ?? null,
+				'sizeOptions'  => $fieldOptions['headline']['sizes'] ?? null,
+				'alignOptions' => $fieldOptions['headline']['align'] ?? null,
+				'levelOptions' => $fieldOptions['headline']['level'] ?? null,
+			],
 		]
 	];
 },
@@ -229,32 +263,45 @@ return [
 	$defaults     = $config['defaults'];
 	$fields       = $config['fields'];
 	$editor       = $config['editor'];
+	$fieldOptions = $config['field-options'];
 	$textSettings = ['editor' => $settings['text'] ?? ['writer']];
-	$field = pwEditor::contentField($defaults, $editor['text'] ?? [], $textSettings, ['align-editor' => $fields['align-text-right'] ?? 'left']);
-	$field['size'] = 'normal';
+	$field = pwEditor::contentField($editor['text'] ?? [], $textSettings);
+	$field['align']        = $fields['align-text-right'] ?? null;
+	$field['size']         = $fields['size-text-right'] ?? null;
+	$field['alignOptions'] = $fieldOptions['text']['align'] ?? null;
+	$field['sizeOptions']  = $fieldOptions['text']['sizes'] ?? null;
+	$field['defaultMode'] = $fields['mode-text-right'] ?? null;
 	return ['name' => 'kirbyblock-text.name', 'icon' => 'text', 'fields' => ['editor' => $field]];
 },
 
 'blocks/multicolumnquoteright' => function () {
-	$config = pwConfig::load('pwmulticolumn');
-	$fields = $config['fields'];
+	$config       = pwConfig::load('pwmulticolumn');
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
 	return [
 		'name'   => 'kirbyblock-quote.name',
 		'icon'   => 'quote',
 		'fields' => [
-			'quote'  => ['extends' => 'pagewizard/fields/quote', 'align' => $fields['align-quote-right']  ?? 'left', 'size' => 'normal'],
-			'author' => ['extends' => 'pagewizard/fields/author',     'align' => $fields['align-author-right'] ?? 'left'],
+			'quote'  => [
+				'extends'      => 'pagewizard/fields/quote',
+				'align'        => $fields['align-quote-right'] ?? null,
+				'size'         => $fields['size-quote-right'] ?? null,
+				'sizeOptions'  => $fieldOptions['quote']['sizes'] ?? null,
+				'alignOptions' => $fieldOptions['quote']['align'] ?? null,
+			],
+			'author' => ['extends' => 'pagewizard/fields/author', 'align' => $fields['align-author-right'] ?? null],
 		]
 	];
 },
 
 'blocks/multicolumnmediaright' => function () {
-	$config = pwConfig::load('pwmulticolumn');
-	$fields = $config['fields'];
+	$config       = pwConfig::load('pwmulticolumn');
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
 	return [
 		'name'   => 'kirbyblock-media.name',
 		'icon'   => 'images',
-		'fields' => pwMulticolumnMediaFields($fields['align-media-right'] ?? 'left')
+		'fields' => pwMulticolumnMediaFields($fields['align-media-right'] ?? null, $fieldOptions['media']['align'] ?? null)
 	];
 }
 

@@ -169,7 +169,7 @@
         return text;
       },
       size() {
-        const { size = "normal" } = this.parsedQuoteData;
+        const { size = "2xl" } = this.parsedQuoteData;
         return size;
       },
       quoteAlign() {
@@ -360,40 +360,37 @@
         type: Object,
         default: () => ({})
       },
-      alignDefault: { type: String, default: "left" }
+      alignDefault: { type: String, default: null },
+      sizeDefault: { type: String, default: null }
     },
     computed: {
       parsedData() {
         var _a;
         const val = ((_a = this.content) == null ? void 0 : _a.heading) || this.value;
-        if (!val) return { text: "", level: "h2", align: this.alignDefault };
+        if (!val) return { text: "", align: this.alignDefault };
         try {
           return typeof val === "string" ? JSON.parse(val) : val;
         } catch (e) {
-          return { text: val, level: "h2", align: this.alignDefault };
+          return { text: val, align: this.alignDefault };
         }
       },
       text() {
         const { text = "" } = this.parsedData;
         return text;
       },
-      level() {
-        const { level = "h2" } = this.parsedData;
-        return level;
-      },
       align() {
         const { align = this.alignDefault } = this.parsedData;
         return align;
       },
       size() {
-        const { size = "normal" } = this.parsedData;
+        const { size = this.sizeDefault } = this.parsedData;
         return size;
       }
     }
   };
   var _sfc_render$6 = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwHeading", attrs: { "data-align": _vm.align, "data-lvl": _vm.level, "data-size": _vm.size } }, [_vm.text ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.text) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.heading.placeholder")) + " ")])]);
+    return _c("div", { staticClass: "pwHeading", attrs: { "data-align": _vm.align, "data-size": _vm.size } }, [_vm.text ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.text) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.heading.placeholder")) + " ")])]);
   };
   var _sfc_staticRenderFns$6 = [];
   _sfc_render$6._withStripped = true;
@@ -424,7 +421,8 @@
         if (!raw) return { value: "", align: alignDefault, size: null };
         try {
           const d = JSON.parse(raw);
-          return { value: d.writer || d.textarea || d.markdown || "", align: d.align || alignDefault, size: d.size || null };
+          const value = d.mode ? d[d.mode] || "" : d.writer || d.textarea || d.markdown || "";
+          return { value, align: d.align || alignDefault, size: d.size || null };
         } catch (e) {
           return { value: raw, align: alignDefault, size: null };
         }
@@ -526,9 +524,9 @@
     mixins: [subBlockSide]
   };
   var _sfc_render$3 = function render() {
-    var _a;
+    var _a, _b;
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_c("pwHeading", { attrs: { "content": _vm.content, "alignDefault": ((_a = _vm.subFieldDefaults) == null ? void 0 : _a["align-headline-" + _vm.subSide]) || "left" } })], 1);
+    return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_c("pwHeading", { attrs: { "content": _vm.content, "alignDefault": ((_a = _vm.subFieldDefaults) == null ? void 0 : _a["align-headline-" + _vm.subSide]) || "left", "sizeDefault": ((_b = _vm.subFieldDefaults) == null ? void 0 : _b["size-headline-" + _vm.subSide]) || null } })], 1);
   };
   var _sfc_staticRenderFns$3 = [];
   _sfc_render$3._withStripped = true;
@@ -553,7 +551,8 @@
         if (!raw) return { value: "", align: alignDefault };
         try {
           const d = JSON.parse(raw);
-          return { value: d.writer || d.textarea || d.markdown || "", align: d.align || alignDefault };
+          const value = d.mode ? d[d.mode] || "" : d.writer || d.textarea || d.markdown || "";
+          return { value, align: d.align || alignDefault };
         } catch (e) {
           return { value: raw, align: alignDefault };
         }

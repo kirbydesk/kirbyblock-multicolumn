@@ -17,7 +17,8 @@ export default {
 			if (!raw) return { value: '', align: alignDefault };
 			try {
 				const d = JSON.parse(raw);
-				return { value: d.writer || d.textarea || d.markdown || '', align: d.align || alignDefault };
+				const value = d.mode ? (d[d.mode] || '') : (d.writer || d.textarea || d.markdown || '');
+				return { value, align: d.align || alignDefault };
 			} catch(e) {
 				return { value: raw, align: alignDefault };
 			}

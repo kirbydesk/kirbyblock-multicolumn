@@ -1,15 +1,15 @@
 {
   "content": {
-    "align-headline-left": "left",
-    "align-text-left": "left",
-    "align-quote-left": "left",
-    "align-author-left": "left",
-    "align-media-left": "left",
-    "align-headline-right": "left",
-    "align-text-right": "left",
-    "align-quote-right": "left",
-    "align-author-right": "left",
-    "align-media-right": "left"
+    "headline-left":  { "align": "left", "level": "h2", "size": "lg" },
+    "headline-right": { "align": "left", "level": "h2", "size": "lg" },
+    "text-left":      { "align": "left", "size": "normal", "mode": "textarea" },
+    "text-right":     { "align": "left", "size": "normal", "mode": "textarea" },
+    "quote-left":     { "align": "left", "size": "lg" },
+    "quote-right":    { "align": "left", "size": "lg" },
+    "author-left":    { "align": "left" },
+    "author-right":   { "align": "left" },
+    "media-left":     { "align": "left" },
+    "media-right":    { "align": "left" }
   },
   "layout": {
     "padding-top": true,
