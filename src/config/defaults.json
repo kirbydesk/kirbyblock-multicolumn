@@ -43,6 +43,6 @@
   "settings": {
     "block-size": "content",
     "margin-top": false,
-    "margin-bottom": true
+    "margin-bottom": false
   }
 }
