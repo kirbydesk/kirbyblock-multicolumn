@@ -9,7 +9,9 @@
     "author-left":    { "align": "left" },
     "author-right":   { "align": "left" },
     "media-left":     { "align": "left" },
-    "media-right":    { "align": "left" }
+    "media-right":    { "align": "left" },
+    "button-left":    { "align": "left" },
+    "button-right":   { "align": "left" }
   },
   "layout": {
     "padding-top": true,

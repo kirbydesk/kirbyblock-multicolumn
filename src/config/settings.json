@@ -7,7 +7,7 @@
   },
 	"fields": {
     "content": {
-      "column-blocks": [ "multicolumnheadline", "multicolumntext", "multicolumnquote", "multicolumnmedia" ],
+      "column-blocks": [ "multicolumnheadline", "multicolumntext", "multicolumnquote", "multicolumnmedia", "multicolumnbutton" ],
       "headline": {
         "align": [ "left", "center", "right" ],
         "level": [ "h1", "h2", "h3", "h4" ],
@@ -26,6 +26,9 @@
         "align": [ "left", "center", "right" ]
       },
       "media": {
+        "align": [ "left", "center", "right" ]
+      },
+      "button": {
         "align": [ "left", "center", "right" ]
       }
     },

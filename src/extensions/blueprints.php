@@ -303,6 +303,70 @@ return [
 		'icon'   => 'images',
 		'fields' => pwMulticolumnMediaFields($fields['align-media-right'] ?? null, $fieldOptions['media']['align'] ?? null)
 	];
+},
+
+/* ============================================================================
+	Sub-Blocks — Button (Left + Right)
+============================================================================ */
+
+'blocks/multicolumnbuttonleft' => function () {
+	$config       = pwConfig::load('pwmulticolumn');
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
+	$alignOptions = array_map(fn($v) => ['value' => $v, 'icon' => 'text-' . $v, 'text' => ''], $fieldOptions['button']['align'] ?? ['left', 'center', 'right']);
+	return [
+		'name'   => 'pw.field.button',
+		'icon'   => 'url',
+		'fields' => [
+			'headlineLink'    => ['extends' => 'pagewizard/headlines/link'],
+			'linkType'        => ['extends' => 'pagewizard/fields/link-type'],
+			'linkInternal'    => ['extends' => 'pagewizard/fields/link-internal', 'when' => ['linkType' => false]],
+			'linkExternal'    => ['extends' => 'pagewizard/fields/link-external', 'when' => ['linkType' => true]],
+			'linkTarget'      => ['extends' => 'pagewizard/fields/link-target', 'when' => ['linkType' => true]],
+			'linkRel'         => ['extends' => 'pagewizard/fields/link-rel', 'when' => ['linkType' => true, 'linkTarget' => true]],
+			'linkText'        => ['extends' => 'pagewizard/fields/link-text', 'width' => '3/4'],
+			'buttonAlignment' => [
+				'type'    => 'toggles',
+				'label'   => 'pw.field.position-horizontal.label',
+				'labels'  => false,
+				'default' => $fields['align-button-left'] ?? 'left',
+				'options' => $alignOptions,
+				'width'   => '1/4',
+			],
+			'ariaLabel'       => ['extends' => 'pagewizard/fields/link-aria-label'],
+			'ariaDescribedby' => ['extends' => 'pagewizard/fields/link-aria-describedby'],
+		],
+	];
+},
+
+'blocks/multicolumnbuttonright' => function () {
+	$config       = pwConfig::load('pwmulticolumn');
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
+	$alignOptions = array_map(fn($v) => ['value' => $v, 'icon' => 'text-' . $v, 'text' => ''], $fieldOptions['button']['align'] ?? ['left', 'center', 'right']);
+	return [
+		'name'   => 'pw.field.button',
+		'icon'   => 'url',
+		'fields' => [
+			'headlineLink'    => ['extends' => 'pagewizard/headlines/link'],
+			'linkType'        => ['extends' => 'pagewizard/fields/link-type'],
+			'linkInternal'    => ['extends' => 'pagewizard/fields/link-internal', 'when' => ['linkType' => false]],
+			'linkExternal'    => ['extends' => 'pagewizard/fields/link-external', 'when' => ['linkType' => true]],
+			'linkTarget'      => ['extends' => 'pagewizard/fields/link-target', 'when' => ['linkType' => true]],
+			'linkRel'         => ['extends' => 'pagewizard/fields/link-rel', 'when' => ['linkType' => true, 'linkTarget' => true]],
+			'linkText'        => ['extends' => 'pagewizard/fields/link-text', 'width' => '3/4'],
+			'buttonAlignment' => [
+				'type'    => 'toggles',
+				'label'   => 'pw.field.position-horizontal.label',
+				'labels'  => false,
+				'default' => $fields['align-button-right'] ?? 'left',
+				'options' => $alignOptions,
+				'width'   => '1/4',
+			],
+			'ariaLabel'       => ['extends' => 'pagewizard/fields/link-aria-label'],
+			'ariaDescribedby' => ['extends' => 'pagewizard/fields/link-aria-describedby'],
+		],
+	];
 }
 
 ];

@@ -20,6 +20,9 @@ section[data-block="multicolumn"] {
 				+ [data-field="video"] {
 					margin-top: 1rem;
 				}
+				+ [data-field="button"] {
+					margin-top: 1rem;
+				}
 			}
 
 			figure {
@@ -35,6 +38,9 @@ section[data-block="multicolumn"] {
 				+ [data-field="image"],
 				+ [data-field="slideshow"],
 				+ [data-field="video"] {
+					margin-top: 1rem;
+				}
+				+ [data-field="button"] {
 					margin-top: 1rem;
 				}
 			}
@@ -54,6 +60,9 @@ section[data-block="multicolumn"] {
 				+ [data-field="video"] {
 					margin-top: 1rem;
 				}
+				+ [data-field="button"] {
+					margin-top: 1rem;
+				}
 			}
 
 			[data-field="image"],
@@ -71,6 +80,29 @@ section[data-block="multicolumn"] {
 				+ [data-field="image"],
 				+ [data-field="slideshow"],
 				+ [data-field="video"] {
+					margin-top: 1rem;
+				}
+				+ [data-field="button"] {
+					margin-top: 1rem;
+				}
+			}
+
+			[data-field="button"] {
+				+ [data-field="heading"] {
+					margin-top: 2rem;
+				}
+				+ [data-field="writer"] {
+					margin-top: 1rem;
+				}
+				+ figure {
+					margin-top: 1rem;
+				}
+				+ [data-field="image"],
+				+ [data-field="slideshow"],
+				+ [data-field="video"] {
+					margin-top: 1rem;
+				}
+				+ [data-field="button"] {
 					margin-top: 1rem;
 				}
 			}

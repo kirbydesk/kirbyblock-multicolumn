@@ -4,6 +4,41 @@
 $config   = pwConfig::load('pwmulticolumn');
 $settings = $config['content'];
 
+// Helper: render single button sub-block
+if (!function_exists('pwMulticolumnButton')) {
+function pwMulticolumnButton($item): void {
+	$linktype = $item->linktype()->toBool();
+	$url = '';
+
+	if (!$linktype && $item->linkinternal()->isNotEmpty()):
+		$linkValue = $item->linkinternal()->value();
+		try {
+			if (Str::startsWith($linkValue, 'page://'))      $url = $item->linkinternal()->toPage()?->url() ?? '';
+			elseif (Str::startsWith($linkValue, 'file://'))  $url = $item->linkinternal()->toFile()?->url() ?? '';
+			elseif (Str::startsWith($linkValue, 'mailto:'))  $url = $linkValue;
+			elseif (Str::startsWith($linkValue, 'email:'))   $url = 'mailto:' . Str::after($linkValue, 'email:');
+			elseif (Str::startsWith($linkValue, 'tel:'))     $url = $linkValue;
+			elseif (Str::startsWith($linkValue, 'anchor:'))  $url = '#' . Str::after($linkValue, 'anchor:');
+			elseif (Str::startsWith($linkValue, '#'))        $url = $linkValue;
+			else                                              $url = $linkValue;
+		} catch (Exception $e) { $url = ''; }
+	elseif ($linktype && $item->linkexternal()->isNotEmpty()):
+		$url = $item->linkexternal()->value();
+	endif;
+
+	if (empty($url)) return;
+
+	$linktext        = $item->linktext()->isNotEmpty() ? $item->linktext()->value() : t('pw.field.link-text.placeholder');
+	$target          = ($linktype && $item->linktarget()->toBool()) ? ' target="_blank"' : '';
+	$rel             = ($linktype && $item->linkrel()->isNotEmpty()) ? ' rel="' . $item->linkrel()->value() . '"' : '';
+	$ariaLabel       = $item->arialabel()->isNotEmpty() ? ' aria-label="' . esc($item->arialabel()->value()) . '"' : '';
+	$ariaDescribedby = $item->ariadescribedby()->isNotEmpty() ? ' aria-describedby="' . esc($item->ariadescribedby()->value()) . '"' : '';
+	$align           = $item->buttonalignment()->isNotEmpty() ? $item->buttonalignment()->value() : 'left';
+
+	echo '<div data-field="button" data-align="' . $align . '"><a href="' . $url . '"' . $target . $rel . $ariaLabel . $ariaDescribedby . '>' . $linktext . '</a></div>' . "\n";
+}
+}
+
 // Custom CSS
 if ($block->content()->theme()->value() === 'custom'):
 	snippet('customcss', [
@@ -57,6 +92,7 @@ echo '<div data-layout="columns" data-dist-sm="'.$block->distributionsm()->value
 			if ($item->type() === 'multicolumntextleft'): snippet('editor', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumnquoteleft'): snippet('quote', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumnmedialeft'): snippet('media', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumnbuttonleft'): pwMulticolumnButton($item); endif;
 		endforeach;
 		echo '</div>'."\n";
 	endif;
@@ -70,6 +106,7 @@ echo '<div data-layout="columns" data-dist-sm="'.$block->distributionsm()->value
 			if ($item->type() === 'multicolumntextright'): snippet('editor', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumnquoteright'): snippet('quote', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumnmediaright'): snippet('media', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumnbuttonright'): pwMulticolumnButton($item); endif;
 		endforeach;
 		echo '</div>'."\n";
 	endif;

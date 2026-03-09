@@ -15,29 +15,29 @@
       options
     };
   }
-  const _sfc_main$b = {
+  const _sfc_main$d = {
     props: {
       value: String,
       icon: String,
       layout: String
     }
   };
-  var _sfc_render$b = function render() {
+  var _sfc_render$d = function render() {
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "blockinfo" }, [_c("div", [_c("svg", { staticClass: "k-icon", attrs: { "aria-hidden": "true" } }, [_c("use", { attrs: { "xlink:href": "#icon-" + _vm.icon } })]), _vm._v(" " + _vm._s(_vm.value) + " "), _vm.layout ? _c("span", [_vm._v("(" + _vm._s(_vm.layout) + ")")]) : _vm._e()])]);
   };
-  var _sfc_staticRenderFns$b = [];
-  _sfc_render$b._withStripped = true;
-  var __component__$b = /* @__PURE__ */ normalizeComponent(
-    _sfc_main$b,
-    _sfc_render$b,
-    _sfc_staticRenderFns$b,
+  var _sfc_staticRenderFns$d = [];
+  _sfc_render$d._withStripped = true;
+  var __component__$d = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$d,
+    _sfc_render$d,
+    _sfc_staticRenderFns$d,
     false,
     null,
     "26526d24"
   );
-  __component__$b.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/blockinfo.vue";
-  const pwBlockinfo = __component__$b.exports;
+  __component__$d.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/blockinfo.vue";
+  const pwBlockinfo = __component__$d.exports;
   const pwGridStyle = {
     computed: {
       gridVars() {
@@ -108,30 +108,30 @@
       }
     }
   };
-  const _sfc_main$a = {
+  const _sfc_main$c = {
     props: {
       value: String,
       align: { type: String, default: "left" },
       size: { type: String, default: null }
     }
   };
-  var _sfc_render$a = function render() {
+  var _sfc_render$c = function render() {
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "pwtext", attrs: { "data-align": _vm.align, "data-size": _vm.size } }, [_vm.value ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.value) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.text-writer.placeholder")) + " ")])]);
   };
-  var _sfc_staticRenderFns$a = [];
-  _sfc_render$a._withStripped = true;
-  var __component__$a = /* @__PURE__ */ normalizeComponent(
-    _sfc_main$a,
-    _sfc_render$a,
-    _sfc_staticRenderFns$a,
+  var _sfc_staticRenderFns$c = [];
+  _sfc_render$c._withStripped = true;
+  var __component__$c = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$c,
+    _sfc_render$c,
+    _sfc_staticRenderFns$c,
     false,
     null,
     "fa3feda4"
   );
-  __component__$a.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/writer.vue";
-  const pwWriter = __component__$a.exports;
-  const _sfc_main$9 = {
+  __component__$c.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/writer.vue";
+  const pwWriter = __component__$c.exports;
+  const _sfc_main$b = {
     props: {
       quote: String,
       author: String,
@@ -194,23 +194,23 @@
       }
     }
   };
-  var _sfc_render$9 = function render() {
+  var _sfc_render$b = function render() {
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "pwquote" }, [_vm.quoteText ? _c("div", { staticClass: "quote", attrs: { "data-align": _vm.quoteAlign, "data-size": _vm.size }, domProps: { "innerHTML": _vm._s(_vm.nl2br(_vm.quoteText)) } }) : _c("div", { staticClass: "quote placeholder", attrs: { "data-align": _vm.quoteAlign } }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.quote.placeholder")) + " ")]), _vm.authorText ? _c("div", { staticClass: "author", attrs: { "data-align": _vm.authorAlign } }, [_vm._v(_vm._s(_vm.authorText))]) : _c("div", { staticClass: "author placeholder", attrs: { "data-align": _vm.authorAlign } }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.author.placeholder")) + " ")])]);
   };
-  var _sfc_staticRenderFns$9 = [];
-  _sfc_render$9._withStripped = true;
-  var __component__$9 = /* @__PURE__ */ normalizeComponent(
-    _sfc_main$9,
-    _sfc_render$9,
-    _sfc_staticRenderFns$9,
+  var _sfc_staticRenderFns$b = [];
+  _sfc_render$b._withStripped = true;
+  var __component__$b = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$b,
+    _sfc_render$b,
+    _sfc_staticRenderFns$b,
     false,
     null,
     "90325663"
   );
-  __component__$9.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/quote.vue";
-  const pwQuote = __component__$9.exports;
-  const _sfc_main$8 = {
+  __component__$b.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/quote.vue";
+  const pwQuote = __component__$b.exports;
+  const _sfc_main$a = {
     props: {
       src: String,
       srcset: String,
@@ -263,7 +263,7 @@
       }
     }
   };
-  var _sfc_render$8 = function render() {
+  var _sfc_render$a = function render() {
     var _vm = this, _c = _vm._self._c;
     return _vm.src.length ? _c("div", { staticClass: "wrap", attrs: { "data-align": _vm.alignment } }, [_c("div", { staticClass: "image" }, [_c("div", { staticClass: "pattern", class: _vm.size }, [_c("figure", { class: _vm.computedRatio ? ["k-frame", "k-image-frame", "k-image", { zoom: _vm.computedZoom }] : ["k-image", "ratio-auto", { zoom: _vm.computedZoom }], style: _vm.computedRatio ? {
       "--fit": _vm.computedCrop ? "cover" : "contain",
@@ -272,19 +272,19 @@
       return _c("span", { key: n, staticClass: "dot" });
     }), 0)]) : _vm._e()]) : _vm._e();
   };
-  var _sfc_staticRenderFns$8 = [];
-  _sfc_render$8._withStripped = true;
-  var __component__$8 = /* @__PURE__ */ normalizeComponent(
-    _sfc_main$8,
-    _sfc_render$8,
-    _sfc_staticRenderFns$8,
+  var _sfc_staticRenderFns$a = [];
+  _sfc_render$a._withStripped = true;
+  var __component__$a = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$a,
+    _sfc_render$a,
+    _sfc_staticRenderFns$a,
     false,
     null,
     "3063e108"
   );
-  __component__$8.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/image.vue";
-  const pwImage = __component__$8.exports;
-  const _sfc_main$7 = {
+  __component__$a.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/image.vue";
+  const pwImage = __component__$a.exports;
+  const _sfc_main$9 = {
     props: {
       url: String,
       source: String,
@@ -341,23 +341,23 @@
       }
     }
   };
-  var _sfc_render$7 = function render() {
+  var _sfc_render$9 = function render() {
     var _vm = this, _c = _vm._self._c;
     return _vm.url || _vm.videoUrl ? _c("div", { staticClass: "video", attrs: { "data-align": _vm.alignment } }, [_c("div", { staticClass: "pattern", class: _vm.size }, [_vm.source == "internal" ? _c("k-frame", { attrs: { "ratio": _vm.computedRatio } }, [_c("video", { attrs: { "src": _vm.videoUrl, "controls": "" } })]) : _vm.source == "external" ? _c("k-frame", { staticClass: "external", attrs: { "ratio": "16/9" } }, [_c("iframe", { attrs: { "src": _vm.getEmbedUrl(_vm.url), "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share", "referrerpolicy": "origin", "allowfullscreen": "" } })]) : _vm._e()], 1)]) : _vm._e();
   };
-  var _sfc_staticRenderFns$7 = [];
-  _sfc_render$7._withStripped = true;
-  var __component__$7 = /* @__PURE__ */ normalizeComponent(
-    _sfc_main$7,
-    _sfc_render$7,
-    _sfc_staticRenderFns$7,
+  var _sfc_staticRenderFns$9 = [];
+  _sfc_render$9._withStripped = true;
+  var __component__$9 = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$9,
+    _sfc_render$9,
+    _sfc_staticRenderFns$9,
     false,
     null,
     "301ff5b5"
   );
-  __component__$7.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/video.vue";
-  const pwVideo = __component__$7.exports;
-  const _sfc_main$6 = {
+  __component__$9.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/video.vue";
+  const pwVideo = __component__$9.exports;
+  const _sfc_main$8 = {
     props: {
       value: String,
       content: {
@@ -392,24 +392,52 @@
       }
     }
   };
-  var _sfc_render$6 = function render() {
+  var _sfc_render$8 = function render() {
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "pwHeading", attrs: { "data-align": _vm.align, "data-size": _vm.size } }, [_vm.text ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.text) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.heading.placeholder")) + " ")])]);
   };
-  var _sfc_staticRenderFns$6 = [];
-  _sfc_render$6._withStripped = true;
-  var __component__$6 = /* @__PURE__ */ normalizeComponent(
-    _sfc_main$6,
-    _sfc_render$6,
-    _sfc_staticRenderFns$6,
+  var _sfc_staticRenderFns$8 = [];
+  _sfc_render$8._withStripped = true;
+  var __component__$8 = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$8,
+    _sfc_render$8,
+    _sfc_staticRenderFns$8,
     false,
     null,
     "ad832d63"
   );
-  __component__$6.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/heading.vue";
-  const pwHeading = __component__$6.exports;
-  const _sfc_main$5 = {
-    components: { pwWriter, pwQuote, pwImage, pwVideo, pwHeading },
+  __component__$8.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/heading.vue";
+  const pwHeading = __component__$8.exports;
+  const _sfc_main$7 = {
+    props: {
+      content: { type: Object, default: () => ({}) },
+      alignDefault: { type: String, default: "left" }
+    },
+    computed: {
+      align() {
+        return this.content.buttonalignment || this.alignDefault;
+      }
+    }
+  };
+  var _sfc_render$7 = function render() {
+    var _a;
+    var _vm = this, _c = _vm._self._c;
+    return _c("div", { staticClass: "pwButton", attrs: { "data-align": _vm.align } }, [_c("button", { staticClass: "k-button", attrs: { "data-has-text": "true", "data-responsive": "true", "data-size": "sm", "data-variant": "filled", "type": "button" } }, [((_a = _vm.content.linktext) == null ? void 0 : _a.length) ? _c("span", { staticClass: "k-button-text", domProps: { "innerHTML": _vm._s(_vm.content.linktext) } }) : _c("span", { staticClass: "k-button-text placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.link-text.placeholder")) + " ")])])]);
+  };
+  var _sfc_staticRenderFns$7 = [];
+  _sfc_render$7._withStripped = true;
+  var __component__$7 = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$7,
+    _sfc_render$7,
+    _sfc_staticRenderFns$7,
+    false,
+    null,
+    "0b938355"
+  );
+  __component__$7.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/button.vue";
+  const pwButton = __component__$7.exports;
+  const _sfc_main$6 = {
+    components: { pwWriter, pwQuote, pwImage, pwVideo, pwHeading, pwButton },
     props: {
       blocks: { type: Array, default: () => [] },
       side: { type: String, default: "left" },
@@ -433,26 +461,26 @@
       }
     }
   };
-  var _sfc_render$5 = function render() {
+  var _sfc_render$6 = function render() {
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "pwColumn", class: _vm.side, attrs: { "data-vertical": _vm.vertical } }, [_vm.blocks.length ? _c("div", _vm._l(_vm.blocks, function(block, i) {
       var _a, _b, _c2, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t;
-      return _c("div", { key: i }, [_vm.blockType(block) === "multicolumnheadline" ? _c("pwHeading", { attrs: { "content": block.content, "alignDefault": _vm.fieldDefaults["align-headline-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumntext" ? _c("pwWriter", _vm._b({ class: { "ishidden": block.content.isHidden } }, "pwWriter", _vm.parseEditorValue(block.content.editor), false)) : _vm._e(), _vm.blockType(block) === "multicolumnquote" ? _c("pwQuote", { attrs: { "quote": block.content.quote, "author": block.content.author, "alignQuoteDefault": _vm.fieldDefaults["align-quote-" + _vm.side] || "left", "alignAuthorDefault": _vm.fieldDefaults["align-author-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumnmedia" ? _c("div", [block.content.mediatype === "image" ? _c("pwImage", { attrs: { "src": ((_c2 = (_b = (_a = block.content) == null ? void 0 : _a.image) == null ? void 0 : _b[0]) == null ? void 0 : _c2.url) || "", "srcset": ((_g = (_f = (_e = (_d = block.content) == null ? void 0 : _d.image) == null ? void 0 : _e[0]) == null ? void 0 : _f.image) == null ? void 0 : _g.srcset) || "", "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "image": ((_i = (_h = block.content) == null ? void 0 : _h.image) == null ? void 0 : _i[0]) || null } }) : _vm._e(), block.content.mediatype === "slideshow" ? _c("pwImage", { attrs: { "src": ((_l = (_k = (_j = block.content) == null ? void 0 : _j.images) == null ? void 0 : _k[0]) == null ? void 0 : _l.url) || "", "srcset": ((_p = (_o = (_n = (_m = block.content) == null ? void 0 : _m.images) == null ? void 0 : _n[0]) == null ? void 0 : _o.images) == null ? void 0 : _p.srcset) || "", "count": Array.isArray(block.content.images) ? block.content.images.length : 0, "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "image": ((_r = (_q = block.content) == null ? void 0 : _q.images) == null ? void 0 : _r[0]) || null } }) : _vm._e(), block.content.mediatype === "video" ? _c("pwVideo", { attrs: { "url": block.content.videourl, "source": block.content.videosource, "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "video": ((_t = (_s = block.content) == null ? void 0 : _s.video) == null ? void 0 : _t[0]) || null } }) : _vm._e()], 1) : _vm._e()], 1);
+      return _c("div", { key: i }, [_vm.blockType(block) === "multicolumnheadline" ? _c("pwHeading", { attrs: { "content": block.content, "alignDefault": _vm.fieldDefaults["align-headline-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumntext" ? _c("pwWriter", _vm._b({ class: { "ishidden": block.content.isHidden } }, "pwWriter", _vm.parseEditorValue(block.content.editor), false)) : _vm._e(), _vm.blockType(block) === "multicolumnquote" ? _c("pwQuote", { attrs: { "quote": block.content.quote, "author": block.content.author, "alignQuoteDefault": _vm.fieldDefaults["align-quote-" + _vm.side] || "left", "alignAuthorDefault": _vm.fieldDefaults["align-author-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumnbutton" ? _c("pwButton", { attrs: { "content": block.content, "alignDefault": _vm.fieldDefaults["align-button-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumnmedia" ? _c("div", [block.content.mediatype === "image" ? _c("pwImage", { attrs: { "src": ((_c2 = (_b = (_a = block.content) == null ? void 0 : _a.image) == null ? void 0 : _b[0]) == null ? void 0 : _c2.url) || "", "srcset": ((_g = (_f = (_e = (_d = block.content) == null ? void 0 : _d.image) == null ? void 0 : _e[0]) == null ? void 0 : _f.image) == null ? void 0 : _g.srcset) || "", "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "image": ((_i = (_h = block.content) == null ? void 0 : _h.image) == null ? void 0 : _i[0]) || null } }) : _vm._e(), block.content.mediatype === "slideshow" ? _c("pwImage", { attrs: { "src": ((_l = (_k = (_j = block.content) == null ? void 0 : _j.images) == null ? void 0 : _k[0]) == null ? void 0 : _l.url) || "", "srcset": ((_p = (_o = (_n = (_m = block.content) == null ? void 0 : _m.images) == null ? void 0 : _n[0]) == null ? void 0 : _o.images) == null ? void 0 : _p.srcset) || "", "count": Array.isArray(block.content.images) ? block.content.images.length : 0, "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "image": ((_r = (_q = block.content) == null ? void 0 : _q.images) == null ? void 0 : _r[0]) || null } }) : _vm._e(), block.content.mediatype === "video" ? _c("pwVideo", { attrs: { "url": block.content.videourl, "source": block.content.videosource, "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "video": ((_t = (_s = block.content) == null ? void 0 : _s.video) == null ? void 0 : _t[0]) || null } }) : _vm._e()], 1) : _vm._e()], 1);
     }), 0) : _vm._e()]);
   };
-  var _sfc_staticRenderFns$5 = [];
-  _sfc_render$5._withStripped = true;
-  var __component__$5 = /* @__PURE__ */ normalizeComponent(
-    _sfc_main$5,
-    _sfc_render$5,
-    _sfc_staticRenderFns$5,
+  var _sfc_staticRenderFns$6 = [];
+  _sfc_render$6._withStripped = true;
+  var __component__$6 = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$6,
+    _sfc_render$6,
+    _sfc_staticRenderFns$6,
     false,
     null,
     null
   );
-  __component__$5.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/components/column.vue";
-  const pwColumn = __component__$5.exports;
-  const _sfc_main$4 = {
+  __component__$6.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/components/column.vue";
+  const pwColumn = __component__$6.exports;
+  const _sfc_main$5 = {
     components: {
       pwBlockinfo,
       pwColumn
@@ -483,22 +511,22 @@
       }
     }
   };
-  var _sfc_render$4 = function render() {
+  var _sfc_render$5 = function render() {
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "pwPreview", style: _vm.colorVars, attrs: { "data-kirbyblock": "multicolumn", "data-margintop": _vm.content.margintop === true ? "true" : null, "data-marginbottom": _vm.content.marginbottom === true ? "true" : null }, on: { "dblclick": _vm.open } }, [_c("pwBlockinfo", { attrs: { "value": _vm.$t("kirbyblock-multicolumn.name"), "icon": "layout-columns" } }), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_vm.fieldDefaults !== null ? _c("div", { staticClass: "pwColumns", attrs: { "data-dist-sm": _vm.content.distributionsm || null, "data-dist-md": _vm.content.distributionmd || null, "data-dist-lg": _vm.content.distributionlg || null, "data-dist-xl": _vm.content.distributionxl || null } }, [_c("pwColumn", { attrs: { "side": "left", "blocks": _vm.leftBlocks, "vertical": _vm.content.leftpositionvertical, "fieldDefaults": _vm.fieldDefaults } }), _c("pwColumn", { attrs: { "side": "right", "blocks": _vm.rightBlocks, "vertical": _vm.content.rightpositionvertical, "fieldDefaults": _vm.fieldDefaults } })], 1) : _vm._e()])])], 1);
   };
-  var _sfc_staticRenderFns$4 = [];
-  _sfc_render$4._withStripped = true;
-  var __component__$4 = /* @__PURE__ */ normalizeComponent(
-    _sfc_main$4,
-    _sfc_render$4,
-    _sfc_staticRenderFns$4,
+  var _sfc_staticRenderFns$5 = [];
+  _sfc_render$5._withStripped = true;
+  var __component__$5 = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$5,
+    _sfc_render$5,
+    _sfc_staticRenderFns$5,
     false,
     null,
     null
   );
-  __component__$4.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/index.vue";
-  const pwmulticolumn = __component__$4.exports;
+  __component__$5.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/index.vue";
+  const pwmulticolumn = __component__$5.exports;
   const subBlockSide = {
     data() {
       return { subFieldDefaults: null, subSide: "left" };
@@ -523,28 +551,28 @@
       }
     }
   };
-  const _sfc_main$3 = {
+  const _sfc_main$4 = {
     components: { pwHeading },
     mixins: [subBlockSide]
   };
-  var _sfc_render$3 = function render() {
+  var _sfc_render$4 = function render() {
     var _a, _b;
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_c("pwHeading", { attrs: { "content": _vm.content, "alignDefault": ((_a = _vm.subFieldDefaults) == null ? void 0 : _a["align-headline-" + _vm.subSide]) || "left", "sizeDefault": ((_b = _vm.subFieldDefaults) == null ? void 0 : _b["size-headline-" + _vm.subSide]) || null } })], 1);
   };
-  var _sfc_staticRenderFns$3 = [];
-  _sfc_render$3._withStripped = true;
-  var __component__$3 = /* @__PURE__ */ normalizeComponent(
-    _sfc_main$3,
-    _sfc_render$3,
-    _sfc_staticRenderFns$3,
+  var _sfc_staticRenderFns$4 = [];
+  _sfc_render$4._withStripped = true;
+  var __component__$4 = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$4,
+    _sfc_render$4,
+    _sfc_staticRenderFns$4,
     false,
     null,
     null
   );
-  __component__$3.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/sub-headline.vue";
-  const pwmulticolumnHeadline = __component__$3.exports;
-  const _sfc_main$2 = {
+  __component__$4.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/sub-headline.vue";
+  const pwmulticolumnHeadline = __component__$4.exports;
+  const _sfc_main$3 = {
     components: { pwWriter },
     mixins: [subBlockSide],
     computed: {
@@ -563,9 +591,30 @@
       }
     }
   };
-  var _sfc_render$2 = function render() {
+  var _sfc_render$3 = function render() {
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_c("pwWriter", _vm._b({}, "pwWriter", _vm.parsedContent, false))], 1);
+  };
+  var _sfc_staticRenderFns$3 = [];
+  _sfc_render$3._withStripped = true;
+  var __component__$3 = /* @__PURE__ */ normalizeComponent(
+    _sfc_main$3,
+    _sfc_render$3,
+    _sfc_staticRenderFns$3,
+    false,
+    null,
+    null
+  );
+  __component__$3.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/sub-text.vue";
+  const pwmulticolumnText = __component__$3.exports;
+  const _sfc_main$2 = {
+    components: { pwQuote },
+    mixins: [subBlockSide]
+  };
+  var _sfc_render$2 = function render() {
+    var _a, _b;
+    var _vm = this, _c = _vm._self._c;
+    return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_c("pwQuote", { attrs: { "quote": _vm.content.quote, "author": _vm.content.author, "alignQuoteDefault": ((_a = _vm.subFieldDefaults) == null ? void 0 : _a["align-quote-" + _vm.subSide]) || "left", "alignAuthorDefault": ((_b = _vm.subFieldDefaults) == null ? void 0 : _b["align-author-" + _vm.subSide]) || "left" } })], 1);
   };
   var _sfc_staticRenderFns$2 = [];
   _sfc_render$2._withStripped = true;
@@ -577,16 +626,22 @@
     null,
     null
   );
-  __component__$2.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/sub-text.vue";
-  const pwmulticolumnText = __component__$2.exports;
+  __component__$2.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/sub-quote.vue";
+  const pwmulticolumnQuote = __component__$2.exports;
   const _sfc_main$1 = {
-    components: { pwQuote },
-    mixins: [subBlockSide]
+    components: { pwImage, pwVideo },
+    mixins: [subBlockSide],
+    computed: {
+      mediaAlignDefault() {
+        var _a;
+        return ((_a = this.subFieldDefaults) == null ? void 0 : _a["align-media-" + this.subSide]) || "left";
+      }
+    }
   };
   var _sfc_render$1 = function render() {
-    var _a, _b;
+    var _a, _b, _c2, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _A, _B;
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_c("pwQuote", { attrs: { "quote": _vm.content.quote, "author": _vm.content.author, "alignQuoteDefault": ((_a = _vm.subFieldDefaults) == null ? void 0 : _a["align-quote-" + _vm.subSide]) || "left", "alignAuthorDefault": ((_b = _vm.subFieldDefaults) == null ? void 0 : _b["align-author-" + _vm.subSide]) || "left" } })], 1);
+    return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_vm.content.mediatype === "image" && ((_c2 = (_b = (_a = _vm.content) == null ? void 0 : _a.image) == null ? void 0 : _b[0]) == null ? void 0 : _c2.url) ? _c("pwImage", { attrs: { "src": ((_f = (_e = (_d = _vm.content) == null ? void 0 : _d.image) == null ? void 0 : _e[0]) == null ? void 0 : _f.url) || "", "srcset": ((_j = (_i = (_h = (_g = _vm.content) == null ? void 0 : _g.image) == null ? void 0 : _h[0]) == null ? void 0 : _i.image) == null ? void 0 : _j.srcset) || "", "size": _vm.content.mediasize, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "image": ((_l = (_k = _vm.content) == null ? void 0 : _k.image) == null ? void 0 : _l[0]) || null } }) : _vm.content.mediatype === "slideshow" && ((_o = (_n = (_m = _vm.content) == null ? void 0 : _m.images) == null ? void 0 : _n[0]) == null ? void 0 : _o.url) ? _c("pwImage", { attrs: { "src": ((_r = (_q = (_p = _vm.content) == null ? void 0 : _p.images) == null ? void 0 : _q[0]) == null ? void 0 : _r.url) || "", "srcset": ((_v = (_u = (_t = (_s = _vm.content) == null ? void 0 : _s.images) == null ? void 0 : _t[0]) == null ? void 0 : _u.image) == null ? void 0 : _v.srcset) || "", "count": Array.isArray(_vm.content.images) ? _vm.content.images.length : 0, "size": _vm.content.mediasize, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "image": ((_x = (_w = _vm.content) == null ? void 0 : _w.images) == null ? void 0 : _x[0]) || null } }) : _vm.content.mediatype === "video" && (_vm.content.videourl || ((_z = (_y = _vm.content) == null ? void 0 : _y.video) == null ? void 0 : _z[0])) ? _c("pwVideo", { attrs: { "url": _vm.content.videourl, "source": _vm.content.videosource, "size": _vm.content.mediasize, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "video": ((_B = (_A = _vm.content) == null ? void 0 : _A.video) == null ? void 0 : _B[0]) || null } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(_vm._s(_vm.$t("pw.field.media-upload.help")))])], 1);
   };
   var _sfc_staticRenderFns$1 = [];
   _sfc_render$1._withStripped = true;
@@ -598,22 +653,16 @@
     null,
     null
   );
-  __component__$1.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/sub-quote.vue";
-  const pwmulticolumnQuote = __component__$1.exports;
+  __component__$1.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/sub-media.vue";
+  const pwmulticolumnMedia = __component__$1.exports;
   const _sfc_main = {
-    components: { pwImage, pwVideo },
-    mixins: [subBlockSide],
-    computed: {
-      mediaAlignDefault() {
-        var _a;
-        return ((_a = this.subFieldDefaults) == null ? void 0 : _a["align-media-" + this.subSide]) || "left";
-      }
-    }
+    components: { pwButton },
+    mixins: [subBlockSide]
   };
   var _sfc_render = function render() {
-    var _a, _b, _c2, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _A, _B;
+    var _a;
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_vm.content.mediatype === "image" && ((_c2 = (_b = (_a = _vm.content) == null ? void 0 : _a.image) == null ? void 0 : _b[0]) == null ? void 0 : _c2.url) ? _c("pwImage", { attrs: { "src": ((_f = (_e = (_d = _vm.content) == null ? void 0 : _d.image) == null ? void 0 : _e[0]) == null ? void 0 : _f.url) || "", "srcset": ((_j = (_i = (_h = (_g = _vm.content) == null ? void 0 : _g.image) == null ? void 0 : _h[0]) == null ? void 0 : _i.image) == null ? void 0 : _j.srcset) || "", "size": _vm.content.mediasize, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "image": ((_l = (_k = _vm.content) == null ? void 0 : _k.image) == null ? void 0 : _l[0]) || null } }) : _vm.content.mediatype === "slideshow" && ((_o = (_n = (_m = _vm.content) == null ? void 0 : _m.images) == null ? void 0 : _n[0]) == null ? void 0 : _o.url) ? _c("pwImage", { attrs: { "src": ((_r = (_q = (_p = _vm.content) == null ? void 0 : _p.images) == null ? void 0 : _q[0]) == null ? void 0 : _r.url) || "", "srcset": ((_v = (_u = (_t = (_s = _vm.content) == null ? void 0 : _s.images) == null ? void 0 : _t[0]) == null ? void 0 : _u.image) == null ? void 0 : _v.srcset) || "", "count": Array.isArray(_vm.content.images) ? _vm.content.images.length : 0, "size": _vm.content.mediasize, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "image": ((_x = (_w = _vm.content) == null ? void 0 : _w.images) == null ? void 0 : _x[0]) || null } }) : _vm.content.mediatype === "video" && (_vm.content.videourl || ((_z = (_y = _vm.content) == null ? void 0 : _y.video) == null ? void 0 : _z[0])) ? _c("pwVideo", { attrs: { "url": _vm.content.videourl, "source": _vm.content.videosource, "size": _vm.content.mediasize, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "video": ((_B = (_A = _vm.content) == null ? void 0 : _A.video) == null ? void 0 : _B[0]) || null } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(_vm._s(_vm.$t("pw.field.media-upload.help")))])], 1);
+    return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_c("pwButton", { attrs: { "content": _vm.content, "alignDefault": ((_a = _vm.subFieldDefaults) == null ? void 0 : _a["align-button-" + _vm.subSide]) || "left" } })], 1);
   };
   var _sfc_staticRenderFns = [];
   _sfc_render._withStripped = true;
@@ -625,8 +674,8 @@
     null,
     null
   );
-  __component__.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/sub-media.vue";
-  const pwmulticolumnMedia = __component__.exports;
+  __component__.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirbyblock-multicolumn/src/blocks/sub-button.vue";
+  const pwmulticolumnButton = __component__.exports;
   panel.plugin("kirbydesk/kirbyblock-multicolumn", {
     blocks: {
       pwmulticolumn,
@@ -637,7 +686,9 @@
       multicolumnquoteleft: pwmulticolumnQuote,
       multicolumnquoteright: pwmulticolumnQuote,
       multicolumnmedialeft: pwmulticolumnMedia,
-      multicolumnmediaright: pwmulticolumnMedia
+      multicolumnmediaright: pwmulticolumnMedia,
+      multicolumnbuttonleft: pwmulticolumnButton,
+      multicolumnbuttonright: pwmulticolumnButton
     }
   });
 })();

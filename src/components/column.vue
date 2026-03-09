@@ -20,6 +20,12 @@
 					:alignAuthorDefault="fieldDefaults['align-author-' + side] || 'left'"
 				/>
 
+				<!-- Button -->
+				<pwButton v-if="blockType(block) === 'multicolumnbutton'"
+					:content="block.content"
+					:alignDefault="fieldDefaults['align-button-' + side] || 'left'"
+				/>
+
 				<!-- Media -->
 				<div v-if="blockType(block) === 'multicolumnmedia'">
 
@@ -63,9 +69,10 @@ import pwQuote   from '@/../../kirby-pagewizard/src/components/quote.vue';
 import pwImage   from '@/../../kirby-pagewizard/src/components/image.vue';
 import pwVideo   from '@/../../kirby-pagewizard/src/components/video.vue';
 import pwHeading from '@/../../kirby-pagewizard/src/components/heading.vue';
+import pwButton  from '@/../../kirby-pagewizard/src/components/button.vue';
 
 export default {
-	components: { pwWriter, pwQuote, pwImage, pwVideo, pwHeading },
+	components: { pwWriter, pwQuote, pwImage, pwVideo, pwHeading, pwButton },
 	props: {
 		blocks:       { type: Array,  default: () => [] },
 		side:         { type: String, default: 'left' },

@@ -96,6 +96,11 @@ export default {
 	& > div > div + div {
   	margin-top: var(--spacing-2); /* All direct children except the first (lobotomized owl) */
 	}
+	button.k-button {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
 }
 @media (min-width: 640px) {
 	[data-kirbyblock="multicolumn"] .pwColumns {

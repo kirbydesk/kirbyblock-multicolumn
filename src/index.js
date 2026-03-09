@@ -4,6 +4,7 @@ import pwmulticolumnHeadline from "@/blocks/sub-headline.vue";
 import pwmulticolumnText     from "@/blocks/sub-text.vue";
 import pwmulticolumnQuote    from "@/blocks/sub-quote.vue";
 import pwmulticolumnMedia    from "@/blocks/sub-media.vue";
+import pwmulticolumnButton   from "@/blocks/sub-button.vue";
 
 // Render
 panel.plugin("kirbydesk/kirbyblock-multicolumn", {
@@ -17,5 +18,7 @@ panel.plugin("kirbydesk/kirbyblock-multicolumn", {
 		multicolumnquoteright:    pwmulticolumnQuote,
 		multicolumnmedialeft:     pwmulticolumnMedia,
 		multicolumnmediaright:    pwmulticolumnMedia,
+		multicolumnbuttonleft:    pwmulticolumnButton,
+		multicolumnbuttonright:   pwmulticolumnButton,
 	}
 });

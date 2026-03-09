@@ -259,12 +259,35 @@ div.pwHeading[data-v-ad832d63] {
 }
 }
 
+.pwButton[data-v-0b938355] {
+	display: flex;
+&[data-align="left"][data-v-0b938355]   { justify-content: flex-start;
+}
+&[data-align="center"][data-v-0b938355] { justify-content: center;
+}
+&[data-align="right"][data-v-0b938355]  { justify-content: flex-end;
+}
+}
+button[data-v-0b938355] {
+	margin: var(--spacing-3);
+	padding: var(--spacing-4) var(--spacing-2);
+	background-color: var(--color-gray-600);
+	color: white;
+.k-button-text.placeholder[data-v-0b938355] {
+		opacity: 0.5;
+}
+}
+
 [data-kirbyblock="multicolumn"] .pwColumns .pwColumn {
 &.right {
 		margin-top: 1rem;
 }
 & > div > div + div {
   	margin-top: var(--spacing-2); /* All direct children except the first (lobotomized owl) */
+}
+button.k-button {
+		margin-left: 0;
+		margin-right: 0;
 }
 }
 @media (min-width: 640px) {
