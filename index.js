@@ -416,13 +416,16 @@
     computed: {
       align() {
         return this.content.buttonalignment || this.alignDefault;
+      },
+      isExternal() {
+        return this.content.linktype == true && this.content.linktarget == true;
       }
     }
   };
   var _sfc_render$7 = function render() {
     var _a;
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwButton", attrs: { "data-align": _vm.align } }, [_c("button", { staticClass: "k-button", attrs: { "data-has-text": "true", "data-responsive": "true", "data-size": "sm", "data-variant": "filled", "type": "button" } }, [((_a = _vm.content.linktext) == null ? void 0 : _a.length) ? _c("span", { staticClass: "k-button-text", domProps: { "innerHTML": _vm._s(_vm.content.linktext) } }) : _c("span", { staticClass: "k-button-text placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.link-text.placeholder")) + " ")])])]);
+    return _c("div", { staticClass: "pwButton", attrs: { "data-align": _vm.align } }, [_c("button", { staticClass: "k-button", attrs: { "data-has-text": "true", "data-responsive": "true", "data-size": "sm", "data-variant": "filled", "type": "button" } }, [((_a = _vm.content.linktext) == null ? void 0 : _a.length) ? _c("span", { staticClass: "k-button-text", domProps: { "innerHTML": _vm._s(_vm.content.linktext) } }) : _c("span", { staticClass: "k-button-text placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.link-text.placeholder")) + " ")]), _vm.isExternal ? _c("svg", { staticClass: "pw-external-icon", attrs: { "aria-hidden": "true", "viewBox": "0 0 24 24", "fill": "currentColor" } }, [_c("path", { attrs: { "d": "M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z" } })]) : _vm._e()])]);
   };
   var _sfc_staticRenderFns$7 = [];
   _sfc_render$7._withStripped = true;
@@ -513,7 +516,7 @@
   };
   var _sfc_render$5 = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwPreview", style: _vm.colorVars, attrs: { "data-kirbyblock": "multicolumn", "data-margintop": _vm.content.margintop === true ? "true" : null, "data-marginbottom": _vm.content.marginbottom === true ? "true" : null }, on: { "dblclick": _vm.open } }, [_c("pwBlockinfo", { attrs: { "value": _vm.$t("kirbyblock-multicolumn.name"), "icon": "layout-columns" } }), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_vm.fieldDefaults !== null ? _c("div", { staticClass: "pwColumns", attrs: { "data-dist-sm": _vm.content.distributionsm || null, "data-dist-md": _vm.content.distributionmd || null, "data-dist-lg": _vm.content.distributionlg || null, "data-dist-xl": _vm.content.distributionxl || null } }, [_c("pwColumn", { attrs: { "side": "left", "blocks": _vm.leftBlocks, "vertical": _vm.content.leftpositionvertical, "fieldDefaults": _vm.fieldDefaults } }), _c("pwColumn", { attrs: { "side": "right", "blocks": _vm.rightBlocks, "vertical": _vm.content.rightpositionvertical, "fieldDefaults": _vm.fieldDefaults } })], 1) : _vm._e()])])], 1);
+    return _c("div", { staticClass: "pwPreview", style: _vm.colorVars, attrs: { "data-kirbyblock": "multicolumn", "data-margintop": _vm.content.margintop === true ? "true" : null, "data-marginbottom": _vm.content.marginbottom === true ? "true" : null }, on: { "dblclick": _vm.open } }, [_c("pwBlockinfo", { attrs: { "value": _vm.$t("kirbyblock-multicolumn.name"), "icon": "layout-columns" } }), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop || null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom || null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_vm.fieldDefaults !== null ? _c("div", { staticClass: "pwColumns", attrs: { "data-dist-sm": _vm.content.distributionsm || null, "data-dist-md": _vm.content.distributionmd || null, "data-dist-lg": _vm.content.distributionlg || null, "data-dist-xl": _vm.content.distributionxl || null } }, [_c("pwColumn", { attrs: { "side": "left", "blocks": _vm.leftBlocks, "vertical": _vm.content.leftpositionvertical, "fieldDefaults": _vm.fieldDefaults } }), _c("pwColumn", { attrs: { "side": "right", "blocks": _vm.rightBlocks, "vertical": _vm.content.rightpositionvertical, "fieldDefaults": _vm.fieldDefaults } })], 1) : _vm._e()])])], 1);
   };
   var _sfc_staticRenderFns$5 = [];
   _sfc_render$5._withStripped = true;

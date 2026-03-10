@@ -276,6 +276,11 @@ button[data-v-0b938355] {
 .k-button-text.placeholder[data-v-0b938355] {
 		opacity: 0.5;
 }
+.pw-external-icon[data-v-0b938355] {
+		width: 1em;
+		height: 1em;
+		opacity: 0.7;
+}
 }
 
 [data-kirbyblock="multicolumn"] .pwColumns .pwColumn {

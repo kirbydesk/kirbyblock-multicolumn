@@ -7,35 +7,22 @@ $settings = $config['content'];
 // Helper: render single button sub-block
 if (!function_exists('pwMulticolumnButton')) {
 function pwMulticolumnButton($item): void {
-	$linktype = $item->linktype()->toBool();
-	$url = '';
-
-	if (!$linktype && $item->linkinternal()->isNotEmpty()):
-		$linkValue = $item->linkinternal()->value();
-		try {
-			if (Str::startsWith($linkValue, 'page://'))      $url = $item->linkinternal()->toPage()?->url() ?? '';
-			elseif (Str::startsWith($linkValue, 'file://'))  $url = $item->linkinternal()->toFile()?->url() ?? '';
-			elseif (Str::startsWith($linkValue, 'mailto:'))  $url = $linkValue;
-			elseif (Str::startsWith($linkValue, 'email:'))   $url = 'mailto:' . Str::after($linkValue, 'email:');
-			elseif (Str::startsWith($linkValue, 'tel:'))     $url = $linkValue;
-			elseif (Str::startsWith($linkValue, 'anchor:'))  $url = '#' . Str::after($linkValue, 'anchor:');
-			elseif (Str::startsWith($linkValue, '#'))        $url = $linkValue;
-			else                                              $url = $linkValue;
-		} catch (Exception $e) { $url = ''; }
-	elseif ($linktype && $item->linkexternal()->isNotEmpty()):
-		$url = $item->linkexternal()->value();
-	endif;
-
-	if (empty($url)) return;
-
-	$linktext        = $item->linktext()->isNotEmpty() ? $item->linktext()->value() : t('pw.field.link-text.placeholder');
-	$target          = ($linktype && $item->linktarget()->toBool()) ? ' target="_blank"' : '';
-	$rel             = ($linktype && $item->linkrel()->isNotEmpty()) ? ' rel="' . $item->linkrel()->value() . '"' : '';
-	$ariaLabel       = $item->arialabel()->isNotEmpty() ? ' aria-label="' . esc($item->arialabel()->value()) . '"' : '';
-	$ariaDescribedby = $item->ariadescribedby()->isNotEmpty() ? ' aria-describedby="' . esc($item->ariadescribedby()->value()) . '"' : '';
-	$align           = $item->buttonalignment()->isNotEmpty() ? $item->buttonalignment()->value() : 'left';
-
-	echo '<div data-field="button" data-align="' . $align . '"><a href="' . $url . '"' . $target . $rel . $ariaLabel . $ariaDescribedby . '>' . $linktext . '</a></div>' . "\n";
+	$align = $item->buttonalignment()->isNotEmpty() ? $item->buttonalignment()->value() : 'left';
+	ob_start();
+	snippet('link', [
+		'linkType'        => $item->linktype()->toBool(),
+		'linkInternal'    => $item->linkinternal()->value(),
+		'linkExternal'    => $item->linkexternal()->value(),
+		'linkText'        => $item->linktext()->isNotEmpty() ? $item->linktext()->value() : t('pw.field.link-text.placeholder'),
+		'linkTarget'      => $item->linktarget()->toBool(),
+		'linkRel'         => $item->linkrel()->value(),
+		'ariaLabel'       => $item->arialabel()->value(),
+		'ariaDescribedby' => $item->ariadescribedby()->value(),
+	]);
+	$linkHtml = ob_get_clean();
+	if ($linkHtml) {
+		echo '<div data-field="button" data-align="' . $align . '">' . $linkHtml . '</div>' . "\n";
+	}
 }
 }
 
