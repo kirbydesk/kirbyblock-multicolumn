@@ -14,10 +14,10 @@
     "button-right":   { "align": "left" }
   },
   "layout": {
-    "padding-top": "large",
-    "padding-right": "large",
-    "padding-bottom": true,
+    "padding-top": "small",
+    "padding-bottom": "small",
     "padding-left": true,
+    "padding-right": true,
     "distribution-sm": "",
     "distribution-md": "dist-3-3",
     "distribution-lg": "dist-3-3",

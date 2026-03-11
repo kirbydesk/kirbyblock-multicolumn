@@ -215,6 +215,11 @@
       src: String,
       srcset: String,
       size: String,
+      radius: String,
+      radiustopleft: [Boolean, String],
+      radiustopright: [Boolean, String],
+      radiusbottomleft: [Boolean, String],
+      radiusbottomright: [Boolean, String],
       alignment: {
         type: String,
         default: "left"
@@ -237,6 +242,7 @@
       },
       computedRatio() {
         var _a;
+        if (this.radius === "round") return "1/1";
         const ratio = (_a = this.imageContent) == null ? void 0 : _a.imageratio;
         if (!ratio || ratio === "auto") return null;
         return ratio;
@@ -244,6 +250,22 @@
       computedZoom() {
         var _a;
         return ((_a = this.imageContent) == null ? void 0 : _a.imagezoom) || false;
+      },
+      radiusStyle() {
+        if (this.radius === "round") {
+          return { borderRadius: "9999px", overflow: "hidden" };
+        }
+        if (this.radius === "custom") {
+          const isTrue = (v) => v === true || v === "true";
+          return {
+            borderTopLeftRadius: isTrue(this.radiustopleft) ? "15px" : "0",
+            borderTopRightRadius: isTrue(this.radiustopright) ? "15px" : "0",
+            borderBottomRightRadius: isTrue(this.radiusbottomright) ? "15px" : "0",
+            borderBottomLeftRadius: isTrue(this.radiusbottomleft) ? "15px" : "0",
+            overflow: "hidden"
+          };
+        }
+        return {};
       }
     },
     async mounted() {
@@ -265,10 +287,7 @@
   };
   var _sfc_render$a = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _vm.src.length ? _c("div", { staticClass: "wrap", attrs: { "data-align": _vm.alignment } }, [_c("div", { staticClass: "image" }, [_c("div", { staticClass: "pattern", class: _vm.size }, [_c("figure", { class: _vm.computedRatio ? ["k-frame", "k-image-frame", "k-image", { zoom: _vm.computedZoom }] : ["k-image", "ratio-auto", { zoom: _vm.computedZoom }], style: _vm.computedRatio ? {
-      "--fit": _vm.computedCrop ? "cover" : "contain",
-      "--ratio": _vm.computedRatio
-    } : {} }, [_c("img", { attrs: { "src": _vm.src, "srcset": _vm.srcset } }), _c("div", [_c("k-icon", { attrs: { "type": "search" } })], 1)])])]), _vm.count > 1 ? _c("div", { staticClass: "controls" }, [_c("div", { staticClass: "dots", class: _vm.size }, _vm._l(_vm.count, function(n) {
+    return _vm.src.length ? _c("div", { staticClass: "wrap", attrs: { "data-align": _vm.alignment } }, [_c("div", { staticClass: "image" }, [_c("div", { staticClass: "pattern", class: _vm.size, style: _vm.radiusStyle }, [_c("figure", { class: _vm.computedRatio ? ["k-frame", "k-image-frame", "k-image", { zoom: _vm.computedZoom }] : ["k-image", "ratio-auto", { zoom: _vm.computedZoom }], style: { ..._vm.computedRatio ? { "--fit": _vm.computedCrop ? "cover" : "contain", "--ratio": _vm.computedRatio } : {}, ..._vm.radiusStyle } }, [_c("img", { attrs: { "src": _vm.src, "srcset": _vm.srcset } }), _c("div", [_c("k-icon", { attrs: { "type": "search" } })], 1)])])]), _vm.count > 1 ? _c("div", { staticClass: "controls" }, [_c("div", { staticClass: "dots", class: _vm.size }, _vm._l(_vm.count, function(n) {
       return _c("span", { key: n, staticClass: "dot" });
     }), 0)]) : _vm._e()]) : _vm._e();
   };
@@ -289,6 +308,11 @@
       url: String,
       source: String,
       size: String,
+      radius: String,
+      radiustopleft: [Boolean, String],
+      radiustopright: [Boolean, String],
+      radiusbottomleft: [Boolean, String],
+      radiusbottomright: [Boolean, String],
       alignment: {
         type: String,
         default: "left"
@@ -303,11 +327,28 @@
     computed: {
       computedRatio() {
         var _a;
+        if (this.radius === "round") return "1/1";
         return ((_a = this.videoContent) == null ? void 0 : _a.videoratio) || "16/9";
       },
       videoUrl() {
         var _a;
         return ((_a = this.video) == null ? void 0 : _a.url) || this.video;
+      },
+      radiusStyle() {
+        if (this.radius === "round") {
+          return { borderRadius: "9999px", overflow: "hidden" };
+        }
+        if (this.radius === "custom") {
+          const isTrue = (v) => v === true || v === "true";
+          return {
+            borderTopLeftRadius: isTrue(this.radiustopleft) ? "15px" : "0",
+            borderTopRightRadius: isTrue(this.radiustopright) ? "15px" : "0",
+            borderBottomRightRadius: isTrue(this.radiusbottomright) ? "15px" : "0",
+            borderBottomLeftRadius: isTrue(this.radiusbottomleft) ? "15px" : "0",
+            overflow: "hidden"
+          };
+        }
+        return {};
       }
     },
     async mounted() {
@@ -343,7 +384,7 @@
   };
   var _sfc_render$9 = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _vm.url || _vm.videoUrl ? _c("div", { staticClass: "video", attrs: { "data-align": _vm.alignment } }, [_c("div", { staticClass: "pattern", class: _vm.size }, [_vm.source == "internal" ? _c("k-frame", { attrs: { "ratio": _vm.computedRatio } }, [_c("video", { attrs: { "src": _vm.videoUrl, "controls": "" } })]) : _vm.source == "external" ? _c("k-frame", { staticClass: "external", attrs: { "ratio": "16/9" } }, [_c("iframe", { attrs: { "src": _vm.getEmbedUrl(_vm.url), "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share", "referrerpolicy": "origin", "allowfullscreen": "" } })]) : _vm._e()], 1)]) : _vm._e();
+    return _vm.url || _vm.videoUrl ? _c("div", { staticClass: "video", attrs: { "data-align": _vm.alignment } }, [_c("div", { staticClass: "pattern", class: _vm.size, style: _vm.radiusStyle }, [_vm.source == "internal" ? _c("k-frame", { attrs: { "ratio": _vm.computedRatio } }, [_c("video", { attrs: { "src": _vm.videoUrl, "controls": "" } })]) : _vm.source == "external" ? _c("k-frame", { staticClass: "external", attrs: { "ratio": _vm.computedRatio } }, [_c("iframe", { attrs: { "src": _vm.getEmbedUrl(_vm.url), "allow": "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share", "referrerpolicy": "origin", "allowfullscreen": "" } })]) : _vm._e()], 1)]) : _vm._e();
   };
   var _sfc_staticRenderFns$9 = [];
   _sfc_render$9._withStripped = true;
@@ -468,7 +509,7 @@
     var _vm = this, _c = _vm._self._c;
     return _c("div", { staticClass: "pwColumn", class: _vm.side, attrs: { "data-vertical": _vm.vertical } }, [_vm.blocks.length ? _c("div", _vm._l(_vm.blocks, function(block, i) {
       var _a, _b, _c2, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t;
-      return _c("div", { key: i }, [_vm.blockType(block) === "multicolumnheadline" ? _c("pwHeading", { attrs: { "content": block.content, "alignDefault": _vm.fieldDefaults["align-headline-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumntext" ? _c("pwWriter", _vm._b({ class: { "ishidden": block.content.isHidden } }, "pwWriter", _vm.parseEditorValue(block.content.editor), false)) : _vm._e(), _vm.blockType(block) === "multicolumnquote" ? _c("pwQuote", { attrs: { "quote": block.content.quote, "author": block.content.author, "alignQuoteDefault": _vm.fieldDefaults["align-quote-" + _vm.side] || "left", "alignAuthorDefault": _vm.fieldDefaults["align-author-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumnbutton" ? _c("pwButton", { attrs: { "content": block.content, "alignDefault": _vm.fieldDefaults["align-button-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumnmedia" ? _c("div", [block.content.mediatype === "image" ? _c("pwImage", { attrs: { "src": ((_c2 = (_b = (_a = block.content) == null ? void 0 : _a.image) == null ? void 0 : _b[0]) == null ? void 0 : _c2.url) || "", "srcset": ((_g = (_f = (_e = (_d = block.content) == null ? void 0 : _d.image) == null ? void 0 : _e[0]) == null ? void 0 : _f.image) == null ? void 0 : _g.srcset) || "", "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "image": ((_i = (_h = block.content) == null ? void 0 : _h.image) == null ? void 0 : _i[0]) || null } }) : _vm._e(), block.content.mediatype === "slideshow" ? _c("pwImage", { attrs: { "src": ((_l = (_k = (_j = block.content) == null ? void 0 : _j.images) == null ? void 0 : _k[0]) == null ? void 0 : _l.url) || "", "srcset": ((_p = (_o = (_n = (_m = block.content) == null ? void 0 : _m.images) == null ? void 0 : _n[0]) == null ? void 0 : _o.images) == null ? void 0 : _p.srcset) || "", "count": Array.isArray(block.content.images) ? block.content.images.length : 0, "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "image": ((_r = (_q = block.content) == null ? void 0 : _q.images) == null ? void 0 : _r[0]) || null } }) : _vm._e(), block.content.mediatype === "video" ? _c("pwVideo", { attrs: { "url": block.content.videourl, "source": block.content.videosource, "size": block.content.mediasize, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "video": ((_t = (_s = block.content) == null ? void 0 : _s.video) == null ? void 0 : _t[0]) || null } }) : _vm._e()], 1) : _vm._e()], 1);
+      return _c("div", { key: i }, [_vm.blockType(block) === "multicolumnheadline" ? _c("pwHeading", { attrs: { "content": block.content, "alignDefault": _vm.fieldDefaults["align-headline-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumntext" ? _c("pwWriter", _vm._b({ class: { "ishidden": block.content.isHidden } }, "pwWriter", _vm.parseEditorValue(block.content.editor), false)) : _vm._e(), _vm.blockType(block) === "multicolumnquote" ? _c("pwQuote", { attrs: { "quote": block.content.quote, "author": block.content.author, "alignQuoteDefault": _vm.fieldDefaults["align-quote-" + _vm.side] || "left", "alignAuthorDefault": _vm.fieldDefaults["align-author-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumnbutton" ? _c("pwButton", { attrs: { "content": block.content, "alignDefault": _vm.fieldDefaults["align-button-" + _vm.side] || "left" } }) : _vm._e(), _vm.blockType(block) === "multicolumnmedia" ? _c("div", [block.content.mediatype === "image" ? _c("pwImage", { attrs: { "src": ((_c2 = (_b = (_a = block.content) == null ? void 0 : _a.image) == null ? void 0 : _b[0]) == null ? void 0 : _c2.url) || "", "srcset": ((_g = (_f = (_e = (_d = block.content) == null ? void 0 : _d.image) == null ? void 0 : _e[0]) == null ? void 0 : _f.image) == null ? void 0 : _g.srcset) || "", "size": block.content.mediasize, "radius": block.content.mediaradius, "radiustopleft": block.content.radiustopleft, "radiustopright": block.content.radiustopright, "radiusbottomleft": block.content.radiusbottomleft, "radiusbottomright": block.content.radiusbottomright, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "image": ((_i = (_h = block.content) == null ? void 0 : _h.image) == null ? void 0 : _i[0]) || null } }) : _vm._e(), block.content.mediatype === "slideshow" ? _c("pwImage", { attrs: { "src": ((_l = (_k = (_j = block.content) == null ? void 0 : _j.images) == null ? void 0 : _k[0]) == null ? void 0 : _l.url) || "", "srcset": ((_p = (_o = (_n = (_m = block.content) == null ? void 0 : _m.images) == null ? void 0 : _n[0]) == null ? void 0 : _o.images) == null ? void 0 : _p.srcset) || "", "count": Array.isArray(block.content.images) ? block.content.images.length : 0, "size": block.content.mediasize, "radius": block.content.mediaradius, "radiustopleft": block.content.radiustopleft, "radiustopright": block.content.radiustopright, "radiusbottomleft": block.content.radiusbottomleft, "radiusbottomright": block.content.radiusbottomright, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "image": ((_r = (_q = block.content) == null ? void 0 : _q.images) == null ? void 0 : _r[0]) || null } }) : _vm._e(), block.content.mediatype === "video" ? _c("pwVideo", { attrs: { "url": block.content.videourl, "source": block.content.videosource, "size": block.content.mediasize, "radius": block.content.mediaradius, "radiustopleft": block.content.radiustopleft, "radiustopright": block.content.radiustopright, "radiusbottomleft": block.content.radiusbottomleft, "radiusbottomright": block.content.radiusbottomright, "alignment": block.content.mediaalignment || _vm.fieldDefaults["align-media-" + _vm.side], "video": ((_t = (_s = block.content) == null ? void 0 : _s.video) == null ? void 0 : _t[0]) || null } }) : _vm._e()], 1) : _vm._e()], 1);
     }), 0) : _vm._e()]);
   };
   var _sfc_staticRenderFns$6 = [];
@@ -644,7 +685,7 @@
   var _sfc_render$1 = function render() {
     var _a, _b, _c2, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _A, _B;
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_vm.content.mediatype === "image" && ((_c2 = (_b = (_a = _vm.content) == null ? void 0 : _a.image) == null ? void 0 : _b[0]) == null ? void 0 : _c2.url) ? _c("pwImage", { attrs: { "src": ((_f = (_e = (_d = _vm.content) == null ? void 0 : _d.image) == null ? void 0 : _e[0]) == null ? void 0 : _f.url) || "", "srcset": ((_j = (_i = (_h = (_g = _vm.content) == null ? void 0 : _g.image) == null ? void 0 : _h[0]) == null ? void 0 : _i.image) == null ? void 0 : _j.srcset) || "", "size": _vm.content.mediasize, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "image": ((_l = (_k = _vm.content) == null ? void 0 : _k.image) == null ? void 0 : _l[0]) || null } }) : _vm.content.mediatype === "slideshow" && ((_o = (_n = (_m = _vm.content) == null ? void 0 : _m.images) == null ? void 0 : _n[0]) == null ? void 0 : _o.url) ? _c("pwImage", { attrs: { "src": ((_r = (_q = (_p = _vm.content) == null ? void 0 : _p.images) == null ? void 0 : _q[0]) == null ? void 0 : _r.url) || "", "srcset": ((_v = (_u = (_t = (_s = _vm.content) == null ? void 0 : _s.images) == null ? void 0 : _t[0]) == null ? void 0 : _u.image) == null ? void 0 : _v.srcset) || "", "count": Array.isArray(_vm.content.images) ? _vm.content.images.length : 0, "size": _vm.content.mediasize, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "image": ((_x = (_w = _vm.content) == null ? void 0 : _w.images) == null ? void 0 : _x[0]) || null } }) : _vm.content.mediatype === "video" && (_vm.content.videourl || ((_z = (_y = _vm.content) == null ? void 0 : _y.video) == null ? void 0 : _z[0])) ? _c("pwVideo", { attrs: { "url": _vm.content.videourl, "source": _vm.content.videosource, "size": _vm.content.mediasize, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "video": ((_B = (_A = _vm.content) == null ? void 0 : _A.video) == null ? void 0 : _B[0]) || null } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(_vm._s(_vm.$t("pw.field.media-upload.help")))])], 1);
+    return _c("div", { staticClass: "pwPreview", on: { "dblclick": _vm.open } }, [_vm.content.mediatype === "image" && ((_c2 = (_b = (_a = _vm.content) == null ? void 0 : _a.image) == null ? void 0 : _b[0]) == null ? void 0 : _c2.url) ? _c("pwImage", { attrs: { "src": ((_f = (_e = (_d = _vm.content) == null ? void 0 : _d.image) == null ? void 0 : _e[0]) == null ? void 0 : _f.url) || "", "srcset": ((_j = (_i = (_h = (_g = _vm.content) == null ? void 0 : _g.image) == null ? void 0 : _h[0]) == null ? void 0 : _i.image) == null ? void 0 : _j.srcset) || "", "size": _vm.content.mediasize, "radius": _vm.content.mediaradius, "radiustopleft": _vm.content.radiustopleft, "radiustopright": _vm.content.radiustopright, "radiusbottomleft": _vm.content.radiusbottomleft, "radiusbottomright": _vm.content.radiusbottomright, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "image": ((_l = (_k = _vm.content) == null ? void 0 : _k.image) == null ? void 0 : _l[0]) || null } }) : _vm.content.mediatype === "slideshow" && ((_o = (_n = (_m = _vm.content) == null ? void 0 : _m.images) == null ? void 0 : _n[0]) == null ? void 0 : _o.url) ? _c("pwImage", { attrs: { "src": ((_r = (_q = (_p = _vm.content) == null ? void 0 : _p.images) == null ? void 0 : _q[0]) == null ? void 0 : _r.url) || "", "srcset": ((_v = (_u = (_t = (_s = _vm.content) == null ? void 0 : _s.images) == null ? void 0 : _t[0]) == null ? void 0 : _u.image) == null ? void 0 : _v.srcset) || "", "count": Array.isArray(_vm.content.images) ? _vm.content.images.length : 0, "size": _vm.content.mediasize, "radius": _vm.content.mediaradius, "radiustopleft": _vm.content.radiustopleft, "radiustopright": _vm.content.radiustopright, "radiusbottomleft": _vm.content.radiusbottomleft, "radiusbottomright": _vm.content.radiusbottomright, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "image": ((_x = (_w = _vm.content) == null ? void 0 : _w.images) == null ? void 0 : _x[0]) || null } }) : _vm.content.mediatype === "video" && (_vm.content.videourl || ((_z = (_y = _vm.content) == null ? void 0 : _y.video) == null ? void 0 : _z[0])) ? _c("pwVideo", { attrs: { "url": _vm.content.videourl, "source": _vm.content.videosource, "size": _vm.content.mediasize, "radius": _vm.content.mediaradius, "radiustopleft": _vm.content.radiustopleft, "radiustopright": _vm.content.radiustopright, "radiusbottomleft": _vm.content.radiusbottomleft, "radiusbottomright": _vm.content.radiusbottomright, "alignment": _vm.content.mediaalignment || _vm.mediaAlignDefault, "video": ((_B = (_A = _vm.content) == null ? void 0 : _A.video) == null ? void 0 : _B[0]) || null } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(_vm._s(_vm.$t("pw.field.media-upload.help")))])], 1);
   };
   var _sfc_staticRenderFns$1 = [];
   _sfc_render$1._withStripped = true;

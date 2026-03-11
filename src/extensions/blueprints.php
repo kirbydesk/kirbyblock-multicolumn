@@ -3,9 +3,6 @@
 /* Helper: media block fields, only mediaAlignment align differs */
 function pwMulticolumnMediaFields(?string $alignMedia, ?array $alignOptions = null): array {
 	return [
-		'mediaSize' => [
-			'extends' => 'pagewizard/fields/media-size'
-		],
 		'mediaAlignment' => [
 			'type'          => 'pwalign',
 			'align'         => $alignMedia,
@@ -15,6 +12,32 @@ function pwMulticolumnMediaFields(?string $alignMedia, ?array $alignOptions = nu
 		],
 		'mediaType' => [
 			'extends' => 'pagewizard/fields/media-type'
+		],
+		'mediaSize' => [
+			'extends' => 'pagewizard/fields/media-size'
+		],
+		'mediaRadius' => [
+			'extends' => 'pagewizard/fields/media-radius'
+		],
+		'radiusTopLeft' => [
+			'extends' => 'pagewizard/fields/toggle',
+			'label'   => 'pw.field.radius-top-left',
+			'when'    => ['mediaRadius' => 'custom']
+		],
+		'radiusTopRight' => [
+			'extends' => 'pagewizard/fields/toggle',
+			'label'   => 'pw.field.radius-top-right',
+			'when'    => ['mediaRadius' => 'custom']
+		],
+		'radiusBottomLeft' => [
+			'extends' => 'pagewizard/fields/toggle',
+			'label'   => 'pw.field.radius-bottom-left',
+			'when'    => ['mediaRadius' => 'custom']
+		],
+		'radiusBottomRight' => [
+			'extends' => 'pagewizard/fields/toggle',
+			'label'   => 'pw.field.radius-bottom-right',
+			'when'    => ['mediaRadius' => 'custom']
 		],
 		'image' => [
 			'extends' => 'pagewizard/fields/image',
