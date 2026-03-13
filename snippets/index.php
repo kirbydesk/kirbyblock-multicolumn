@@ -51,7 +51,7 @@ echo ' data-radius-bottom-right="'.$block->radiusbottomright()->value().'"';
 echo ' data-radius-bottom-left="'.$block->radiusbottomleft()->value().'"';
 echo ' data-style="'.$block->theme()->value().'"';
 echo ' data-block-size="'.$block->blocksize()->value().'"';
-e(!empty($settings['buttons']) && $block->content()->theme()->value() === 'custom' && $block->buttonstyle()->value() === 'variant', ' data-button-style="variant"');
+e($block->content()->theme()->value() === 'custom' && $block->buttonstyle()->value() === 'variant', ' data-button-style="variant"');
 echo $block->fragment()->isNotEmpty() ? ' id="'.$block->fragment()->value().'"' : '';
 echo '>'."\n";
 

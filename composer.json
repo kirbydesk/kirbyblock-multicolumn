@@ -1,6 +1,6 @@
 {
 	"name": "kirbydesk/kirbyblock-multicolumn",
-	"version": "1.5.0",
+	"version": "1.5.1",
 	"description": "Multicolumn Block for Kirby CMS",
 	"type": "kirby-plugin",
 	"keywords": [
