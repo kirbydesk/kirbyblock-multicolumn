@@ -1,3 +1,4 @@
+/* DO NOT MODIFY THIS FILE - Override in site/patches/css/kirbyblock-multicolumn/_styles.css */
 section[data-block="multicolumn"] {
 	div[data-layout="columns"]{
 		display: grid;

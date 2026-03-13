@@ -12,10 +12,10 @@
 			:alignment="content.mediaalignment || mediaAlignDefault"
 			:image="content?.image?.[0] || null"
 		/>
-		<pwImage v-else-if="content.mediatype === 'slideshow' && content?.images?.[0]?.url"
-			:src="content?.images?.[0]?.url || ''"
-			:srcset="content?.images?.[0]?.image?.srcset || ''"
-			:count="Array.isArray(content.images) ? content.images.length : 0"
+		<pwImage v-else-if="content.mediatype === 'slideshow' && content?.slideshow?.[0]?.url"
+			:src="content?.slideshow?.[0]?.url || ''"
+			:srcset="content?.slideshow?.[0]?.image?.srcset || ''"
+			:count="Array.isArray(content.slideshow) ? content.slideshow.length : 0"
 			:size="content.mediasize"
 			:radius="content.mediaradius"
 			:radiustopleft="content.radiustopleft"
@@ -23,7 +23,7 @@
 			:radiusbottomleft="content.radiusbottomleft"
 			:radiusbottomright="content.radiusbottomright"
 			:alignment="content.mediaalignment || mediaAlignDefault"
-			:image="content?.images?.[0] || null"
+			:image="content?.slideshow?.[0] || null"
 		/>
 		<pwVideo v-else-if="content.mediatype === 'video' && (content.videourl || content?.video?.[0])"
 			:url="content.videourl"

@@ -45,7 +45,7 @@ function pwMulticolumnMediaFields(?string $alignMedia, ?array $alignOptions = nu
 			'query'   => 'page.images.template("pwImage")',
 			'when'    => ['mediaType' => 'image']
 		],
-		'images' => [
+		'slideshow' => [
 			'extends' => 'pagewizard/fields/images',
 			'uploads' => 'pwImage',
 			'query'   => 'page.images.template("pwImage")',

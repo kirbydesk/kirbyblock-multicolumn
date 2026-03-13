@@ -45,9 +45,9 @@
 
 					<!-- Slideshow (First image) -->
 					<pwImage v-if="block.content.mediatype === 'slideshow'"
-						:src="block.content?.images?.[0]?.url || ''"
-						:srcset="block.content?.images?.[0]?.images?.srcset || ''"
-						:count="Array.isArray(block.content.images) ? block.content.images.length : 0"
+						:src="block.content?.slideshow?.[0]?.url || ''"
+						:srcset="block.content?.slideshow?.[0]?.slideshow?.srcset || ''"
+						:count="Array.isArray(block.content.slideshow) ? block.content.slideshow.length : 0"
 						:size="block.content.mediasize"
 						:radius="block.content.mediaradius"
 						:radiustopleft="block.content.radiustopleft"
@@ -55,7 +55,7 @@
 						:radiusbottomleft="block.content.radiusbottomleft"
 						:radiusbottomright="block.content.radiusbottomright"
 						:alignment="block.content.mediaalignment || fieldDefaults['align-media-' + side]"
-						:image="block.content?.images?.[0] || null"
+						:image="block.content?.slideshow?.[0] || null"
 					/>
 
 					<!-- Video -->
