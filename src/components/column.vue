@@ -9,6 +9,12 @@
 					:alignDefault="fieldDefaults['align-headline-' + side] || 'left'"
 				/>
 
+				<!-- Tagline -->
+				<pwTagline v-if="blockType(block) === 'multicolumntagline'"
+					:content="block.content"
+					:alignDefault="fieldDefaults['align-tagline-' + side] || 'left'"
+				/>
+
 				<!-- Writer -->
 				<pwWriter v-if="blockType(block) === 'multicolumntext'" v-bind="parseEditorValue(block.content.editor)" :class="{ 'ishidden': block.content.isHidden }" />
 
@@ -85,9 +91,10 @@ import pwImage   from '@/../../kirby-pagewizard/src/components/image.vue';
 import pwVideo   from '@/../../kirby-pagewizard/src/components/video.vue';
 import pwHeading from '@/../../kirby-pagewizard/src/components/heading.vue';
 import pwButton  from '@/../../kirby-pagewizard/src/components/button.vue';
+import pwTagline from '@/../../kirby-pagewizard/src/components/tagline.vue';
 
 export default {
-	components: { pwWriter, pwQuote, pwImage, pwVideo, pwHeading, pwButton },
+	components: { pwWriter, pwQuote, pwImage, pwVideo, pwHeading, pwButton, pwTagline },
 	props: {
 		blocks:       { type: Array,  default: () => [] },
 		side:         { type: String, default: 'left' },

@@ -11,7 +11,9 @@
     "media-left":     { "align": "left" },
     "media-right":    { "align": "left" },
     "button-left":    { "align": "left" },
-    "button-right":   { "align": "left" }
+    "button-right":   { "align": "left" },
+    "tagline-left":   { "align": "left" },
+    "tagline-right":  { "align": "left" }
   },
   "layout": {
     "padding-top": "large",

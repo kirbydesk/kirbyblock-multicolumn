@@ -51,7 +51,7 @@ echo ' data-radius-bottom-right="'.$block->radiusbottomright()->value().'"';
 echo ' data-radius-bottom-left="'.$block->radiusbottomleft()->value().'"';
 echo ' data-style="'.$block->theme()->value().'"';
 echo ' data-block-size="'.$block->blocksize()->value().'"';
-e($block->content()->theme()->value() === 'custom' && $block->buttonstyle()->value() === 'variant', ' data-button-style="variant"');
+e($block->content()->theme()->value() === 'custom' && $block->buttonstyle()->value() !== 'default', ' data-button-style="' . $block->buttonstyle()->value() . '"');
 echo $block->fragment()->isNotEmpty() ? ' id="'.$block->fragment()->value().'"' : '';
 echo '>'."\n";
 
@@ -70,15 +70,34 @@ echo '>'."\n";
 // Columns Grid
 echo '<div data-layout="columns" data-dist-sm="'.$block->distributionsm()->value().'" data-dist-md="'.$block->distributionmd()->value().'" data-dist-lg="'.$block->distributionlg()->value().'" data-dist-xl="'.$block->distributionxl()->value().'">'."\n";
 
+// Precompute media sizes hints based on column distribution
+$distParts = fn(string $dist): array => match($dist) {
+	'dist-1-5' => [17, 83],
+	'dist-2-4' => [33, 67],
+	'dist-3-3' => [50, 50],
+	'dist-4-2' => [67, 33],
+	'dist-5-1' => [83, 17],
+	default    => [100, 100],
+};
+$distSm = $distParts($block->distributionsm()->value());
+$distMd = $distParts($block->distributionmd()->value());
+$distLg = $distParts($block->distributionlg()->value());
+$distXl = $distParts($block->distributionxl()->value());
+$mediaSizes = [
+	'left'  => "(min-width: 1280px) {$distXl[0]}vw, (min-width: 1024px) {$distLg[0]}vw, (min-width: 768px) {$distMd[0]}vw, {$distSm[0]}vw",
+	'right' => "(min-width: 1280px) {$distXl[1]}vw, (min-width: 1024px) {$distLg[1]}vw, (min-width: 768px) {$distMd[1]}vw, {$distSm[1]}vw",
+];
+
 	// Left column
 	$items = $block->blocksleft()->toBlocks();
 	if ($items->count() > 0):
 		echo '<div data-layout="column" data-position="'.$block->leftpositionvertical()->value().'">'."\n";
 		foreach ($items as $item):
 			if ($item->type() === 'multicolumnheadlineleft'): snippet('heading', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumntaglineleft'): snippet('tagline', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumntextleft'): snippet('editor', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumnquoteleft'): snippet('quote', ['content' => $item]); endif;
-			if ($item->type() === 'multicolumnmedialeft'): snippet('media', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumnmedialeft'): snippet('media', ['content' => $item, 'sizes' => $mediaSizes['left']]); endif;
 			if ($item->type() === 'multicolumnbuttonleft'): pwMulticolumnButton($item); endif;
 		endforeach;
 		echo '</div>'."\n";
@@ -90,9 +109,10 @@ echo '<div data-layout="columns" data-dist-sm="'.$block->distributionsm()->value
 		echo '<div data-layout="column" data-position="'.$block->rightpositionvertical()->value().'">'."\n";
 		foreach ($items as $item):
 			if ($item->type() === 'multicolumnheadlineright'): snippet('heading', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumntaglineright'): snippet('tagline', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumntextright'): snippet('editor', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumnquoteright'): snippet('quote', ['content' => $item]); endif;
-			if ($item->type() === 'multicolumnmediaright'): snippet('media', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumnmediaright'): snippet('media', ['content' => $item, 'sizes' => $mediaSizes['right']]); endif;
 			if ($item->type() === 'multicolumnbuttonright'): pwMulticolumnButton($item); endif;
 		endforeach;
 		echo '</div>'."\n";

@@ -169,10 +169,12 @@ export default {
 }
 .k-block {
 	&.k-block-type-multicolumnheadlineleft,
+	&.k-block-type-multicolumntaglineleft,
 	&.k-block-type-multicolumntextleft,
 	&.k-block-type-multicolumnquoteleft,
 	&.k-block-type-multicolumnmedialeft,
 	&.k-block-type-multicolumnheadlineright,
+	&.k-block-type-multicolumntaglineright,
 	&.k-block-type-multicolumntextright,
 	&.k-block-type-multicolumnquoteright,
 	&.k-block-type-multicolumnmediaright {

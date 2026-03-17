@@ -255,6 +255,23 @@ return [
 	];
 },
 
+'blocks/multicolumntaglineleft' => function () {
+	$config       = pwConfig::load('pwmulticolumn');
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
+	return [
+		'name'   => 'kirbyblock-multicolumn.sub.tagline',
+		'icon'   => 'tag',
+		'fields' => [
+			'tagline' => [
+				'extends'      => 'pagewizard/fields/tagline',
+				'align'        => $fields['align-tagline-left'],
+				'alignOptions' => $fieldOptions['tagline']['align'] ?? null,
+			],
+		]
+	];
+},
+
 /* ============================================================================
 	Sub-Blocks — Right Column
 ============================================================================ */
@@ -325,6 +342,23 @@ return [
 		'name'   => 'kirbyblock-media.name',
 		'icon'   => 'images',
 		'fields' => pwMulticolumnMediaFields($fields['align-media-right'] ?? null, $fieldOptions['media']['align'] ?? null)
+	];
+},
+
+'blocks/multicolumntaglineright' => function () {
+	$config       = pwConfig::load('pwmulticolumn');
+	$fields       = $config['fields'];
+	$fieldOptions = $config['field-options'];
+	return [
+		'name'   => 'kirbyblock-multicolumn.sub.tagline',
+		'icon'   => 'tag',
+		'fields' => [
+			'tagline' => [
+				'extends'      => 'pagewizard/fields/tagline',
+				'align'        => $fields['align-tagline-right'],
+				'alignOptions' => $fieldOptions['tagline']['align'] ?? null,
+			],
+		]
 	];
 },
 
