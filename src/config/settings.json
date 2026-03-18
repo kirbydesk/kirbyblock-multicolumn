@@ -1,51 +1,71 @@
 {
-  "tabs": {
-  	"layout": true,
-    "style": true,
-    "grid": true,
-    "settings": true
-  },
+	"tabs": { "layout": true, "style": true, "grid": true, "settings": true },
 	"fields": {
-    "content": {
-      "column-blocks": [ "multicolumnheadline", "multicolumntagline", "multicolumntext", "multicolumnquote", "multicolumnmedia", "multicolumnbutton" ],
-      "headline": {
-        "align": [ "left", "center", "right" ],
-        "level": [ "h1", "h2", "h3", "h4" ],
-        "sizes": [ "xs", "sm", "md", "lg", "xl", "2xl", "3xl" ]
-      },
-      "text": {
-        "mode": [ "textarea", "writer" ],
-        "align": [ "left", "center", "right" ],
-        "sizes": [ "normal", "lg", "xl", "2xl", "3xl" ]
-      },
-      "quote": {
-        "align": [ "left", "center", "right" ],
-        "sizes": [ "xs", "sm", "md", "lg", "xl", "2xl", "3xl" ]
-      },
-      "author": {
-        "align": [ "left", "center", "right" ]
-      },
-      "media": {
-        "align": [ "left", "center", "right" ]
-      },
-      "button": {
-        "align": [ "left", "center", "right" ]
-      },
-      "tagline": {
-        "align": [ "left", "center", "right" ]
-      }
-    },
-    "layout": {
-      "padding": true,
-      "radius": true
-    },
-    "style": {
-      "theme": true
-    },
-    "settings": {
-      "fragment": true,
-      "block-size": true,
-      "margin": true
-    }
-  }
+		"content": {
+			"column-blocks": ["multicolumnheadline", "multicolumntagline", "multicolumntext", "multicolumnquote", "multicolumnmedia", "multicolumnbutton"],
+			"headline": {
+				"align": { "options": ["left", "center", "right"], "default": "left" },
+				"level": { "options": ["h1", "h2", "h3", "h4"], "default": "h2" },
+				"sizes": { "options": ["xs", "sm", "md", "lg", "xl", "2xl", "3xl"], "default": "lg" }
+			},
+			"text": {
+				"mode": { "options": ["textarea", "writer"], "default": "textarea" },
+				"align": { "options": ["left", "center", "right"], "default": "left" },
+				"sizes": { "options": ["normal", "lg", "xl", "2xl", "3xl"], "default": "normal" }
+			},
+			"quote": {
+				"align": { "options": ["left", "center", "right"], "default": "left" },
+				"sizes": { "options": ["xs", "sm", "md", "lg", "xl", "2xl", "3xl"], "default": "lg" }
+			},
+			"author": {
+				"align": { "options": ["left", "center", "right"], "default": "left" }
+			},
+			"media": {
+				"align": { "options": ["left", "center", "right"], "default": "left" }
+			},
+			"button": {
+				"align": { "options": ["left", "center", "right"], "default": "left" }
+			},
+			"tagline": {
+				"align": { "options": ["left", "center", "right"], "default": "left" }
+			}
+		},
+		"layout": {
+			"padding": "enabled",
+			"padding-top": { "default": "large" },
+			"padding-bottom": { "default": "large" },
+			"padding-left": { "default": true },
+			"padding-right": { "default": true },
+			"distribution-sm": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "" },
+			"distribution-md": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "dist-3-3" },
+			"distribution-lg": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "dist-3-3" },
+			"distribution-xl": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "dist-3-3" },
+			"vertical-left-position": { "options": ["top", "middle", "bottom"], "default": "top" },
+			"vertical-right-position": { "options": ["top", "middle", "bottom"], "default": "top" },
+			"radius": "enabled",
+			"radius-top-left": { "default": false },
+			"radius-top-right": { "default": false },
+			"radius-bottom-left": { "default": false },
+			"radius-bottom-right": { "default": false }
+		},
+		"style": {
+			"theme": { "options": ["default", "variant", "variant2", "custom"], "required": true, "default": "default" }
+		},
+		"grid": {
+			"grid-size-sm": { "default": 12 },
+			"grid-size-md": { "default": 12 },
+			"grid-size-lg": { "default": 12 },
+			"grid-size-xl": { "default": 12 },
+			"grid-offset-sm": { "default": 0 },
+			"grid-offset-md": { "default": 0 },
+			"grid-offset-lg": { "default": 0 },
+			"grid-offset-xl": { "default": 0 }
+		},
+		"settings": {
+			"fragment": "enabled",
+			"block-size": { "default": "content" },
+			"margin-top": { "default": false },
+			"margin-bottom": { "default": false }
+		}
+	}
 }
