@@ -6,4 +6,6 @@
 	'kirbyblock-multicolumn.sub.media' => 'Media',
 	'kirbyblock-multicolumn.sub.quote' => 'Quote',
 	'kirbyblock-multicolumn.sub.text' => 'Text',
+	'kirbyblock-multicolumn.sub.media' => 'Media',
+	'kirbyblock-multicolumn.sub.button' => 'Button',
 );
