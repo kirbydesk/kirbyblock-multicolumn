@@ -36,12 +36,12 @@
 			"padding-bottom": { "default": "large" },
 			"padding-left": { "default": true },
 			"padding-right": { "default": true },
-			"distribution-sm": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "" },
-			"distribution-md": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "dist-3-3" },
-			"distribution-lg": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "dist-3-3" },
-			"distribution-xl": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "dist-3-3" },
-			"vertical-left-position": { "options": ["top", "middle", "bottom"], "default": "top" },
-			"vertical-right-position": { "options": ["top", "middle", "bottom"], "default": "top" },
+			"columns-sm": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "" },
+			"columns-md": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "dist-3-3" },
+			"columns-lg": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "dist-3-3" },
+			"columns-xl": { "options": ["dist-1-5", "dist-2-4", "dist-3-3", "dist-4-2", "dist-5-1"], "default": "dist-3-3" },
+			"multicolumn-left": { "options": ["top", "middle", "bottom"], "default": "top" },
+			"multicolumn-right": { "options": ["top", "middle", "bottom"], "default": "top" },
 			"radius": "enabled",
 			"radius-top-left": { "default": false },
 			"radius-top-right": { "default": false },
@@ -64,7 +64,7 @@
 		"settings": {
 			"block-size": { "options": ["content", "fullscreen"], "required": true, "fixed": true, "default": "content" },
 			"margin-top": { "default": false },
-			"margin-bottom": { "default": false }
+			"margin-bottom": { "default": true }
 		}
 	}
 }

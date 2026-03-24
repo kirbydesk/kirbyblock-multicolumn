@@ -112,12 +112,12 @@ return [
 			'leftPositionVertical' => [
 				'extends' => 'pagewizard/fields/position-vertical',
 				'help'    => 'pw.field.position-vertical.column.help',
-				'default' => $defaults['vertical-left-position']
+				'default' => $defaults['multicolumn-left']
 			],
 			'rightPositionVertical' => [
 				'extends' => 'pagewizard/fields/position-vertical',
 				'help'    => 'pw.field.position-vertical.column.help',
-				'default' => $defaults['vertical-right-position']
+				'default' => $defaults['multicolumn-right']
 			],
 			'blocksLeft' => [
 				'type'      => 'blocks',
@@ -141,25 +141,25 @@ return [
 			],
 			'distributionSm' => [
 				'extends'  => 'pagewizard/fields/distribution',
-				'default'  => $defaults['distribution-sm'],
+				'default'  => $defaults['columns-sm'],
 				'label'    => 'pw.field.columns.sm',
 				'help'     => 'pw.field.columns.sm.help',
 			],
 			'distributionMd' => [
 				'extends'  => 'pagewizard/fields/distribution',
-				'default'  => $defaults['distribution-md'],
+				'default'  => $defaults['columns-md'],
 				'label'    => 'pw.field.columns.md',
 				'help'     => 'pw.field.columns.md.help',
 			],
 			'distributionLg' => [
 				'extends'  => 'pagewizard/fields/distribution',
-				'default'  => $defaults['distribution-lg'],
+				'default'  => $defaults['columns-lg'],
 				'label'    => 'pw.field.columns.lg',
 				'help'     => 'pw.field.columns.lg.help',
 			],
 			'distributionXl' => [
 				'extends'  => 'pagewizard/fields/distribution',
-				'default'  => $defaults['distribution-xl'],
+				'default'  => $defaults['columns-xl'],
 				'label'    => 'pw.field.columns.xl',
 				'help'     => 'pw.field.columns.xl.help',
 			]
