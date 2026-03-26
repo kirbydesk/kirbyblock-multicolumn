@@ -196,9 +196,9 @@ return [
 		'fields' => [
 			'heading' => [
 				'extends'      => 'pagewizard/fields/heading',
-				'align'        => $fields['align-headline-left'],
-				'level'        => $fields['level-headline-left'] ?? null,
-				'size'         => $fields['size-headline-left'] ?? null,
+				'align'        => $fields['align-headline-left'] ?? $fields['align-headline'] ?? null,
+				'level'        => $fields['level-headline-left'] ?? $fields['level-headline'] ?? null,
+				'size'         => $fields['size-headline-left'] ?? $fields['size-headline'] ?? null,
 				'sizeOptions'  => $fieldOptions['headline']['sizes'] ?? null,
 				'alignOptions' => $fieldOptions['headline']['align'] ?? null,
 				'levelOptions' => $fieldOptions['headline']['level'] ?? null,
@@ -265,7 +265,7 @@ return [
 		'fields' => [
 			'tagline' => [
 				'extends'      => 'pagewizard/fields/tagline',
-				'align'        => $fields['align-tagline-left'],
+				'align'        => $fields['align-tagline-left'] ?? $fields['align-tagline'] ?? null,
 				'alignOptions' => $fieldOptions['tagline']['align'] ?? null,
 			],
 		]
@@ -286,9 +286,9 @@ return [
 		'fields' => [
 			'heading' => [
 				'extends'      => 'pagewizard/fields/heading',
-				'align'        => $fields['align-headline-right'],
-				'level'        => $fields['level-headline-right'] ?? null,
-				'size'         => $fields['size-headline-right'] ?? null,
+				'align'        => $fields['align-headline-right'] ?? $fields['align-headline'] ?? null,
+				'level'        => $fields['level-headline-right'] ?? $fields['level-headline'] ?? null,
+				'size'         => $fields['size-headline-right'] ?? $fields['size-headline'] ?? null,
 				'sizeOptions'  => $fieldOptions['headline']['sizes'] ?? null,
 				'alignOptions' => $fieldOptions['headline']['align'] ?? null,
 				'levelOptions' => $fieldOptions['headline']['level'] ?? null,
@@ -355,7 +355,7 @@ return [
 		'fields' => [
 			'tagline' => [
 				'extends'      => 'pagewizard/fields/tagline',
-				'align'        => $fields['align-tagline-right'],
+				'align'        => $fields['align-tagline-right'] ?? $fields['align-tagline'] ?? null,
 				'alignOptions' => $fieldOptions['tagline']['align'] ?? null,
 			],
 		]
