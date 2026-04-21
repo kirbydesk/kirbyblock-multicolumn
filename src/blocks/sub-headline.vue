@@ -4,6 +4,7 @@
 			:content="content"
 			:alignDefault="subFieldDefaults?.['align-headline-' + subSide] || 'left'"
 			:sizeDefault="subFieldDefaults?.['size-headline-' + subSide] || null"
+			:textbackgroundDefault="subFieldDefaults?.['textbackground-headline-' + subSide] || null"
 		/>
 	</div>
 </template>

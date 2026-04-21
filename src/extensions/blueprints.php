@@ -202,6 +202,8 @@ return [
 				'sizeOptions'  => $fieldOptions['headline']['sizes'] ?? null,
 				'alignOptions' => $fieldOptions['headline']['align'] ?? null,
 				'levelOptions' => $fieldOptions['headline']['level'] ?? null,
+				'textbackground'        => $fields['textbackground-headline-left'] ?? $fields['textbackground-headline'] ?? null,
+				'textbackgroundOptions' => $fieldOptions['headline']['textbackground'] ?? null,
 			],
 		]
 	];
@@ -292,6 +294,8 @@ return [
 				'sizeOptions'  => $fieldOptions['headline']['sizes'] ?? null,
 				'alignOptions' => $fieldOptions['headline']['align'] ?? null,
 				'levelOptions' => $fieldOptions['headline']['level'] ?? null,
+				'textbackground'        => $fields['textbackground-headline-right'] ?? $fields['textbackground-headline'] ?? null,
+				'textbackgroundOptions' => $fieldOptions['headline']['textbackground'] ?? null,
 			],
 		]
 	];

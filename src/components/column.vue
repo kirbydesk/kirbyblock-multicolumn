@@ -7,6 +7,7 @@
 				<pwHeading v-if="blockType(block) === 'multicolumnheadline'"
 					:content="block.content"
 					:alignDefault="fieldDefaults['align-headline-' + side] || 'left'"
+					:textbackgroundDefault="fieldDefaults['textbackground-headline-' + side] || null"
 				/>
 
 				<!-- Tagline -->
