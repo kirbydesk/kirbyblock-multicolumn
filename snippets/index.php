@@ -26,46 +26,12 @@ function pwMulticolumnButton($item): void {
 }
 }
 
-// Custom CSS
-if ($block->content()->theme()->value() === 'custom'):
-	snippet('customcss', [
-		'blockid' => 'b'.$block->id(),
-		'textcolor' => $block->content()->textcolor()->value(),
-		'backgroundcolor' => $block->content()->backgroundcolor()->value()
-	]);
-endif;
+// Custom Background
+pwSnippet::customCss($block);
 
-// Section
-echo '<section';
-echo ' data-block="multicolumn"';
-echo ' data-block-id="b'.$block->id().'"';
-echo ' data-margin-top="'.($block->margintop()->toBool() ? 'true' : 'false').'"';
-echo ' data-margin-bottom="'.($block->marginbottom()->toBool() ? 'true' : 'false').'"';
-echo ' data-padding-top="'.$block->paddingtop()->value().'"';
-echo ' data-padding-right="'.($block->paddingright()->toBool() ? 'true' : 'false').'"';
-echo ' data-padding-bottom="'.$block->paddingbottom()->value().'"';
-echo ' data-padding-left="'.($block->paddingleft()->toBool() ? 'true' : 'false').'"';
-echo ' data-radius-top-left="'.($block->radiustopleft()->toBool() ? 'true' : 'false').'"';
-echo ' data-radius-top-right="'.($block->radiustopright()->toBool() ? 'true' : 'false').'"';
-echo ' data-radius-bottom-right="'.($block->radiusbottomright()->toBool() ? 'true' : 'false').'"';
-echo ' data-radius-bottom-left="'.($block->radiusbottomleft()->toBool() ? 'true' : 'false').'"';
-echo ' data-style="'.$block->theme()->value().'"';
-echo ' data-block-size="'.$block->blocksize()->value().'"';
-e($block->content()->theme()->value() === 'custom' && $block->buttonstyle()->value() !== 'default', ' data-button-style="' . $block->buttonstyle()->value() . '"');
-echo $block->fragment()->isNotEmpty() ? ' id="'.$block->fragment()->value().'"' : '';
-echo '>'."\n";
-
-// Grid
-echo '<div data-layout="grid"><div data-layout="grid-item"';
-echo ' data-grid-size-sm="'.$block->gridsizesm()->value().'"';
-echo ' data-grid-size-md="'.$block->gridsizemd()->value().'"';
-echo ' data-grid-size-lg="'.$block->gridsizelg()->value().'"';
-echo ' data-grid-size-xl="'.$block->gridsizexl()->value().'"';
-echo ' data-grid-offset-sm="'.$block->gridoffsetsm()->value().'"';
-echo ' data-grid-offset-md="'.$block->gridoffsetmd()->value().'"';
-echo ' data-grid-offset-lg="'.$block->gridoffsetlg()->value().'"';
-echo ' data-grid-offset-xl="'.$block->gridoffsetxl()->value().'"';
-echo '>'."\n";
+// Section + Grid open
+echo pwSnippet::sectionOpen('multicolumn', $block, $settings);
+echo pwSnippet::gridOpen($block);
 
 // Columns Grid
 echo '<div data-layout="columns" data-dist-sm="'.$block->distributionsm()->value().'" data-dist-md="'.$block->distributionmd()->value().'" data-dist-lg="'.$block->distributionlg()->value().'" data-dist-xl="'.$block->distributionxl()->value().'">'."\n";
@@ -119,5 +85,7 @@ $mediaSizes = [
 	endif;
 
 echo '</div>'."\n"; // End Columns Grid
-echo '</div></div>'."\n"; // End Grid
-echo '</section>'."\n";
+
+// Close
+echo pwSnippet::gridClose();
+echo pwSnippet::sectionClose();
