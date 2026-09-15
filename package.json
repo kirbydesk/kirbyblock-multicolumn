@@ -1,4 +1,6 @@
 {
 	"name": "kirbyblock-multicolumn",
+	"description": "Multi column",
+	"icon": "layout-columns",
 	"version": "1.0.3"
 }
