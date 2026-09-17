@@ -4,6 +4,23 @@
 $config   = pwConfig::load('pwmulticolumn');
 $settings = $config['content'];
 
+// Helper: render single list sub-block
+if (!function_exists('pwMulticolumnList')) {
+function pwMulticolumnList($item): void {
+	$items = $item->items()->toStructure();
+	if ($items->count() === 0) return;
+	$style = $item->liststyle()->isNotEmpty() ? $item->liststyle()->value() : 'bullet';
+	$align = $item->listalignment()->isNotEmpty() ? $item->listalignment()->value() : 'left';
+	$size  = $item->listsize()->isNotEmpty() ? $item->listsize()->value() : 'normal';
+	$tag   = $style === 'ordered' ? 'ol' : 'ul';
+	echo '<'.$tag.' data-field="list" data-style="'.$style.'" data-align="'.$align.'" data-editor-size="'.$size.'">'."\n";
+	foreach ($items as $li):
+		echo '<li>'.htmlspecialchars($li->text()->value(), ENT_QUOTES).'</li>'."\n";
+	endforeach;
+	echo '</'.$tag.'>'."\n";
+}
+}
+
 // Helper: render single button sub-block
 if (!function_exists('pwMulticolumnButton')) {
 function pwMulticolumnButton($item): void {
@@ -18,6 +35,9 @@ function pwMulticolumnButton($item): void {
 		'linkRel'         => $item->linkrel()->value(),
 		'ariaLabel'       => $item->arialabel()->value(),
 		'ariaDescribedby' => $item->ariadescribedby()->value(),
+		'icon'            => $item->icon()->value(),
+		'iconPosition'    => $item->iconposition()->value(),
+		'iconColor'       => $item->iconcolor()->value(),
 	]);
 	$linkHtml = ob_get_clean();
 	if ($linkHtml) {
@@ -62,6 +82,7 @@ $mediaSizes = [
 			if ($item->type() === 'multicolumnheadlineleft'): snippet('heading', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumntaglineleft'): snippet('tagline', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumntextleft'): snippet('editor', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumnlistleft'): pwMulticolumnList($item); endif;
 			if ($item->type() === 'multicolumnquoteleft'): snippet('quote', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumnmedialeft'): snippet('media', ['content' => $item, 'sizes' => $mediaSizes['left']]); endif;
 			if ($item->type() === 'multicolumnbuttonleft'): pwMulticolumnButton($item); endif;
@@ -77,6 +98,7 @@ $mediaSizes = [
 			if ($item->type() === 'multicolumnheadlineright'): snippet('heading', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumntaglineright'): snippet('tagline', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumntextright'): snippet('editor', ['content' => $item]); endif;
+			if ($item->type() === 'multicolumnlistright'): pwMulticolumnList($item); endif;
 			if ($item->type() === 'multicolumnquoteright'): snippet('quote', ['content' => $item]); endif;
 			if ($item->type() === 'multicolumnmediaright'): snippet('media', ['content' => $item, 'sizes' => $mediaSizes['right']]); endif;
 			if ($item->type() === 'multicolumnbuttonright'): pwMulticolumnButton($item); endif;

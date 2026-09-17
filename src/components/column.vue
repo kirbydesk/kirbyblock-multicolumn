@@ -19,6 +19,18 @@
 				<!-- Writer -->
 				<pwWriter v-if="blockType(block) === 'multicolumntext'" v-bind="parseEditorValue(block.content.editor)" :class="{ 'ishidden': block.content.isHidden }" />
 
+				<!-- List -->
+				<component
+					v-if="blockType(block) === 'multicolumnlist' && parseListItems(block.content.items).length"
+					:is="block.content.liststyle === 'ordered' ? 'ol' : 'ul'"
+					data-field="list"
+					:data-style="block.content.liststyle || 'bullet'"
+					:data-align="block.content.listalignment || 'left'"
+					:data-editor-size="block.content.listsize || 'normal'"
+				>
+					<li v-for="(li, idx) in parseListItems(block.content.items)" :key="idx">{{ li.text }}</li>
+				</component>
+
 				<!-- Quote -->
 				<pwQuote v-if="blockType(block) === 'multicolumnquote'"
 					:quote="block.content.quote"
@@ -105,6 +117,16 @@ export default {
 	methods: {
 		blockType(block) {
 			return block.type.replace(/left$|right$/, '');
+		},
+		parseListItems(raw) {
+			if (!raw) return [];
+			if (Array.isArray(raw)) return raw;
+			try {
+				const d = JSON.parse(raw);
+				return Array.isArray(d) ? d : [];
+			} catch(e) {
+				return [];
+			}
 		},
 		parseEditorValue(raw) {
 			const alignDefault = this.fieldDefaults['align-text-' + this.side] || 'left';

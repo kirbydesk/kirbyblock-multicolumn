@@ -62,11 +62,11 @@ $sub = function (string $side) {
 			$fieldOptions = $config['field-options'];
 			$textSettings = ['editor' => $settings['text'] ?? ['writer']];
 			$field = pwEditor::contentField($editor['text'] ?? [], $textSettings);
-			$field['align']        = $fields['align-text-' . $side] ?? null;
-			$field['size']         = $fields['size-text-'  . $side] ?? null;
+			$field['align']        = $fields['align-text-' . $side] ?? $fields['align-text'] ?? null;
+			$field['size']         = $fields['size-text-'  . $side] ?? $fields['size-text']  ?? null;
 			$field['alignOptions'] = $fieldOptions['text']['align']  ?? null;
 			$field['sizeOptions']  = $fieldOptions['text']['sizes']  ?? null;
-			$field['defaultMode']  = $fields['mode-text-' . $side]   ?? null;
+			$field['defaultMode']  = $fields['mode-text-' . $side]   ?? $fields['mode-text'] ?? null;
 			return ['name' => 'kirbyblock-text.name', 'icon' => 'text', 'fields' => ['editor' => $field]];
 		},
 		'quote' => function () use ($side) {
@@ -114,6 +114,56 @@ $sub = function (string $side) {
 				],
 			];
 		},
+		'list' => function () use ($side) {
+			$config       = pwConfig::load('pwmulticolumn');
+			$fields       = $config['fields'];
+			$fieldOptions = $config['field-options'];
+			$alignOptions = array_map(fn($v) => ['value' => $v, 'icon' => 'text-' . $v, 'text' => ''], $fieldOptions['list']['align'] ?? ['left', 'center', 'right']);
+			return [
+				'name'   => 'kirbyblock-multicolumn.sub.list',
+				'icon'   => 'menu',
+				'fields' => [
+					'items' => [
+						'label'  => 'pw.field.list.items',
+						'type'   => 'structure',
+						'fields' => [
+							'text' => [
+								'label' => 'pw.field.list.item',
+								'type'  => 'text',
+							],
+						],
+					],
+					'listStyle' => [
+						'type'    => 'toggles',
+						'label'   => 'pw.field.list.style',
+						'default' => $fields['style-list-' . $side] ?? 'bullet',
+						'options' => array_map(fn($v) => [
+							'value' => $v,
+							'icon'  => ['bullet' => 'list-bullet', 'ordered' => 'list-numbers', 'none' => 'cancel'][$v] ?? 'circle',
+							'text'  => t('pw.field.list.style.' . $v, ucfirst($v)),
+						], $fieldOptions['list']['style'] ?? ['bullet', 'ordered', 'none']),
+						'width'   => '1/2',
+					],
+					'listAlignment' => [
+						'type'    => 'toggles',
+						'label'   => 'pw.field.position-horizontal.label',
+						'labels'  => false,
+						'default' => $fields['align-list-' . $side] ?? 'left',
+						'options' => $alignOptions,
+						'width'   => '1/2',
+					],
+					'listSize' => [
+						'type'    => 'toggles',
+						'label'   => 'pw.field.list.size',
+						'default' => $fields['size-list-' . $side] ?? 'normal',
+						'options' => array_map(fn($v) => [
+							'value' => $v,
+							'text'  => t('pw.option.' . $v, $v),
+						], $fieldOptions['list']['sizes'] ?? ['normal', 'lg', 'xl', '2xl', '3xl']),
+					],
+				],
+			];
+		},
 		'button' => function () use ($side) {
 			$config       = pwConfig::load('pwmulticolumn');
 			$fields       = $config['fields'];
@@ -130,13 +180,34 @@ $sub = function (string $side) {
 					'linkTarget'      => ['extends' => 'pagewizard/fields/link-target',   'when' => ['linkType' => true]],
 					'linkRel'         => ['extends' => 'pagewizard/fields/link-rel',      'when' => ['linkType' => true, 'linkTarget' => true]],
 					'linkText'        => ['extends' => 'pagewizard/fields/link-text',     'width' => '3/4'],
+					'iconPosition' => [
+						'label'   => 'pw.field.button.icon-position',
+						'type'    => 'toggles',
+						'options' => [
+							['value' => 'left',  'icon' => 'chevron-left',  'text' => t('pw.field.button.icon-position.left',  'Icon left of text')],
+							['value' => 'right', 'icon' => 'chevron-right', 'text' => t('pw.field.button.icon-position.right', 'Icon right of text')],
+						],
+						'width'   => '1/4',
+					],
 					'buttonAlignment' => [
 						'type'    => 'toggles',
 						'label'   => 'pw.field.position-horizontal.label',
 						'labels'  => false,
 						'default' => $fields['align-button-' . $side] ?? 'left',
 						'options' => $alignOptions,
-						'width'   => '1/4',
+					],
+					'icon' => [
+						'label' => 'pw.field.button.icon',
+						'type'  => 'pwicon',
+						'when'  => ['iconPosition' => true],
+						'width' => '1/2',
+					],
+					'iconColor' => [
+						'label'       => 'pw.field.button.icon-color',
+						'type'        => 'text',
+						'placeholder' => 'currentColor',
+						'when'        => ['iconPosition' => true],
+						'width'       => '1/2',
 					],
 					'ariaLabel'       => ['extends' => 'pagewizard/fields/link-aria-label'],
 					'ariaDescribedby' => ['extends' => 'pagewizard/fields/link-aria-describedby'],
@@ -231,6 +302,7 @@ return [
 
 	'blocks/multicolumnheadlineleft' => $left['headline'],
 	'blocks/multicolumntextleft'     => $left['text'],
+	'blocks/multicolumnlistleft'     => $left['list'],
 	'blocks/multicolumnquoteleft'    => $left['quote'],
 	'blocks/multicolumnmedialeft'    => $left['media'],
 	'blocks/multicolumntaglineleft'  => $left['tagline'],
@@ -242,6 +314,7 @@ return [
 
 	'blocks/multicolumnheadlineright' => $right['headline'],
 	'blocks/multicolumntextright'     => $right['text'],
+	'blocks/multicolumnlistright'     => $right['list'],
 	'blocks/multicolumnquoteright'    => $right['quote'],
 	'blocks/multicolumnmediaright'    => $right['media'],
 	'blocks/multicolumntaglineright'  => $right['tagline'],

@@ -2,6 +2,7 @@
 import pwmulticolumn         from "@/blocks/index.vue";
 import pwmulticolumnHeadline from "@/blocks/sub-headline.vue";
 import pwmulticolumnText     from "@/blocks/sub-text.vue";
+import pwmulticolumnList     from "@/blocks/sub-list.vue";
 import pwmulticolumnQuote    from "@/blocks/sub-quote.vue";
 import pwmulticolumnMedia    from "@/blocks/sub-media.vue";
 import pwmulticolumnButton   from "@/blocks/sub-button.vue";
@@ -15,6 +16,8 @@ panel.plugin("kirbydesk/kirbyblock-multicolumn", {
 		multicolumnheadlineright: pwmulticolumnHeadline,
 		multicolumntextleft:      pwmulticolumnText,
 		multicolumntextright:     pwmulticolumnText,
+		multicolumnlistleft:      pwmulticolumnList,
+		multicolumnlistright:     pwmulticolumnList,
 		multicolumnquoteleft:     pwmulticolumnQuote,
 		multicolumnquoteright:    pwmulticolumnQuote,
 		multicolumnmedialeft:     pwmulticolumnMedia,

@@ -14,13 +14,14 @@ export default {
 		parsedContent() {
 			const raw = this.content.editor;
 			const alignDefault = this.subFieldDefaults?.['align-text-' + this.subSide] || 'left';
-			if (!raw) return { value: '', align: alignDefault };
+			const sizeDefault  = this.subFieldDefaults?.['size-text-' + this.subSide] || null;
+			if (!raw) return { value: '', align: alignDefault, size: sizeDefault };
 			try {
 				const d = JSON.parse(raw);
 				const value = d.mode ? (d[d.mode] || '') : (d.writer || d.textarea || d.markdown || '');
-				return { value, align: d.align || alignDefault };
+				return { value, align: d.align || alignDefault, size: d.size || sizeDefault };
 			} catch(e) {
-				return { value: raw, align: alignDefault };
+				return { value: raw, align: alignDefault, size: sizeDefault };
 			}
 		}
 	}

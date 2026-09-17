@@ -169,15 +169,34 @@ export default {
 	.pwColumn[data-vertical="middle"] { align-self: center; }
 	.pwColumn[data-vertical="bottom"] { align-self: end; }
 }
+[data-kirbyblock="multicolumn"] [data-field="list"] {
+	list-style-position: inside;
+	padding-left: 0;
+	margin: 0;
+}
+[data-kirbyblock="multicolumn"] [data-field="list"][data-style="bullet"]  { list-style-type: disc; }
+[data-kirbyblock="multicolumn"] [data-field="list"][data-style="ordered"] { list-style-type: decimal; }
+[data-kirbyblock="multicolumn"] [data-field="list"][data-style="none"]    { list-style-type: none; }
+[data-kirbyblock="multicolumn"] [data-field="list"][data-align="left"]    { text-align: left; }
+[data-kirbyblock="multicolumn"] [data-field="list"][data-align="center"]  { text-align: center; }
+[data-kirbyblock="multicolumn"] [data-field="list"][data-align="right"]   { text-align: right; }
+[data-kirbyblock="multicolumn"] [data-field="list"][data-editor-size="normal"] { font-size: var(--text-sm); }
+[data-kirbyblock="multicolumn"] [data-field="list"][data-editor-size="lg"]     { font-size: var(--text-lg); }
+[data-kirbyblock="multicolumn"] [data-field="list"][data-editor-size="xl"]     { font-size: var(--text-xl); }
+[data-kirbyblock="multicolumn"] [data-field="list"][data-editor-size="2xl"]    { font-size: var(--text-2xl); }
+[data-kirbyblock="multicolumn"] [data-field="list"][data-editor-size="3xl"]    { font-size: var(--text-3xl); }
+[data-kirbyblock="multicolumn"] [data-field="list"] > li { padding: 0.15em 0; }
 .k-block {
 	&.k-block-type-multicolumnheadlineleft,
 	&.k-block-type-multicolumntaglineleft,
 	&.k-block-type-multicolumntextleft,
+	&.k-block-type-multicolumnlistleft,
 	&.k-block-type-multicolumnquoteleft,
 	&.k-block-type-multicolumnmedialeft,
 	&.k-block-type-multicolumnheadlineright,
 	&.k-block-type-multicolumntaglineright,
 	&.k-block-type-multicolumntextright,
+	&.k-block-type-multicolumnlistright,
 	&.k-block-type-multicolumnquoteright,
 	&.k-block-type-multicolumnmediaright {
 		padding: 10px;

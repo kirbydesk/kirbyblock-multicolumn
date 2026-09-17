@@ -6,6 +6,12 @@ section[data-block="multicolumn"] {
 
 		div[data-layout="column"]{
 
+			/* Generic fallback spacing between any two children (1rem).
+			   Specific rules below override to 2rem where a bigger gap is desired. */
+			> * + * {
+				margin-top: 1rem;
+			}
+
 			[data-field="heading"] {
 				+ [data-field="heading"] {
 					margin-top: 1rem;
@@ -151,3 +157,16 @@ section[data-block="multicolumn"] {
 		&[data-dist-xl="dist-5-1"] { grid-template-columns: 5fr 1fr; }
 	}
 }
+/* List sub-block */
+section[data-block="multicolumn"] [data-field="list"] {
+	list-style-position: inside;
+	padding-left: 0;
+	margin: 0;
+}
+section[data-block="multicolumn"] [data-field="list"][data-style="bullet"]  { list-style-type: disc; }
+section[data-block="multicolumn"] [data-field="list"][data-style="ordered"] { list-style-type: decimal; }
+section[data-block="multicolumn"] [data-field="list"][data-style="none"]    { list-style-type: none; }
+section[data-block="multicolumn"] [data-field="list"][data-align="left"]    { text-align: left; }
+section[data-block="multicolumn"] [data-field="list"][data-align="center"]  { text-align: center; }
+section[data-block="multicolumn"] [data-field="list"][data-align="right"]   { text-align: right; }
+section[data-block="multicolumn"] [data-field="list"] > li { padding: 0.15em 0; }
