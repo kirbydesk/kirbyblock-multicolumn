@@ -10,7 +10,7 @@
 		>
 			<li v-for="(li, idx) in items" :key="idx">{{ li.text }}</li>
 		</component>
-		<div v-else class="placeholder">List (empty)</div>
+		<div v-else class="placeholder">{{ $t('kirbyblock-multicolumn.sub.list.empty') }}</div>
 	</div>
 </template>
 
