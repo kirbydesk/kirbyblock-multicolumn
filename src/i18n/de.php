@@ -1,6 +1,7 @@
 <?php return array(
 
 	'kirbyblock-multicolumn.name' => 'Mehrspaltig',
+	'kirbyblock-multicolumn.ai' => 'Zwei Spalten nebeneinander, jeweils mit kleineren Elementen (Überschrift, Tagline, Text, Liste, Zitat). Für die Gegenüberstellung oder Kombination zweier Aspekte, z. B. Text auf der einen und eine kurze Liste auf der anderen Seite.',
 	'kirbyblock-multicolumn.sub.headline' => 'Überschrift',
 	'kirbyblock-multicolumn.sub.tagline' => 'Tagline',
 	'kirbyblock-multicolumn.sub.list' => 'Liste',
