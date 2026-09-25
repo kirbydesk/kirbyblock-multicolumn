@@ -50,6 +50,8 @@ $sub = function (string $side) {
 						'levelOptions' => $fieldOptions['headline']['level'] ?? null,
 						'textbackground'        => $fields['textbackground-headline-' . $side] ?? $fields['textbackground-headline'] ?? null,
 						'textbackgroundOptions' => $fieldOptions['headline']['textbackground'] ?? null,
+						'flourish'              => $fields['flourish-headline-' . $side] ?? $fields['flourish-headline'] ?? null,
+						'flourishOptions'       => $fieldOptions['headline']['flourish'] ?? null,
 					],
 				],
 			];
@@ -79,12 +81,12 @@ $sub = function (string $side) {
 				'fields' => [
 					'quote'  => [
 						'extends'      => 'pagewizard/fields/quote',
-						'align'        => $fields['align-quote-' . $side] ?? null,
-						'size'         => $fields['size-quote-'  . $side] ?? null,
+						'align'        => $fields['align-quote-' . $side] ?? $fields['align-quote'] ?? null,
+						'size'         => $fields['size-quote-'  . $side] ?? $fields['size-quote'] ?? null,
 						'sizeOptions'  => $fieldOptions['quote']['sizes'] ?? null,
 						'alignOptions' => $fieldOptions['quote']['align'] ?? null,
 					],
-					'author' => ['extends' => 'pagewizard/fields/author', 'align' => $fields['align-author-' . $side] ?? null],
+					'author' => ['extends' => 'pagewizard/fields/author', 'align' => $fields['align-author-' . $side] ?? $fields['align-author'] ?? null],
 				],
 			];
 		},
@@ -95,7 +97,7 @@ $sub = function (string $side) {
 			return [
 				'name'   => 'kirbyblock-media.name',
 				'icon'   => 'images',
-				'fields' => pwMulticolumnMediaFields($fields['align-media-' . $side] ?? null, $fieldOptions['media']['align'] ?? null),
+				'fields' => pwMulticolumnMediaFields($fields['align-media-' . $side] ?? $fields['align-media'] ?? null, $fieldOptions['media']['align'] ?? null),
 			];
 		},
 		'tagline' => function () use ($side) {
@@ -136,7 +138,7 @@ $sub = function (string $side) {
 					'listStyle' => [
 						'type'    => 'toggles',
 						'label'   => 'pw.field.list.style',
-						'default' => $fields['style-list-' . $side] ?? 'bullet',
+						'default' => $fields['style-list-' . $side] ?? $fields['style-list'] ?? 'bullet',
 						'options' => array_map(fn($v) => [
 							'value' => $v,
 							'icon'  => ['bullet' => 'list-bullet', 'ordered' => 'list-numbers', 'none' => 'cancel'][$v] ?? 'circle',
@@ -148,14 +150,14 @@ $sub = function (string $side) {
 						'type'    => 'toggles',
 						'label'   => 'pw.field.position-horizontal.label',
 						'labels'  => false,
-						'default' => $fields['align-list-' . $side] ?? 'left',
+						'default' => $fields['align-list-' . $side] ?? $fields['align-list'] ?? 'left',
 						'options' => $alignOptions,
 						'width'   => '1/2',
 					],
 					'listSize' => [
 						'type'    => 'toggles',
 						'label'   => 'pw.field.list.size',
-						'default' => $fields['size-list-' . $side] ?? 'normal',
+						'default' => $fields['size-list-' . $side] ?? $fields['size-list'] ?? 'normal',
 						'options' => array_map(fn($v) => [
 							'value' => $v,
 							'text'  => t('pw.option.' . $v, $v),
@@ -205,7 +207,7 @@ $sub = function (string $side) {
 						'type'    => 'toggles',
 						'label'   => 'pw.field.position-horizontal.label',
 						'labels'  => false,
-						'default' => $fields['align-button-' . $side] ?? 'left',
+						'default' => $fields['align-button-' . $side] ?? $fields['align-button'] ?? 'left',
 						'options' => $alignOptions,
 					],
 					'ariaLabel'       => ['extends' => 'pagewizard/fields/link-aria-label'],

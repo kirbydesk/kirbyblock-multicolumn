@@ -6,14 +6,14 @@
 				<!-- Headline -->
 				<pwHeading v-if="blockType(block) === 'multicolumnheadline'"
 					:content="block.content"
-					:alignDefault="fieldDefaults['align-headline-' + side] || 'left'"
-					:textbackgroundDefault="fieldDefaults['textbackground-headline-' + side] || null"
+					:alignDefault="(fieldDefaults['align-headline-' + side] ?? fieldDefaults['align-headline']) || 'left'"
+					:textbackgroundDefault="(fieldDefaults['textbackground-headline-' + side] ?? fieldDefaults['textbackground-headline']) || null"
 				/>
 
 				<!-- Tagline -->
 				<pwTagline v-if="blockType(block) === 'multicolumntagline'"
 					:content="block.content"
-					:alignDefault="fieldDefaults['align-tagline-' + side] || 'left'"
+					:alignDefault="(fieldDefaults['align-tagline-' + side] ?? fieldDefaults['align-tagline']) || 'left'"
 				/>
 
 				<!-- Writer -->
@@ -35,14 +35,14 @@
 				<pwQuote v-if="blockType(block) === 'multicolumnquote'"
 					:quote="block.content.quote"
 					:author="block.content.author"
-					:alignQuoteDefault="fieldDefaults['align-quote-' + side] || 'left'"
-					:alignAuthorDefault="fieldDefaults['align-author-' + side] || 'left'"
+					:alignQuoteDefault="(fieldDefaults['align-quote-' + side] ?? fieldDefaults['align-quote']) || 'left'"
+					:alignAuthorDefault="(fieldDefaults['align-author-' + side] ?? fieldDefaults['align-author']) || 'left'"
 				/>
 
 				<!-- Button -->
 				<pwButton v-if="blockType(block) === 'multicolumnbutton'"
 					:content="block.content"
-					:alignDefault="fieldDefaults['align-button-' + side] || 'left'"
+					:alignDefault="(fieldDefaults['align-button-' + side] ?? fieldDefaults['align-button']) || 'left'"
 				/>
 
 				<!-- Media -->
@@ -58,7 +58,7 @@
 						:radiustopright="block.content.radiustopright"
 						:radiusbottomleft="block.content.radiusbottomleft"
 						:radiusbottomright="block.content.radiusbottomright"
-						:alignment="block.content.mediaalignment || fieldDefaults['align-media-' + side]"
+						:alignment="block.content.mediaalignment || (fieldDefaults['align-media-' + side] ?? fieldDefaults['align-media'])"
 						:image="block.content?.image?.[0] || null"
 					/>
 
@@ -73,7 +73,7 @@
 						:radiustopright="block.content.radiustopright"
 						:radiusbottomleft="block.content.radiusbottomleft"
 						:radiusbottomright="block.content.radiusbottomright"
-						:alignment="block.content.mediaalignment || fieldDefaults['align-media-' + side]"
+						:alignment="block.content.mediaalignment || (fieldDefaults['align-media-' + side] ?? fieldDefaults['align-media'])"
 						:image="block.content?.slideshow?.[0] || null"
 					/>
 
@@ -87,7 +87,7 @@
 						:radiustopright="block.content.radiustopright"
 						:radiusbottomleft="block.content.radiusbottomleft"
 						:radiusbottomright="block.content.radiusbottomright"
-						:alignment="block.content.mediaalignment || fieldDefaults['align-media-' + side]"
+						:alignment="block.content.mediaalignment || (fieldDefaults['align-media-' + side] ?? fieldDefaults['align-media'])"
 						:video="block.content?.video?.[0] || null"
 					/>
 
@@ -129,7 +129,7 @@ export default {
 			}
 		},
 		parseEditorValue(raw) {
-			const alignDefault = this.fieldDefaults['align-text-' + this.side] || 'left';
+			const alignDefault = (this.fieldDefaults['align-text-' + this.side] ?? this.fieldDefaults['align-text']) || 'left';
 			if (!raw) return { value: '', align: alignDefault, size: null };
 			try {
 				const d = JSON.parse(raw);
