@@ -15,6 +15,4 @@
 	'pw.field.list.style.none' => 'Ohne',
 	'pw.field.list.size' => 'Größe',
 
-	'pw.field.button.icon-position.left' => 'Icon links vom Text',
-	'pw.field.button.icon-position.right' => 'Icon rechts vom Text',
 );

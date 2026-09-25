@@ -181,13 +181,25 @@ $sub = function (string $side) {
 					'linkRel'         => ['extends' => 'pagewizard/fields/link-rel',      'when' => ['linkType' => true, 'linkTarget' => true]],
 					'linkText'        => ['extends' => 'pagewizard/fields/link-text',     'width' => '3/4'],
 					'iconPosition' => [
-						'label'   => 'pw.field.button.icon-position',
+						'label'   => 'pw.field.button.icon',
+						'help'    => 'pw.field.button.icon.help',
 						'type'    => 'toggles',
+						'labels'  => false,
 						'options' => [
-							['value' => 'left',  'icon' => 'chevron-left',  'text' => t('pw.field.button.icon-position.left',  'Icon left of text')],
-							['value' => 'right', 'icon' => 'chevron-right', 'text' => t('pw.field.button.icon-position.right', 'Icon right of text')],
+							['value' => 'left',  'icon' => 'text-left'],
+							['value' => 'right', 'icon' => 'text-right'],
 						],
 						'width'   => '1/4',
+					],
+					'iconLeft' => [
+						'label' => 'pw.field.button.icon.search',
+						'type'  => 'pwicon',
+						'when'  => ['iconPosition' => 'left'],
+					],
+					'iconRight' => [
+						'label' => 'pw.field.button.icon.search',
+						'type'  => 'pwicon',
+						'when'  => ['iconPosition' => 'right'],
 					],
 					'buttonAlignment' => [
 						'type'    => 'toggles',
@@ -195,19 +207,6 @@ $sub = function (string $side) {
 						'labels'  => false,
 						'default' => $fields['align-button-' . $side] ?? 'left',
 						'options' => $alignOptions,
-					],
-					'icon' => [
-						'label' => 'pw.field.button.icon',
-						'type'  => 'pwicon',
-						'when'  => ['iconPosition' => true],
-						'width' => '1/2',
-					],
-					'iconColor' => [
-						'label'       => 'pw.field.button.icon-color',
-						'type'        => 'text',
-						'placeholder' => 'currentColor',
-						'when'        => ['iconPosition' => true],
-						'width'       => '1/2',
 					],
 					'ariaLabel'       => ['extends' => 'pagewizard/fields/link-aria-label'],
 					'ariaDescribedby' => ['extends' => 'pagewizard/fields/link-aria-describedby'],

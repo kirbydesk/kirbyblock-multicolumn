@@ -21,6 +21,14 @@ function pwMulticolumnList($item): void {
 }
 }
 
+if (!function_exists('pwMulticolumnButtonIcon')) {
+// Icon for the chosen position; falls back to the former single 'icon' field.
+function pwMulticolumnButtonIcon($item): string {
+	$icon = $item->iconposition()->value() === 'right' ? $item->iconright() : $item->iconleft();
+	return (string)($icon->isNotEmpty() ? $icon->value() : $item->icon()->value());
+}
+}
+
 // Helper: render single button sub-block
 if (!function_exists('pwMulticolumnButton')) {
 function pwMulticolumnButton($item): void {
@@ -35,9 +43,8 @@ function pwMulticolumnButton($item): void {
 		'linkRel'         => $item->linkrel()->value(),
 		'ariaLabel'       => $item->arialabel()->value(),
 		'ariaDescribedby' => $item->ariadescribedby()->value(),
-		'icon'            => $item->icon()->value(),
+		'icon'            => pwMulticolumnButtonIcon($item),
 		'iconPosition'    => $item->iconposition()->value(),
-		'iconColor'       => $item->iconcolor()->value(),
 	]);
 	$linkHtml = ob_get_clean();
 	if ($linkHtml) {
