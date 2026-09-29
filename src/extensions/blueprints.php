@@ -160,7 +160,8 @@ $sub = function (string $side) {
 						'default' => $fields['size-list-' . $side] ?? $fields['size-list'] ?? 'normal',
 						'options' => array_map(fn($v) => [
 							'value' => $v,
-							'text'  => t('pw.option.' . $v, $v),
+							// (the texts' steps, named apart from the headings')
+							'text'  => t('pw.option.text-' . $v, $v),
 						], $fieldOptions['list']['sizes'] ?? ['normal', 'lg', 'xl', '2xl', '3xl']),
 					],
 				],
