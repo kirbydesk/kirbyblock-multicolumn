@@ -61,13 +61,11 @@ section[data-block="multicolumn"] div[data-layout="column"] > :is(
 		&[data-dist-xl="dist-5-1"] { grid-template-columns: 5fr 1fr; }
 	}
 }
-/* List sub-block: indent, gap and marker as the lists in texts (Project
-   Wizard → Elements › Lists); without a marker no indent */
+/* List sub-block: marker or number format, indent and gap as the lists in
+   texts (Project Wizard → Elements › Lists); without a marker no indent */
 section[data-block="multicolumn"] [data-field="list"] {
 	margin: 0;
 }
-section[data-block="multicolumn"] [data-field="list"][data-style="bullet"]  { list-style-type: var(--list-style); }
-section[data-block="multicolumn"] [data-field="list"][data-style="ordered"] { list-style-type: decimal; }
 section[data-block="multicolumn"] [data-field="list"][data-style="none"]    { list-style-type: none; padding-left: 0; }
 section[data-block="multicolumn"] [data-field="list"][data-align="left"]    { text-align: left; }
 section[data-block="multicolumn"] [data-field="list"][data-align="center"]  { text-align: center; }
