@@ -17,5 +17,4 @@
 
 	'prw.prop.column-gap' => 'Between the columns',
 	'prw.prop.row-gap' => 'Below each other',
-	'prw.prop.element-gap' => 'After further elements',
 );

@@ -17,5 +17,4 @@
 
 	'prw.prop.column-gap' => 'Zwischen den Spalten',
 	'prw.prop.row-gap' => 'Untereinander',
-	'prw.prop.element-gap' => 'Nach weiteren Elementen',
 );

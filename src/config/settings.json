@@ -347,13 +347,6 @@
 					"step": 0.1,
 					"min": 0,
 					"max": 10
-				},
-				"element-gap": {
-					"value": "1rem",
-					"unit": "rem",
-					"step": 0.1,
-					"min": 0,
-					"max": 6
 				}
 			}
 		},
@@ -375,6 +368,27 @@
 				},
 				"editor-spacing": {
 					"value": "1.2rem",
+					"unit": "rem",
+					"step": 0.1,
+					"min": 0,
+					"max": 6
+				},
+				"quote-spacing": {
+					"value": "2rem",
+					"unit": "rem",
+					"step": 0.1,
+					"min": 0,
+					"max": 6
+				},
+				"media-spacing": {
+					"value": "2rem",
+					"unit": "rem",
+					"step": 0.1,
+					"min": 0,
+					"max": 6
+				},
+				"button-spacing": {
+					"value": "1rem",
 					"unit": "rem",
 					"step": 0.1,
 					"min": 0,
