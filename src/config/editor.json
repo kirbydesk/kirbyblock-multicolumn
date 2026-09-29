@@ -1,10 +1,22 @@
 {
-  "text": {
-		"marks": ["bold", "italic", "underline", "strike", "link","|", "copilot", "copilot-suggestions"],
-    "nodes": [],
-    "headings": [],
-    "toolbar": {
+	"text": {
+		"marks": [
+			"bold",
+			"italic",
+			"underline",
+			"strike",
+			"link",
+			"|",
+			"copilot",
+			"copilot-suggestions"
+		],
+		"nodes": [
+			"bulletList",
+			"orderedList"
+		],
+		"headings": [],
+		"toolbar": {
 			"inline": false
 		}
-  }
+	}
 }
