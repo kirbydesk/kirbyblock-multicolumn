@@ -1,120 +1,24 @@
 /* DO NOT MODIFY THIS FILE - Override in site/patches/css/kirbyblock-multicolumn/_styles.css */
-section[data-block="multicolumn"] {
-	div[data-layout="columns"]{
-		display: grid;
-		gap: 1.5rem;
-
-		div[data-layout="column"]{
-
-			/* Generic fallback spacing between any two children (1rem).
-			   Specific rules below override to 2rem where a bigger gap is desired. */
-			> * + * {
-				margin-top: 1rem;
-			}
-
-			[data-field="heading"] {
-				+ [data-field="heading"] {
-					margin-top: 1rem;
-				}
-				+ figure {
-					margin-top: 1rem;
-				}
-				+ [data-field="writer"] {
-					margin-top: 1rem;
-				}
-				+ [data-field="image"],
-				+ [data-field="slideshow"],
-				+ [data-field="video"] {
-					margin-top: 1rem;
-				}
-				+ [data-field="button"] {
-					margin-top: 1rem;
-				}
-			}
-
-			figure {
-				+ [data-field="heading"] {
-					margin-top: 2rem;
-				}
-				+ figure {
-					margin-top: 1rem;
-				}
-				+ [data-field="writer"] {
-					margin-top: 1rem;
-				}
-				+ [data-field="image"],
-				+ [data-field="slideshow"],
-				+ [data-field="video"] {
-					margin-top: 1rem;
-				}
-				+ [data-field="button"] {
-					margin-top: 1rem;
-				}
-			}
-
-			[data-field="writer"] {
-				+ [data-field="heading"] {
-					margin-top: 2rem;
-				}
-				+ [data-field="writer"] {
-					margin-top: 1rem;
-				}
-				+ figure {
-					margin-top: 1rem;
-				}
-				+ [data-field="image"],
-				+ [data-field="slideshow"],
-				+ [data-field="video"] {
-					margin-top: 1rem;
-				}
-				+ [data-field="button"] {
-					margin-top: 1rem;
-				}
-			}
-
-			[data-field="image"],
-			[data-field="slideshow"],
-			[data-field="video"] {
-				+ [data-field="heading"] {
-					margin-top: 2rem;
-				}
-				+ [data-field="writer"] {
-					margin-top: 1rem;
-				}
-				+ figure {
-					margin-top: 1rem;
-				}
-				+ [data-field="image"],
-				+ [data-field="slideshow"],
-				+ [data-field="video"] {
-					margin-top: 1rem;
-				}
-				+ [data-field="button"] {
-					margin-top: 1rem;
-				}
-			}
-
-			[data-field="button"] {
-				+ [data-field="heading"] {
-					margin-top: 2rem;
-				}
-				+ [data-field="writer"] {
-					margin-top: 1rem;
-				}
-				+ figure {
-					margin-top: 1rem;
-				}
-				+ [data-field="image"],
-				+ [data-field="slideshow"],
-				+ [data-field="video"] {
-					margin-top: 1rem;
-				}
-				+ [data-field="button"] {
-					margin-top: 1rem;
-				}
-			}
-		}
-	}
+/*-----------------------------------------------------------------------------
+	Columns: the gap between them, and (stacked) below each other; inside a
+	column tagline, heading and text keep the elements' space below (Project
+	Wizard → Elements, or the block's own), the other elements (list, quote,
+	media, button) the gap after further elements (Project Wizard → Design)
+-----------------------------------------------------------------------------*/
+section[data-block="multicolumn"] div[data-layout="columns"] {
+	display: grid;
+	column-gap: var(--pwmulticolumn-column-gap);
+	row-gap: var(--pwmulticolumn-row-gap);
+}
+section[data-block="multicolumn"] div[data-layout="column"] > :is(
+	[data-field="list"],
+	figure,
+	[data-field="image"],
+	[data-field="slideshow"],
+	[data-field="video"],
+	[data-field="button"]
+):not(:last-child) {
+	margin-bottom: var(--pwmulticolumn-element-gap);
 }
 
 /* Grid Column Distribution - Small (from 640px) */

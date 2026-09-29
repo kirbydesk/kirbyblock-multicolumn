@@ -15,4 +15,7 @@
 	'pw.field.list.style.none' => 'None',
 	'pw.field.list.size' => 'Size',
 
+	'prw.prop.column-gap' => 'Between the columns',
+	'prw.prop.row-gap' => 'Below each other',
+	'prw.prop.element-gap' => 'After further elements',
 );
