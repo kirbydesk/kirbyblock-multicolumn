@@ -2,8 +2,9 @@
 /*-----------------------------------------------------------------------------
 	Columns: the gap between them, and (stacked) below each other; inside a
 	column tagline, heading and text keep the elements' space below (Project
-	Wizard → Elements, or the block's own), the other elements (list, quote,
-	media, button) the gap after further elements (Project Wizard → Design)
+	Wizard → Elements, or the block's own), a list the lists' space below,
+	the other elements (quote, media, button) the gap after further elements
+	(Project Wizard → Design)
 -----------------------------------------------------------------------------*/
 section[data-block="multicolumn"] div[data-layout="columns"] {
 	display: grid;
@@ -11,7 +12,6 @@ section[data-block="multicolumn"] div[data-layout="columns"] {
 	row-gap: var(--pwmulticolumn-row-gap);
 }
 section[data-block="multicolumn"] div[data-layout="column"] > :is(
-	[data-field="list"],
 	figure,
 	[data-field="image"],
 	[data-field="slideshow"],
@@ -19,6 +19,10 @@ section[data-block="multicolumn"] div[data-layout="column"] > :is(
 	[data-field="button"]
 ):not(:last-child) {
 	margin-bottom: var(--pwmulticolumn-element-gap);
+}
+/* a list: its own space below (Project Wizard → Elements › Lists) */
+section[data-block="multicolumn"] div[data-layout="column"] > [data-field="list"]:not(:last-child) {
+	margin-bottom: var(--list-spacing);
 }
 
 /* Grid Column Distribution - Small (from 640px) */
