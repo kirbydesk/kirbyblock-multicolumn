@@ -229,7 +229,6 @@ $right = $sub('right');
 $distributionField = fn(string $breakpoint, $default) => [
 	'extends' => 'pagewizard/fields/distribution',
 	'default' => $default,
-	'label'   => 'pw.field.columns.' . $breakpoint,
 ];
 
 return [
