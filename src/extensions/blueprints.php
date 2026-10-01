@@ -250,27 +250,19 @@ return [
 			// standard headlineContent header, no tagline/heading/editor/buttons.
 			'noContentHeader' => true,
 			'contentFields' => [
-				'headlineLeft' => [
-					'type'  => 'headline',
-					'label' => 'pw.headline.multicolumn.left',
-					'help'  => 'pw.headline.multicolumn.left.help',
-					'width' => '1/2'
-				],
-				'headlineRight' => [
-					'type'  => 'headline',
-					'label' => 'pw.headline.multicolumn.right',
-					'help'  => 'pw.headline.multicolumn.right.help',
-					'width' => '1/2',
-					'class' => 'patch',
-				],
+				// each column's heading with its vertical position on the right
 				'leftPositionVertical' => [
 					'extends' => 'pagewizard/fields/position-vertical',
-					'help'    => 'pw.field.position-vertical.column.help',
+					'type'    => 'pwheadtoggles',
+					'label'   => 'pw.headline.multicolumn.left',
+					'help'    => 'pw.headline.multicolumn.left.help',
 					'default' => $defaults['multicolumn-left']
 				],
 				'rightPositionVertical' => [
 					'extends' => 'pagewizard/fields/position-vertical',
-					'help'    => 'pw.field.position-vertical.column.help',
+					'type'    => 'pwheadtoggles',
+					'label'   => 'pw.headline.multicolumn.right',
+					'help'    => 'pw.headline.multicolumn.right.help',
 					'default' => $defaults['multicolumn-right']
 				],
 				'blocksLeft' => [
