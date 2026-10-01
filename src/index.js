@@ -1,30 +1,25 @@
 // Blocks
 import pwmulticolumn         from "@/blocks/index.vue";
-import pwmulticolumnHeadline from "@/blocks/sub-headline.vue";
-import pwmulticolumnText     from "@/blocks/sub-text.vue";
-import pwmulticolumnList     from "@/blocks/sub-list.vue";
-import pwmulticolumnQuote    from "@/blocks/sub-quote.vue";
-import pwmulticolumnMedia    from "@/blocks/sub-media.vue";
-import pwmulticolumnButton   from "@/blocks/sub-button.vue";
-import pwmulticolumnTagline  from "@/blocks/sub-tagline.vue";
+// (every sub-block: one preview in the project's look)
+import pwmulticolumnSub     from "@/blocks/sub.vue";
 
 // Render
 panel.plugin("kirbydesk/kirbyblock-multicolumn", {
 	blocks: {
 		pwmulticolumn,
-		multicolumnheadlineleft:  pwmulticolumnHeadline,
-		multicolumnheadlineright: pwmulticolumnHeadline,
-		multicolumntextleft:      pwmulticolumnText,
-		multicolumntextright:     pwmulticolumnText,
-		multicolumnlistleft:      pwmulticolumnList,
-		multicolumnlistright:     pwmulticolumnList,
-		multicolumnquoteleft:     pwmulticolumnQuote,
-		multicolumnquoteright:    pwmulticolumnQuote,
-		multicolumnmedialeft:     pwmulticolumnMedia,
-		multicolumnmediaright:    pwmulticolumnMedia,
-		multicolumnbuttonleft:    pwmulticolumnButton,
-		multicolumnbuttonright:   pwmulticolumnButton,
-		multicolumntaglineleft:   pwmulticolumnTagline,
-		multicolumntaglineright:  pwmulticolumnTagline,
+		multicolumnheadlineleft:  pwmulticolumnSub,
+		multicolumnheadlineright: pwmulticolumnSub,
+		multicolumntextleft:      pwmulticolumnSub,
+		multicolumntextright:     pwmulticolumnSub,
+		multicolumnlistleft:      pwmulticolumnSub,
+		multicolumnlistright:     pwmulticolumnSub,
+		multicolumnquoteleft:     pwmulticolumnSub,
+		multicolumnquoteright:    pwmulticolumnSub,
+		multicolumnmedialeft:     pwmulticolumnSub,
+		multicolumnmediaright:    pwmulticolumnSub,
+		multicolumnbuttonleft:    pwmulticolumnSub,
+		multicolumnbuttonright:   pwmulticolumnSub,
+		multicolumntaglineleft:   pwmulticolumnSub,
+		multicolumntaglineright:  pwmulticolumnSub,
 	}
 });

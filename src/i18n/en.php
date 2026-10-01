@@ -5,7 +5,6 @@
 	'kirbyblock-multicolumn.sub.headline' => 'Headline',
 	'kirbyblock-multicolumn.sub.tagline' => 'Tagline',
 	'kirbyblock-multicolumn.sub.list' => 'List',
-	'kirbyblock-multicolumn.sub.list.empty' => 'List (empty)',
 
 	'pw.field.list.items' => 'Items',
 	'pw.field.list.item' => 'Item',
