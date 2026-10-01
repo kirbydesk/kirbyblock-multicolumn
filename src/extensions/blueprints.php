@@ -255,12 +255,16 @@ return [
 					'extends' => 'pagewizard/fields/position-vertical',
 					'type'    => 'pwheadtoggles',
 					'label'   => 'pw.headline.multicolumn.left',
+					// (no help: the icons speak for themselves)
+					'help'    => null,
 					'default' => $defaults['multicolumn-left']
 				],
 				'rightPositionVertical' => [
 					'extends' => 'pagewizard/fields/position-vertical',
 					'type'    => 'pwheadtoggles',
 					'label'   => 'pw.headline.multicolumn.right',
+					// (no help: the icons speak for themselves)
+					'help'    => null,
 					// (next to the left one: without Kirby's space above a heading)
 					'class'   => 'patch',
 					'default' => $defaults['multicolumn-right']
