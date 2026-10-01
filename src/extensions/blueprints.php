@@ -263,6 +263,8 @@ return [
 					'type'    => 'pwheadtoggles',
 					'label'   => 'pw.headline.multicolumn.right',
 					'help'    => 'pw.headline.multicolumn.right.help',
+					// (next to the left one: without Kirby's space above a heading)
+					'class'   => 'patch',
 					'default' => $defaults['multicolumn-right']
 				],
 				'blocksLeft' => [
