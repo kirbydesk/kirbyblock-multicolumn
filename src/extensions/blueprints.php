@@ -112,6 +112,8 @@ $sub = function (string $side) {
 						'extends'      => 'pagewizard/fields/tagline',
 						'align'        => $fields['align-tagline-' . $side] ?? $fields['align-tagline'] ?? null,
 						'alignOptions' => $fieldOptions['tagline']['align'] ?? null,
+						// its line above it: form and style per tagline (like every block's tagline)
+						...pwConfig::taglineLeadlineFields($fields, $fieldOptions),
 					],
 				],
 			];
